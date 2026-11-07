@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Warcraft 3 3D Model Viewer - FOCS Heroes</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle, #1e293b 0%, #020617 100%);
+      color: #fff;
+      font-family: -apple-system, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+    #header {
+      padding: 14px;
+      text-align: center;
+      z-index: 10;
+    }
+    #viewerCanvas {
+      width: 100%;
+      height: 75vh;
+      display: block;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    button {
+      background: #0284c7;
+      border: none;
+      color: #fff;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #38bdf8; }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1 style="margin:0; font-size:20px; color:#38bdf8;">Authentic Warcraft 3 3D Character Model Viewer</h1>
+    <div style="font-size:12px; color:#94a3b8;">Real .mdx models & .blp textures extracted directly from FOCS3 Another 9.7 C03.w3x</div>
+    <div class="btn-row" style="flex-wrap: wrap; justify-content: center;">
+      <button onclick="loadHero('ichigo.mdx')">Ichigo (Bleach)</button>
+      <button onclick="loadHero('saber.mdx')">Saber (Fate)</button>
+      <button onclick="loadHero('luffy.mdx')">Luffy (One Piece)</button>
+      <button onclick="loadHero('byakuya.mdx')">Byakuya (Bleach)</button>
+      <button onclick="loadHero('inuyasha.mdx')">Inuyasha</button>
+      <button onclick="loadHero('rocklee.mdx')">Rock Lee (Naruto)</button>
+      <button onclick="loadHero('ace.mdx')">Ace (One Piece)</button>
+      <button onclick="loadHero('sasuke.mdx')">Sasuke (Naruto)</button>
+      <button onclick="loadHero('toshiro.mdx')">Toshiro (Bleach)</button>
+      <button onclick="loadHero('gilgamesh.mdx')">Gilgamesh (Fate)</button>
+      <button onclick="playAnim('Walk')" style="background:#059669;">Walk</button>
+      <button onclick="playAnim('Attack')" style="background:#dc2626;">Attack</button>
+      <button onclick="playAnim('Stand')" style="background:#4b5563;">Stand</button>
+      <a href="/" style="color:#facc15; margin-left:20px; font-weight:bold; text-decoration:none; align-self:center;">&larr; Back to 3D Game Arena</a>
+    </div>
+  </div>
+
+  <canvas id="viewerCanvas"></canvas>
+
+  <script src="src/lib/viewer.min.js"></script>
+  <script>
+    const canvas = document.getElementById('viewerCanvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight * 0.75;
+
+    function pathSolver(src) {
+      const filename = src.split(/[\\/]/).pop();
+      return 'public/models/' + filename;
+    }
+
+    const viewer = new ModelViewer.viewer.ModelViewer(canvas);
+    viewer.addHandler(ModelViewer.viewer.handlers.mdx);
+    viewer.addHandler(ModelViewer.viewer.handlers.blp);
+    viewer.on('error', (e) => console.error('EXACT VIEWER ERROR:', e.error, e.src, e.fetchUrl, e.reason ? (e.reason.message || e.reason) : 'no-reason'));
+    const scene = viewer.addScene();
+    const camera = scene.camera;
+
+    camera.perspective(Math.PI / 4, canvas.width / canvas.height, 10, 25000);
+    camera.moveToAndFace([0, -280, 140], [0, 0, 70], [0, 0, 1]);
+
+    let currentInstance = null;
+    let currentModel = null;
+
+    async function loadHero(modelFile) {
+      if (currentInstance) {
+        scene.removeInstance(currentInstance);
+        currentInstance = null;
+      }
+      try {
+        console.log('Loading 3D model: public/models/' + modelFile);
+        currentModel = await viewer.load('public/models/' + modelFile, pathSolver);
+        currentInstance = currentModel.addInstance();
+        scene.addInstance(currentInstance);
+        currentInstance.setSequenceLoopMode(2); // Repeat
+        currentInstance.setSequence(0); // Stand
+        console.log('3D Model loaded successfully!', currentModel);
+      } catch (err) {
+        console.error('Failed to load 3D model:', err);
+      }
+    }
+
+    function playAnim(name) {
+      if (!currentModel || !currentInstance) return;
+      const sequences = currentModel.sequences;
+      for (let i = 0; i < sequences.length; i++) {
+        if (sequences[i].name.toLowerCase().includes(name.toLowerCase())) {
+          currentInstance.setSequence(i);
+          console.log('Switched to animation:', sequences[i].name);
+          break;
+        }
+      }
+    }
+
+    // Default load Ichigo
+    loadHero('ichigo.mdx');
+
+    // Render loop
+    function loop() {
+      viewer.updateAndRender();
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // Mouse drag to orbit camera around model
+    let isDragging = false;
+    let lastX = 0, lastY = 0;
+    let orbitAngle = -Math.PI / 2;
+    let orbitElev = 140;
+    let orbitDist = 280;
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+    window.addEventListener('mouseup', () => isDragging = false);
+    canvas.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      orbitAngle += dx * 0.015;
+      orbitElev = Math.max(30, Math.min(380, orbitElev + dy * 0.8));
+      camera.moveToAndFace([Math.cos(orbitAngle) * orbitDist, Math.sin(orbitAngle) * orbitDist, orbitElev], [0, 0, 70], [0, 0, 1]);
+    });
+  </script>
+</body>
+</html>

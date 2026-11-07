@@ -1,0 +1,17 @@
+{
+  "name": "fotc-mobile",
+  "version": "1.0.0",
+  "description": "Fight of the Characters - Mobile Arena APK Engine",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 3000 .",
+    "cap:sync": "npx cap sync",
+    "cap:android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.1",
+    "@capacitor/cli": "^7.0.1",
+    "@capacitor/core": "^7.0.1",
+    "mdx-m3-viewer": "^5.12.0"
+  }
+}

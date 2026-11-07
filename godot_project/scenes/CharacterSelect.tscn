@@ -1,0 +1,190 @@
+[gd_scene load_steps=5 format=3 uid="uid://fotc3dcharselect01"]
+
+[ext_resource type="Script" path="res://scripts/CharacterSelect.gd" id="1_select"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pedestal"]
+albedo_color = Color(0.2, 0.25, 0.35, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hero_preview"]
+albedo_color = Color(0.38, 0.45, 1, 1)
+
+[sub_resource type="Environment" id="Environment_preview"]
+background_mode = 1
+background_color = Color(0.04, 0.06, 0.12, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.65, 0.8, 1)
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_select")
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World3D"]
+environment = SubResource("Environment_preview")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World3D"]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 5, 5)
+
+[node name="Camera3D" type="Camera3D" parent="World3D"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.8, 3.8)
+current = true
+
+[node name="HeroPedestal" type="CSGCylinder3D" parent="World3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+radius = 1.8
+height = 0.4
+sides = 32
+material = SubResource("StandardMaterial3D_pedestal")
+
+[node name="PreviewHeroMesh" type="CSGCylinder3D" parent="World3D/HeroPedestal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+radius = 0.5
+height = 1.8
+material = SubResource("StandardMaterial3D_hero_preview")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Header" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 18.0
+offset_right = 250.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.22, 0.74, 0.97, 1)
+theme_override_font_sizes/font_size = 26
+text = "CHOOSE YOUR 3D HERO"
+horizontal_alignment = 1
+
+[node name="HeroGrid" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -100.0
+offset_right = 320.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="BtnGojo" type="Button" parent="UI/HeroGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gojo Satoru
+(JJK)"
+
+[node name="BtnIchigo" type="Button" parent="UI/HeroGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ichigo
+(Bleach)"
+
+[node name="BtnSaber" type="Button" parent="UI/HeroGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Saber
+(Fate)"
+
+[node name="BtnInuyasha" type="Button" parent="UI/HeroGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inuyasha
+(Inuyasha)"
+
+[node name="Panel" type="Panel" parent="UI"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = 60.0
+offset_right = -20.0
+offset_bottom = -120.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HeroName" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 320.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.75, 0.52, 0.99, 1)
+theme_override_font_sizes/font_size = 20
+text = "Gojo Satoru"
+
+[node name="HeroTitle" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 38.0
+offset_right = 320.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.58, 0.64, 0.72, 1)
+theme_override_font_sizes/font_size = 13
+text = "The Honored One (Jujutsu Kaisen)"
+
+[node name="StatsLabel" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 70.0
+offset_right = 320.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 13
+text = "HP: 1450  |  MP: 550
+DMG: 82  |  ARMOR: 6  |  SPD: 8.0
+STR: 28  |  AGI: 26  |  INT: 34"
+
+[node name="SkillsLabel" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 140.0
+offset_right = 320.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 12
+text = "[Q] Lapse: Blue (Gravitational pull)
+[W] Reversal: Red (Repulsive blast)
+[E] Infinity (100% Invulnerability)
+[R] Hollow Purple (Cataclysmic beam)
+[D] Unlimited Void (Domain Expansion)"
+
+[node name="BtnConfirm" type="Button" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -54.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.13, 0.77, 0.37, 1)
+theme_override_font_sizes/font_size = 16
+text = "CONFIRM & ENTER ARENA"
+
+[node name="BtnBack" type="Button" parent="UI"]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 110.0
+offset_bottom = 52.0
+text = "< BACK"
+
+[connection signal="pressed" from="UI/HeroGrid/BtnGojo" to="." method="_on_btn_gojo_pressed"]
+[connection signal="pressed" from="UI/HeroGrid/BtnIchigo" to="." method="_on_btn_ichigo_pressed"]
+[connection signal="pressed" from="UI/HeroGrid/BtnSaber" to="." method="_on_btn_saber_pressed"]
+[connection signal="pressed" from="UI/HeroGrid/BtnInuyasha" to="." method="_on_btn_inuyasha_pressed"]
+[connection signal="pressed" from="UI/Panel/BtnConfirm" to="." method="_on_btn_confirm_pressed"]
+[connection signal="pressed" from="UI/BtnBack" to="." method="_on_btn_back_pressed"]

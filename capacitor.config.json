@@ -1,0 +1,14 @@
+{
+  "appId": "com.jin.fotcmobile",
+  "appName": "Fight of the Characters",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  }
+}
