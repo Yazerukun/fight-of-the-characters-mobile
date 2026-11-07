@@ -2,7 +2,15 @@
 
 [![Platform: Android](https://img.shields.io/badge/Platform-Android%2016%20%7C%208%2B-brightgreen.svg)](https://developer.android.com/)
 [![Engine: WebGL + Godot 4.3](https://img.shields.io/badge/Engine-WebGL%20MDX%20%2B%20Godot%204.3-blue.svg)](https://godotengine.org/)
+[![GitHub Release](https://img.shields.io/github/v/release/Yazerukun/fight-of-the-characters-mobile?color=blue)](https://github.com/Yazerukun/fight-of-the-characters-mobile/releases/latest)
+[![CI Build](https://github.com/Yazerukun/fight-of-the-characters-mobile/actions/workflows/build-apk.yml/badge.svg)](https://github.com/Yazerukun/fight-of-the-characters-mobile/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
+
+<p align="center">
+  <a href="https://github.com/Yazerukun/fight-of-the-characters-mobile/releases/download/v1.0.0/FightOfCharacters.apk">
+    <img src="https://img.shields.io/badge/DOWNLOAD_APK-v1.0.0_(5.7_MB)-2ea44f?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
+  </a>
+</p>
 
 An authentic 3D mobile fighting game inspired by the legendary Warcraft III custom map **"Fight of Characters" (FOTC / FOCS3 Another)**. Built with high-performance 3D skeletal animation pipelines, authentic Lordaeron cobblestone terrain, periodic 1v1 duel arenas, and touchscreen controls designed specifically for Android smartphones and tablets.
 
