@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fight of Characters 9.1a (Asia) — Mobile Port</title>
+<style>
+  :root {
+    --bg-dark: #050b14;
+    --panel-blue: #09172e;
+    --panel-blue-border: #1a3c6b;
+    --accent-gold: #f5a623;
+    --gold-glow: rgba(245, 166, 35, 0.6);
+    --neon-blue: #00d2ff;
+    --neon-blue-glow: rgba(0, 210, 255, 0.4);
+    --text-gold: #ffd27d;
+    --text-cyan: #70e3ff;
+    --status-ready: #2ecc71;
+    --status-picking: #f39c12;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+  }
+
+  #viewport {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vw;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at center, #0d1e3a 0%, #040913 85%, #000207 100%);
+    overflow: hidden;
+  }
+
+  /* Screen Switcher Dev Bar */
+  #dev-toolbar {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 10, 25, 0.85);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  }
+
+  .dev-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #a0c4e8;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+  }
+
+  .dev-btn.active, .dev-btn:hover {
+    background: var(--accent-gold);
+    color: #000;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px var(--gold-glow);
+  }
+
+  /* ========================================================= */
+  /* SCREEN 1: LOADING SCREEN                                  */
+  /* ========================================================= */
+  #screen-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 50;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    background: radial-gradient(ellipse at center, rgba(16, 38, 77, 0.7) 0%, rgba(3, 8, 18, 0.95) 80%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon points='60,5 115,100 5,100' fill='none' stroke='rgba(0,180,255,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+  }
+
+  #screen-loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.04);
+  }
+
+  .screen-badge {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    background: linear-gradient(135deg, #0066cc, #003366);
+    color: #fff;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+    border-left: 3px solid var(--neon-blue);
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.4);
+    letter-spacing: 0.5px;
+  }
+
+  .tagline-badge {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    color: #d1e5ff;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.8);
+    letter-spacing: 1px;
+  }
+
+  /* Cinematic Hero Composition */
+  .hero-banner-container {
+    position: relative;
+    width: 90%;
+    max-width: 960px;
+    height: 60%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .canvas-thunder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 3D Styled Logo */
+  .game-logo-wrapper {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: floatLogo 3.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatLogo {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(-8px) scale(1.02); }
+  }
+
+  .logo-title-main {
+    font-size: 48px;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 0.95;
+    background: linear-gradient(180deg, #fff275 0%, #ff9900 45%, #cc0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 100, 0, 0.8)) drop-shadow(0 4px 8px rgba(0,0,0,0.9));
+  }
+
+  .logo-title-sub {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.9), 0 2px 4px #000;
+    margin-top: 4px;
+  }
+
+  /* Hero Silhouettes in Composition */
+  .hero-silhouettes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    pointer-events: none;
+    opacity: 0.85;
+    z-index: 2;
+  }
+
+  .hero-fig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: drop-shadow(0 0 12px rgba(0, 180, 255, 0.6));
+    animation: pulseAura 2.5s infinite alternate;
+  }
+
+  @keyframes pulseAura {
+    0% { filter: drop-shadow(0 0 8px rgba(0, 180, 255, 0.4)); }
+    100% { filter: drop-shadow(0 0 18px rgba(0, 210, 255, 0.9)); }
+  }
+
+  .hero-avatar-svg {
+    width: 110px;
+    height: 140px;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 210, 255, 0.5);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  }
+
+  /* Progress Section */
+  .loading-bottom-section {
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .loading-status-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e0f0ff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px rgba(0, 210, 255, 0.6);
+  }
+
+  .progress-frame {
+    position: relative;
+    width: 100%;
+    height: 16px;
+    background: #061122;
+    border: 2px solid #1a3c6b;
+    border-radius: 8px;
+    padding: 2px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.8), 0 0 12px rgba(0, 180, 255, 0.3);
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff9900, #ffcc00, #ffffff);
+    border-radius: 6px;
+    box-shadow: 0 0 12px var(--gold-glow);
+    transition: width 0.15s ease-out;
+  }
+
+  .tips-box {
+    font-size: 13px;
+    color: #d8e6f7;
+    text-align: center;
+    padding: 4px 16px;
+    background: rgba(9, 23, 46, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(26, 60, 107, 0.6);
+    margin-top: 4px;
+    transition: opacity 0.3s ease;
+  }
+
+  /* ========================================================= */
+  /* SCREEN 2: HERO PICKING PHASE                              */
+  /* ========================================================= */
+  #screen-pick {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 40;
+    padding: 10px 16px;
+    background: radial-gradient(circle at 60% 40%, #0d1e3a 0%, #061120 70%, #02070e 100%);
+  }
+
+  /* Top Navigation & Timer Bar */
+  .pick-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(26, 60, 107, 0.6);
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .center-timer-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #70e3ff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .countdown-number {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--accent-gold);
+    text-shadow: 0 0 12px var(--gold-glow);
+    line-height: 1;
+  }
+
+  /* 3-Column Layout */
+  .pick-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 200px 1fr 340px;
+    gap: 12px;
+    padding-top: 8px;
+    overflow: hidden;
+  }
+
+  /* LEFT COLUMN: Player Roster & Minimap */
+  .left-roster-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(9, 23, 46, 0.65);
+    border: 1px solid var(--panel-blue-border);
+    border-radius: 8px;
+    padding: 8px;
+  }
+
+  .player-slots-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .player-slot-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    background: rgba(6, 17, 34, 0.85);
+    border: 1px solid rgba(26, 60, 107, 0.8);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .player-slot-card.active-user {
+    border-color: var(--neon-blue);
+    background: rgba(0, 50, 100, 0.4);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+  }
+
+  .player-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 4px;
+    background: #11223a;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    overflow: hidden;
+  }
+
+  .player-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #e0f0ff;
+  }
+
+  .player-status-badge {
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .status-picking {
+    color: var(--status-picking);
+  }
+
+  .status-ready {
+    color: var(--status-ready);
+  }
+
+  .left-bottom-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(26, 60, 107, 0.5);
+  }
+
+  .minimap-preview {
+    width: 48px;
+    height: 48px;
+    background: #020813 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' fill='%23051a30'/%3E%3Cpath d='M0,24 Q24,0 48,24 Q24,48 0,24' fill='none' stroke='%2300ff88' stroke-width='1.5'/%3E%3Ccircle cx='24' cy='24' r='4' fill='%23f5a623'/%3E%3C/svg%3E") no-repeat center;
+    border: 1px solid var(--neon-blue);
+    border-radius: 4px;
+  }
+
+  .btn-battlefield {
+    flex: 1;
+    height: 34px;
+    background: rgba(0, 102, 204, 0.35);
+    border: 1px solid rgba(0, 210, 255, 0.5);
+    color: #70e3ff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .btn-battlefield:hover {
+    background: rgba(0, 102, 204, 0.7);
+    color: #fff;
+  }
+
+  /* CENTER COLUMN: Hero Selection Grid */
+  .center-grid-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(9, 23, 46, 0.5);
+    border: 1px solid var(--panel-blue-border);
+    border-radius: 8px;
+    padding: 8px;
+    overflow: hidden;
+  }
+
+  .hero-cards-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .hero-card {
+    position: relative;
+    aspect-ratio: 1 / 1.05;
+    background: #071529;
+    border: 1.5px solid rgba(26, 60, 107, 0.8);
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+  }
+
+  .hero-card:hover {
+    border-color: #70e3ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 210, 255, 0.3);
+  }
+
+  .hero-card.selected {
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 0 12px var(--gold-glow);
+    transform: scale(1.03);
+  }
+
+  .hero-card-img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    background-color: #0b1e38;
+  }
+
+  .hero-card-name {
+    width: 100%;
+    font-size: 9px;
+    font-weight: 700;
+    color: #e0f0ff;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 2px 2px;
+    background: rgba(0, 5, 15, 0.85);
+  }
+
+  .hero-card-badge {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 8px;
+    font-weight: 800;
+    padding: 1px 4px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .badge-str { background: #b33939; color: #fff; }
+  .badge-agi { background: #218c74; color: #fff; }
+  .badge-int { background: #227093; color: #fff; }
+
+  /* Attribute Filter Tabs */
+  .filter-tabs-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(26, 60, 107, 0.5);
+  }
+
+  .filter-tab {
+    flex: 1;
+    height: 32px;
+    background: rgba(6, 17, 34, 0.85);
+    border: 1px solid rgba(26, 60, 107, 0.8);
+    color: #a0c4e8;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-tab.active, .filter-tab:hover {
+    background: linear-gradient(180deg, #0077cc, #004488);
+    color: #fff;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+  }
+
+  /* RIGHT COLUMN: Hero Showcase Preview */
+  .right-showcase-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(9, 23, 46, 0.7);
+    border: 1px solid var(--panel-blue-border);
+    border-radius: 8px;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .showcase-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-showcase-name {
+    font-size: 24px;
+    font-weight: 900;
+    font-style: italic;
+    color: #ff3344;
+    text-shadow: 0 0 10px rgba(255, 51, 68, 0.7);
+    letter-spacing: 0.5px;
+  }
+
+  .hero-showcase-title {
+    font-size: 11px;
+    color: #a0c4e8;
+    font-weight: 600;
+  }
+
+  /* Large Portrait Preview */
+  .showcase-portrait-wrap {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(255, 51, 68, 0.7);
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 51, 68, 0.35);
+    margin: 6px 0;
+    background: #061122;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .showcase-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Skills Row */
+  .skills-showcase-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 6px;
+    margin: 8px 0;
+  }
+
+  .skill-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .skill-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #0a192f;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 0 8px var(--gold-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    overflow: hidden;
+  }
+
+  .skill-circle.selected, .skill-circle:hover {
+    border-color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.8);
+  }
+
+  .skill-slot-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: #e0f0ff;
+    text-align: center;
+    max-width: 55px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Tooltip Box */
+  .skill-tooltip-box {
+    background: rgba(5, 14, 28, 0.9);
+    border: 1px solid rgba(26, 60, 107, 0.8);
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 11px;
+    color: #c8e0f8;
+    line-height: 1.35;
+    min-height: 52px;
+  }
+
+  .skill-tooltip-name {
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 2px;
+  }
+
+  /* Big Golden Confirm Button */
+  .btn-confirm-lockin {
+    width: 100%;
+    height: 46px;
+    margin-top: 8px;
+    background: linear-gradient(180deg, #ffcc00 0%, #ff8800 50%, #d46b00 100%);
+    border: 2px solid #ffe680;
+    border-radius: 24px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    box-shadow: 0 4px 15px rgba(255, 136, 0, 0.6), inset 0 2px 4px rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-confirm-lockin:hover:not(:disabled) {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 170, 0, 0.9);
+  }
+
+  .btn-confirm-lockin:disabled {
+    background: #444;
+    border-color: #666;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="viewport">
+  <!-- Dev Switcher Toolbar -->
+  <div id="dev-toolbar">
+    <button class="dev-btn active" id="btn-show-loading" onclick="switchToScreen('loading')">1. Loading Screen</button>
+    <button class="dev-btn" id="btn-show-pick" onclick="switchToScreen('pick')">2. Hero Picking Phase</button>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- SCREEN 1: LOADING SCREEN                                  -->
+  <!-- ========================================================= -->
+  <div id="screen-loading">
+    <div class="screen-badge">Loading Screen</div>
+    <div class="tagline-badge">The Ultimate Battle Begins...</div>
+
+    <div class="hero-banner-container">
+      <canvas id="thunder-canvas" class="canvas-thunder"></canvas>
+
+      <!-- Center 3D Logo -->
+      <div class="game-logo-wrapper">
+        <div class="logo-title-main">FIGHT OF<br>CHARACTERS</div>
+        <div class="logo-title-sub">9.1a (Asia)</div>
+      </div>
+    </div>
+
+    <!-- Bottom Progress & Tips -->
+    <div class="loading-bottom-section">
+      <div class="loading-status-text" id="loading-pct-text">Loading Game... 0%</div>
+      <div class="progress-frame">
+        <div class="progress-fill" id="loading-bar-fill"></div>
+      </div>
+      <div class="tips-box" id="loading-tip-text">
+        💡 Tip: Combine items in your inventory to get stronger equipment!
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- SCREEN 2: HERO PICKING PHASE                              -->
+  <!-- ========================================================= -->
+  <div id="screen-pick">
+    <!-- Header Bar -->
+    <div class="pick-header">
+      <div class="header-left">
+        <div class="screen-badge" style="position: static;">Hero Picking Phase</div>
+      </div>
+
+      <div class="center-timer-wrap">
+        <div class="center-title">Select Your Hero</div>
+        <div class="countdown-number" id="pick-timer-display">28</div>
+      </div>
+
+      <div style="width: 140px; text-align: right; font-size: 11px; color: #70e3ff; font-weight: 600;">
+        Match: 5v5 Asia Duel
+      </div>
+    </div>
+
+    <!-- Main 3-Column Body -->
+    <div class="pick-body">
+      <!-- LEFT: Roster & Minimap -->
+      <div class="left-roster-column">
+        <div class="player-slots-list" id="player-slots-container">
+          <!-- Dynamically filled: Player1 to Player5 -->
+        </div>
+
+        <div class="left-bottom-bar">
+          <div class="minimap-preview"></div>
+          <button class="btn-battlefield" onclick="showBattlefieldInfo()">
+            <span>ℹ️</span> Battlefield Info
+          </button>
+        </div>
+      </div>
+
+      <!-- CENTER: Hero Grid & Filter Tabs -->
+      <div class="center-grid-column">
+        <div class="hero-cards-grid" id="hero-grid-container">
+          <!-- Dynamically filled 18+ hero cards -->
+        </div>
+
+        <div class="filter-tabs-row">
+          <button class="filter-tab active" onclick="setFilter('All', this)">All</button>
+          <button class="filter-tab" onclick="setFilter('STR', this)">STR</button>
+          <button class="filter-tab" onclick="setFilter('AGI', this)">AGI</button>
+          <button class="filter-tab" onclick="setFilter('INT', this)">INT</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: Hero Showcase -->
+      <div class="right-showcase-column">
+        <div class="showcase-header">
+          <div class="hero-showcase-name" id="preview-name">Monkey D. Luffy</div>
+          <div class="hero-showcase-title" id="preview-title">Straw Hat Captain • One Piece</div>
+        </div>
+
+        <div class="showcase-portrait-wrap">
+          <div id="preview-art" style="font-size: 64px;">👒</div>
+        </div>
+
+        <div class="skills-showcase-row" id="preview-skills-row">
+          <!-- Dynamically filled 4 skills -->
+        </div>
+
+        <div class="skill-tooltip-box" id="preview-tooltip">
+          <div class="skill-tooltip-name" id="tooltip-skill-name">Gomu Gomu Pistol [Q]</div>
+          <div id="tooltip-skill-desc">Stretches his arm backward and unleashes a high-speed straight punch dealing 90/140/190/240/290 + (STR × 2.2) damage in a line.</div>
+        </div>
+
+        <button class="btn-confirm-lockin" id="btn-confirm" onclick="confirmHeroPick()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========================================================= */
+/* HERO DATASET (Canonical Fight of Characters 9.1a Asia)    */
+/* ========================================================= */
+const HERO_DATABASE = [
+  {
+    id: "luffy",
+    name: "Monkey D. Luffy",
+    title: "Straw Hat Captain",
+    franchise: "One Piece",
+    attr: "STR",
+    icon: "👒",
+    color: "#ff3344",
+    skills: [
+      { name: "Gomu Gomu Pistol", key: "Q", icon: "👊", desc: "Stretches his arm backward and unleashes a straight punch dealing 90/140/190/240/290 + (STR × 2.2) physical damage in a linear path." },
+      { name: "Gomu Gomu Bazooka", key: "W", icon: "💥", desc: "Stretches both arms backward and slams open palms, launching enemies 600 units backward and stunning for 1.5s." },
+      { name: "Gear Second", key: "E", icon: "⚡", desc: "Pumps blood throughout body, gaining +50% Attack Speed and +35% Movement Speed for 15s." },
+      { name: "Gear Third", key: "R", icon: "🔥", desc: "Inflates his bone structure into a giant fist, flattening an area for 350/500/650 + (STR × 3.0) crushing damage." }
+    ]
+  },
+  {
+    id: "goku",
+    name: "Son Goku",
+    title: "Earth's Greatest Saiyan",
+    franchise: "Dragon Ball",
+    attr: "STR",
+    icon: "🥋",
+    color: "#ff9900",
+    skills: [
+      { name: "Kamehameha", key: "Q", icon: "🌀", desc: "Channels a continuous blue ki beam dealing 100/160/220/280/340 + (STR × 2.0) magic damage in a 900 unit corridor." },
+      { name: "Kaioken Rush", key: "W", icon: "⚡", desc: "Dashes forward at blinding speed, delivering 4 rapid strikes with +30% critical strike chance." },
+      { name: "Instant Transmission", key: "E", icon: "✨", desc: "Locks onto an allied or enemy unit's ki signature and teleports instantly behind them." },
+      { name: "Spirit Bomb", key: "R", icon: "☀️", desc: "Gathers planetary life energy into an apocalyptic sphere dealing 500/750/1000 + (STR × 3.5) pure damage." }
+    ]
+  },
+  {
+    id: "ichigo",
+    name: "Ichigo Kurosaki",
+    title: "Substitute Shinigami",
+    franchise: "Bleach",
+    attr: "AGI",
+    icon: "⚔️",
+    color: "#ff6600",
+    skills: [
+      { name: "Hollow Instinct", key: "Passive", icon: "🛡️", desc: "Converts 15% physical damage dealt into temporary life shield; gains +20% MS when pursuing low HP foes." },
+      { name: "Getsuga Tenshō", key: "Q", icon: "🌙", desc: "A crescent wave travels 10m: 85/130/175/220/265 + (AGI × 2.0) magic damage. Evolves to Getsuga Jūjishō at rank 3." },
+      { name: "Hollowfication", key: "W", icon: "👹", desc: "Summons the Hollow mask, boosting Attack Speed by +60% and gaining +25% bonus MS for 12 seconds." },
+      { name: "Shunpo", key: "E", icon: "💨", desc: "Instant high-speed flash step teleport (650 units). Next basic attack deals guaranteed 175% critical damage." },
+      { name: "Bankai: Tensa Zangetsu", key: "R", icon: "🗡️", desc: "Condenses spiritual pressure, boosting movement speed and launching mini-Getsuga waves on normal attacks." }
+    ]
+  },
+  {
+    id: "naruto",
+    name: "Naruto Uzumaki",
+    title: "Nine-Tails Jinchūriki",
+    franchise: "Naruto",
+    attr: "STR",
+    icon: "🦊",
+    color: "#ffaa00",
+    skills: [
+      { name: "Shadow Clone Jutsu", key: "Q", icon: "👥", desc: "Creates 2/3/4 shadow clones that mimic basic attacks and absorb enemy skillshots." },
+      { name: "Rasengan", key: "W", icon: "🌀", desc: "Charges forward with a spiraling sphere of chakra for 110/170/230/290/350 + (STR × 2.0) damage and 1.2s stun." },
+      { name: "Sage Mode", key: "E", icon: "🐸", desc: "Absorbs natural energy to amplify strength, armor, and senses. Enhances all skills with natural chakra." },
+      { name: "Wind Style: Rasenshuriken", key: "R", icon: "🌪️", desc: "Hurls an expanding vortex of wind needles, detonating for 450/650/850 + (STR × 3.2) magic damage." }
+    ]
+  },
+  {
+    id: "sasuke",
+    name: "Sasuke Uchiha",
+    title: "Avenger of the Uchiha",
+    franchise: "Naruto",
+    attr: "AGI",
+    icon: "⚡",
+    color: "#4a69bd",
+    skills: [
+      { name: "Chidori", key: "Q", icon: "⚡", desc: "Concentrated lightning blade thrust piercing through enemies for 100/160/220/280/340 + (AGI × 2.4) damage." },
+      { name: "Chidori Nagashi", key: "W", icon: "🌐", desc: "Discharges an electric current across the ground, paralyzing surrounding foes for 1.25s." },
+      { name: "Fire Style: Dragon Fire", key: "E", icon: "🔥", desc: "Breathes a column of high-temperature fire in a cone for 90/135/180/225/270 damage." },
+      { name: "Kirin", key: "R", icon: "🐉", desc: "Guides lightning from the heavens, obliterating a 500-radius target zone for 550/800/1050 + (AGI × 3.5) damage." }
+    ]
+  },
+  {
+    id: "zoro",
+    name: "Roronoa Zoro",
+    title: "Pirate Hunter",
+    franchise: "One Piece",
+    attr: "AGI",
+    icon: "🗡️",
+    color: "#20bf6b",
+    skills: [
+      { name: "Oni Giri", key: "Q", icon: "⚔️", desc: "Crosses blades and dashes forward, slashing foes for 95/145/195/245/295 + (AGI × 2.1) physical damage." },
+      { name: "Tora Gari", key: "W", icon: "🐯", desc: "Vertical three-blade cleave that ruptures the earth, dealing 110/165/220/275/330 damage and 1.2s stun." },
+      { name: "360 Pound Cannon", key: "E", icon: "💨", desc: "Fires a flying sword slash projectile traveling 800 units for 100/150/200/250/300 damage." },
+      { name: "Ashura: Ichibugin", key: "R", icon: "👹", desc: "Manifests demonic illusion, delivering a 9-blade synchronized strike that shreds armor for 500/750/1000 + (AGI × 3.8) damage." }
+    ]
+  },
+  {
+    id: "vegeta",
+    name: "Vegeta",
+    title: "Prince of all Saiyans",
+    franchise: "Dragon Ball",
+    attr: "STR",
+    icon: "👑",
+    color: "#3867d6",
+    skills: [
+      { name: "Galick Gun", key: "Q", icon: "🟣", desc: "Fires a concentrated purple ki beam in a line for 110/170/230/290/350 + (STR × 2.1) magic damage." },
+      { name: "Continuous Energy Bullet", key: "W", icon: "✨", desc: "Unleashes an overwhelming barrage of rapid ki blasts into target area." },
+      { name: "Big Bang Attack", key: "E", icon: "💥", desc: "Extends open palm and discharges a compact sphere detonating for 180/260/340/420/500 damage." },
+      { name: "Final Flash", key: "R", icon: "⚡", desc: "Gathers maximum energy with outstretched arms, firing a titan beam obliterating everything for 600/850/1150 + (STR × 3.6) damage." }
+    ]
+  },
+  {
+    id: "ace",
+    name: "Portgas D. Ace",
+    title: "Fire Fist",
+    franchise: "One Piece",
+    attr: "INT",
+    icon: "🔥",
+    color: "#eb3b5a",
+    skills: [
+      { name: "Hiken (Fire Fist)", key: "Q", icon: "🥊", desc: "Transforms fist into a colossal flame blast incinerating a wide lane for 120/180/240/300/360 + (INT × 2.5) damage." },
+      { name: "Higan (Fire Gun)", key: "W", icon: "🔫", desc: "Rapidly fires bullets of flame from fingertips dealing 5 successive hits totaling 150/225/300/375/450 damage." },
+      { name: "Enjomo", key: "E", icon: "⭕", desc: "Creates a circular wall of flame trapping enemies and damaging them for 50/75/100/125/150 per second." },
+      { name: "Dai Enkai: Entei", key: "R", icon: "☀️", desc: "Hurls a sun-sized sphere of flame, devastating target zone for 600/850/1100 + (INT × 3.6) magic damage." }
+    ]
+  },
+  {
+    id: "byakuya",
+    name: "Byakuya Kuchiki",
+    title: "Captain of Squad 6",
+    franchise: "Bleach",
+    attr: "AGI",
+    icon: "🌸",
+    color: "#a55eea",
+    skills: [
+      { name: "Senka", key: "Q", icon: "⚡", desc: "Flashes behind target and strikes soul sleep, silencing foe for 2s and dealing 100/150/200/250/300 damage." },
+      { name: "Hadō #33 Sōkatsui", key: "W", icon: "🔥", desc: "Fires a surge of blue spiritual fire dealing 90/140/190/240/290 damage in a line." },
+      { name: "Bakudō #61 Rikujōkōrō", key: "E", icon: "🔶", desc: "Binds enemy with 6 rods of light, immobilizing them for 2.5s." },
+      { name: "Bankai: Senbonzakura", key: "R", icon: "🌸", desc: "Thousands of razor-sharp blade petals sweep through the battlefield for 550/800/1050 + (AGI × 3.5) damage." }
+    ]
+  },
+  {
+    id: "whitebeard",
+    name: "Edward Newgate",
+    title: "Whitebeard",
+    franchise: "One Piece",
+    attr: "STR",
+    icon: "⚓",
+    color: "#f7b731",
+    skills: [
+      { name: "Quake Punch", key: "Q", icon: "👊", desc: "Punches the air, creating a seismic rift that knocks back foes for 120/180/240/300/360 + (STR × 2.3) damage." },
+      { name: "Air Crack Shockwave", key: "W", icon: "🌐", desc: "Cracks atmospheric space, stunning all enemies in a 400 radius for 1.75s." },
+      { name: "Halberd Cleave", key: "E", icon: "🪓", desc: "Swings Murakumogiri in a 360 cleave dealing 110/160/210/260/310 physical damage." },
+      { name: "Island Shaker", key: "R", icon: "🌊", desc: "Tilts the sea and earth, triggering cataclysmic tsunamis that deal 550/850/1150 + (STR × 3.8) damage." }
+    ]
+  },
+  {
+    id: "archer",
+    name: "Archer (EMIYA)",
+    title: "Heroic Spirit of Iron",
+    franchise: "Fate",
+    attr: "AGI",
+    icon: "🏹",
+    color: "#fc5c65",
+    skills: [
+      { name: "Kanshou & Bakuya", key: "Q", icon: "⚔️", desc: "Twin married blades boomerang through enemies dealing 95/145/195/245/295 damage each way." },
+      { name: "Caladbolg II", key: "W", icon: "🌀", desc: "Morphs broken phantasm arrow into a spiral drill piercing armor for 140/200/260/320/380 damage." },
+      { name: "Rho Aias", key: "E", icon: "🛡️", desc: "Deploys seven-layered flower shield absorbing up to 400/600/800/1000 damage." },
+      { name: "Unlimited Blade Works", key: "R", icon: "🗡️", desc: "Manifests Infinite Sword Realm, pelting all enemies with endless projected blades." }
+    ]
+  },
+  {
+    id: "inuyasha",
+    name: "Inuyasha",
+    title: "Half-Demon Swordsman",
+    franchise: "Mixed",
+    attr: "STR",
+    icon: "🐾",
+    color: "#b33939",
+    skills: [
+      { name: "Iron Reaver Soul Stealer", key: "Q", icon: "🐾", desc: "Demon claw slash dealing 90/140/190/240/290 physical damage with 25% lifesteal." },
+      { name: "Blades of Blood", key: "W", icon: "🩸", desc: "Hardens blood into throwing blades dealing 100/150/200/250/300 damage in a fan cone." },
+      { name: "Wind Scar (Kaze no Kizu)", key: "E", icon: "🌪️", desc: "Strikes the clash of demonic auras, releasing 5 massive wind blasts for 130/190/250/310/370 damage." },
+      { name: "Backlash Wave", key: "R", icon: "🌀", desc: "Envelops enemy ultimate attack and reflects it back with doubled demonic force for 600/900/1200 damage." }
+    ]
+  }
+];
+
+// Audio Synthesizer for Zero-Dependency FX
+const AudioSynth = {
+  ctx: null,
+  init() {
+    if (!this.ctx) {
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  },
+  playTone(freq, type, duration, gainVal = 0.1) {
+    try {
+      this.init();
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+      gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + duration);
+    } catch(e) {}
+  },
+  click() { this.playTone(600, 'sine', 0.08, 0.12); },
+  hover() { this.playTone(400, 'sine', 0.04, 0.06); },
+  confirm() {
+    this.playTone(300, 'triangle', 0.4, 0.25);
+    setTimeout(() => this.playTone(600, 'sine', 0.6, 0.2), 80);
+    setTimeout(() => this.playTone(900, 'sawtooth', 0.8, 0.15), 180);
+  },
+  timerBeep() { this.playTone(850, 'square', 0.09, 0.08); }
+};
+
+/* ========================================================= */
+/* SCREEN SWITCHING & TIMERS                                 */
+/* ========================================================= */
+let activeScreen = 'loading';
+
+function switchToScreen(screenName) {
+  AudioSynth.click();
+  activeScreen = screenName;
+  const loadScreen = document.getElementById('screen-loading');
+  const btnLoad = document.getElementById('btn-show-loading');
+  const btnPick = document.getElementById('btn-show-pick');
+
+  if (screenName === 'loading') {
+    loadScreen.classList.remove('hidden');
+    btnLoad.classList.add('active');
+    btnPick.classList.remove('active');
+    startLoadingSimulation();
+  } else {
+    loadScreen.classList.add('hidden');
+    btnPick.classList.add('active');
+    btnLoad.classList.remove('active');
+  }
+}
+
+// Loading Progress Simulation
+let loadingInterval = null;
+const TIPS = [
+  "💡 Tip: Combine items in your inventory to get stronger equipment!",
+  "💡 Tip: Use your mobility skill (Shunpo / Dash) to dodge lethal skillshots!",
+  "💡 Tip: Watch the Duel Arena timer — winning duels awards massive team gold!",
+  "💡 Tip: Pure damage ignores all enemy armor and magic resistance!",
+  "💡 Tip: Communicate with your team during the Hero Picking phase to balance your composition!"
+];
+
+function startLoadingSimulation() {
+  if (loadingInterval) clearInterval(loadingInterval);
+  let progress = 0;
+  const bar = document.getElementById('loading-bar-fill');
+  const txt = document.getElementById('loading-pct-text');
+  const tip = document.getElementById('loading-tip-text');
+
+  bar.style.width = '0%';
+  txt.innerText = 'Loading Game... 0%';
+
+  loadingInterval = setInterval(() => {
+    progress += Math.floor(Math.random() * 8) + 4;
+    if (progress > 100) progress = 100;
+    bar.style.width = progress + '%';
+    txt.innerText = `Loading Game... ${progress}%`;
+
+    if (progress % 25 === 0) {
+      tip.innerText = TIPS[Math.floor(Math.random() * TIPS.length)];
+    }
+
+    if (progress >= 100) {
+      clearInterval(loadingInterval);
+      setTimeout(() => {
+        switchToScreen('pick');
+      }, 700);
+    }
+  }, 120);
+}
+
+// Background Lightning Canvas Animation
+function initThunderCanvas() {
+  const canvas = document.getElementById('thunder-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = canvas.offsetWidth;
+  let h = canvas.height = canvas.offsetHeight;
+
+  window.addEventListener('resize', () => {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+  });
+
+  function drawElectricArcs() {
+    ctx.clearRect(0, 0, w, h);
+    if (Math.random() < 0.15) {
+      ctx.strokeStyle = 'rgba(0, 210, 255, ' + (Math.random() * 0.7 + 0.3) + ')';
+      ctx.lineWidth = Math.random() * 2 + 1;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = '#00d2ff';
+      ctx.beginPath();
+      let startX = Math.random() * w;
+      let startY = Math.random() * (h * 0.4);
+      ctx.moveTo(startX, startY);
+      for (let i = 0; i < 5; i++) {
+        startX += (Math.random() - 0.5) * 60;
+        startY += Math.random() * 40 + 20;
+        ctx.lineTo(startX, startY);
+      }
+      ctx.stroke();
+    }
+    requestAnimationFrame(drawElectricArcs);
+  }
+  drawElectricArcs();
+}
+
+/* ========================================================= */
+/* HERO PICKING PHASE LOGIC                                  */
+/* ========================================================= */
+let selectedHero = HERO_DATABASE[0];
+let currentFilter = 'All';
+let isLockedIn = false;
+let countdownTimer = 28;
+let timerInterval = null;
+
+// Player Slots Setup (Player1 to Player5)
+const PLAYER_SLOTS = [
+  { id: 1, name: "Player1", status: "Picking...", isUser: true, hero: "luffy" },
+  { id: 2, name: "Player2", status: "Picking...", isUser: false, hero: "goku" },
+  { id: 3, name: "Player3", status: "Ready", isUser: false, hero: "sasuke" },
+  { id: 4, name: "Player4", status: "Ready", isUser: false, hero: "ichigo" },
+  { id: 5, name: "Player5", status: "Ready", isUser: false, hero: "zoro" }
+];
+
+function renderPlayerSlots() {
+  const container = document.getElementById('player-slots-container');
+  container.innerHTML = '';
+
+  PLAYER_SLOTS.forEach(slot => {
+    const card = document.createElement('div');
+    card.className = `player-slot-card ${slot.isUser ? 'active-user' : ''}`;
+    const heroObj = HERO_DATABASE.find(h => h.id === slot.hero);
+
+    card.innerHTML = `
+      <div class="player-avatar" style="border-color: ${heroObj ? heroObj.color : '#444'}">
+        <span>${heroObj ? heroObj.icon : '👤'}</span>
+      </div>
+      <div class="player-info">
+        <div class="player-name">${slot.name} ${slot.isUser ? '(You)' : ''}</div>
+        <div class="player-status-badge ${slot.status === 'Ready' ? 'status-ready' : 'status-picking'}">
+          ${slot.status}
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderHeroGrid() {
+  const grid = document.getElementById('hero-grid-container');
+  grid.innerHTML = '';
+
+  const filtered = HERO_DATABASE.filter(h => {
+    if (currentFilter === 'All') return true;
+    return h.attr === currentFilter;
+  });
+
+  filtered.forEach(hero => {
+    const card = document.createElement('div');
+    card.className = `hero-card ${selectedHero && selectedHero.id === hero.id ? 'selected' : ''}`;
+    card.onclick = () => selectHero(hero);
+    card.onmouseenter = () => AudioSynth.hover();
+
+    card.innerHTML = `
+      <span class="hero-card-badge badge-${hero.attr.toLowerCase()}">${hero.attr}</span>
+      <div class="hero-card-img" style="display:flex; align-items:center; justify-content:center; font-size:34px;">
+        ${hero.icon}
+      </div>
+      <div class="hero-card-name">${hero.name}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function selectHero(hero) {
+  if (isLockedIn) return;
+  selectedHero = hero;
+  AudioSynth.click();
+
+  // Update Player 1 slot hero
+  PLAYER_SLOTS[0].hero = hero.id;
+  renderPlayerSlots();
+  renderHeroGrid();
+  renderShowcase();
+}
+
+function renderShowcase() {
+  if (!selectedHero) return;
+
+  document.getElementById('preview-name').innerText = selectedHero.name;
+  document.getElementById('preview-name').style.color = selectedHero.color;
+  document.getElementById('preview-title').innerText = `${selectedHero.title} • ${selectedHero.franchise} [${selectedHero.attr}]`;
+  document.getElementById('preview-art').innerText = selectedHero.icon;
+
+  const skillsRow = document.getElementById('preview-skills-row');
+  skillsRow.innerHTML = '';
+
+  selectedHero.skills.forEach((skill, idx) => {
+    const slot = document.createElement('div');
+    slot.className = 'skill-slot';
+    slot.onclick = () => showSkillTooltip(skill);
+
+    slot.innerHTML = `
+      <div class="skill-circle ${idx === 0 ? 'selected' : ''}">
+        ${skill.icon}
+      </div>
+      <div class="skill-slot-label">${skill.name}</div>
+    `;
+    skillsRow.appendChild(slot);
+  });
+
+  if (selectedHero.skills.length > 0) {
+    showSkillTooltip(selectedHero.skills[0]);
+  }
+}
+
+function showSkillTooltip(skill) {
+  AudioSynth.hover();
+  document.getElementById('tooltip-skill-name').innerText = `${skill.name} [${skill.key}]`;
+  document.getElementById('tooltip-skill-desc').innerText = skill.desc;
+}
+
+function setFilter(filterType, btnElement) {
+  AudioSynth.click();
+  currentFilter = filterType;
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btnElement.classList.add('active');
+  renderHeroGrid();
+}
+
+function confirmHeroPick() {
+  if (isLockedIn) return;
+  isLockedIn = true;
+  AudioSynth.confirm();
+
+  PLAYER_SLOTS[0].status = "Ready";
+  renderPlayerSlots();
+
+  const confirmBtn = document.getElementById('btn-confirm');
+  confirmBtn.disabled = true;
+  confirmBtn.innerText = "LOCKED IN";
+  confirmBtn.style.background = "#2ecc71";
+  confirmBtn.style.borderColor = "#a8ffb2";
+  confirmBtn.style.boxShadow = "0 0 16px rgba(46, 204, 113, 0.8)";
+}
+
+function startCountdown() {
+  if (timerInterval) clearInterval(timerInterval);
+  countdownTimer = 28;
+  const timerDisplay = document.getElementById('pick-timer-display');
+
+  timerInterval = setInterval(() => {
+    countdownTimer--;
+    if (countdownTimer <= 0) {
+      countdownTimer = 0;
+      clearInterval(timerInterval);
+      if (!isLockedIn) confirmHeroPick();
+    }
+    timerDisplay.innerText = countdownTimer;
+    if (countdownTimer <= 5 && countdownTimer > 0) {
+      AudioSynth.timerBeep();
+    }
+  }, 1000);
+}
+
+function showBattlefieldInfo() {
+  AudioSynth.click();
+  alert("FIGHT OF CHARACTERS 9.1a (ASIA)\n\n• Map Mode: 5v5 Asia Duel Deathmatch\n• Victory Goal: First team to reach 30 Kills or destroy the enemy Fortress\n• Duel Arena: Automatic 1v1 teleports occur every 3 minutes for bonus gold!");
+}
+
+// Window load init
+window.addEventListener('DOMContentLoaded', () => {
+  initThunderCanvas();
+  startLoadingSimulation();
+  renderPlayerSlots();
+  renderHeroGrid();
+  renderShowcase();
+  startCountdown();
+});
+</script>
+</body>
+</html>

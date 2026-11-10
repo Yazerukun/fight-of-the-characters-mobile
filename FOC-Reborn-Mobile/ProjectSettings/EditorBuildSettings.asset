@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 0347c2f2c762f0b8ede36742016f4df0
+  - enabled: 1
+    path: Assets/Scenes/HeroSelectionScene.unity
+    guid: 38ccc9287ee7384c47a52923de21c5ef
+  - enabled: 1
+    path: Assets/Scenes/OfflineGameScene.unity
+    guid: aac5b21c56f65824487ca911b912c798
+  - enabled: 1
+    path: Assets/Scenes/HeroAnimationVerificationScene.unity
+    guid: 1cb75ccec2dda025e9f092e01b4b6838
+  m_configObjects: {}

@@ -1,0 +1,43 @@
+# Material for Ichigo.obj
+newmtl Material_0
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/ichigo2.png
+
+newmtl Material_0
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/ichigo2.png
+
+newmtl Material_1
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/ichigo2.png
+
+newmtl Material_0
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/ichigo2.png
+
+newmtl Material_0
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/ichigo2.png
+
+newmtl Material_4
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/ichigo2.png
+

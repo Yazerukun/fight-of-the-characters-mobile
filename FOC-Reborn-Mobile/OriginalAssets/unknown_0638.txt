@@ -1,0 +1,755 @@
+[Ruba]
+Art=ReplaceableTextures\CommandButtons\BTNBansheeAdept.blp,ReplaceableTextures\CommandButtons\BTNBansheeMaster.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=unp2
+Name=밴시 중급 훈련,밴시 고급 훈련
+Tip=밴시 중급 훈련|cffffcc00(A)|r,밴시 고급 훈련|cffffcc00(A)|r
+Ubertip="밴시의 마나 최대치, 마나 회복 속도 및 체력을 향상시켜주고 안티매직 쉘 마법을 사용할 수 있게 합니다.","밴시의 마나 최대치, 마나 회복 속도 및 체력을 향상시켜주고 포제션 마법을 사용할 수 있게 합니다."
+Hotkey=A,A
+[Rhla]
+Art=ReplaceableTextures\CommandButtons\BTNLeatherUpgradeOne.blp,ReplaceableTextures\CommandButtons\BTNLeatherUpgradeTwo.blp,ReplaceableTextures\CommandButtons\BTNLeatherUpgradeThree.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=hkee
+Requires2=hcas
+Name=징 박은 가죽 아머,강화된 가죽 아머,드래곤하이드 아머
+Tip=징 박은 가죽으로 업그레이드|cffffcc00(A)|r,강화된 가죽으로 업그레이드|cffffcc00(A)|r,드래곤하이드로 업그레이드|cffffcc00(A)|r
+Ubertip="라이플맨, 모탈 팀, 드래곤 호크 라이더 및 그리폰 라이더의 아머를 증가시킵니다.","라이플맨, 모탈 팀, 드래곤 호크 라이더 및 그리폰 라이더의 아머를 추가로 증가시킵니다.","라이플맨, 모탈 팀, 드래곤 호크 라이더 및 그리폰 라이더의 아머를 추가로 증가시킵니다."
+Hotkey=A,A,A
+[Rema]
+Art=ReplaceableTextures\CommandButtons\BTNMoonArmor.blp,ReplaceableTextures\CommandButtons\BTNImprovedMoonArmor.blp,ReplaceableTextures\CommandButtons\BTNAdvancedMoonArmor.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=etoa
+Requires2=etoe
+Name=문 아머,중급 문 아머,고급 문 아머
+Tip=문 아머로 업그레이드|cffffcc00(A)|r,중급 문 아머로 업그레이드|cffffcc00(A)|r,고급 문 아머로 업그레이드|cffffcc00(A)|r
+Ubertip="아처, 헌트리스, 히포그리프 라이더의 아머를 증가시킵니다. ","아처, 헌트리스, 히포그리프 라이더의 아머를 추가로 증가시킵니다. ","아처, 헌트리스, 히포그리프 라이더의 아머를 추가로 증가시킵니다. "
+Hotkey=A,A,A
+[Rhra]
+Art=ReplaceableTextures\CommandButtons\BTNHumanMissileUpOne.blp,ReplaceableTextures\CommandButtons\BTNHumanMissileUpTwo.blp,ReplaceableTextures\CommandButtons\BTNHumanMissileUpThree.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=hkee
+Requires2=hcas
+Name=검정 화약,정제된 화약,최상의 화약
+Tip=검정 화약으로 업그레이드|cffffcc00(G)|r,정제된 화약으로 업그레이드|cffffcc00(G)|r,최상의 화약으로 업그레이드|cffffcc00(G)|r
+Ubertip="라이플맨, 모탈 팀, 시즈 엔진 및 플라잉 머신의 원거리 공격 데미지를 향상시킵니다.","라이플맨, 모탈 팀, 시즈 엔진 및 플라잉 머신의 원거리 공격 데미지를 추가로 향상시킵니다.","라이플맨, 모탈 팀, 시즈 엔진 및 플라잉 머신의 원거리 공격 데미지를 추가로 향상시킵니다."
+Hotkey=G,G,G
+[Rora]
+Art=ReplaceableTextures\CommandButtons\BTNSteelRanged.blp,ReplaceableTextures\CommandButtons\BTNThoriumRanged.blp,ReplaceableTextures\CommandButtons\BTNArcaniteRanged.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=ostr
+Requires2=ofrt
+Name=강철 원거리 무기,토륨 원거리 무기,알캐나이트 원거리 무기
+Tip=강철 원거리 무기로 업그레이드|cffffcc00(R)|r,토륨 원거리 무기로 업그레이드|cffffcc00(R)|r,알캐나이트 원거리 무기로 업그레이드|cffffcc00(R)|r
+Ubertip="헤드헌터, 윈드 라이더, 트롤 배트라이더 및 디몰리셔의 원거리 공격 데미지를 증가시킵니다.","헤드헌터, 윈드 라이더, 트롤 배트라이더 및 디몰리셔의 원거리 공격 데미지를 추가로 증가시킵니다.","헤드헌터, 윈드 라이더, 트롤 배트라이더 및 디몰리셔의 원거리 공격 데미지를 추가로 증가시킵니다."
+Hotkey=R,R,R
+[Rura]
+Art=ReplaceableTextures\CommandButtons\BTNCreatureAttack.blp,ReplaceableTextures\CommandButtons\BTNImprovedCreatureAttack.blp,ReplaceableTextures\CommandButtons\BTNAdvancedCreatureAttack.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=unp1
+Requires2=unp2
+Name=크리처 어택,중급 크리처 어택,고급 크리처 어택
+Tip=크리처 어택으로 업그레이드|cffffcc00(A)|r,중급 크리처 어택으로 업그레이드|cffffcc00(A)|r,고급 크리처 어택으로 업그레이드|cffffcc00(A)|r
+Ubertip="크립트 핀드, 가고일, 디스트로이어, 프로스트 웜의 공격 데미지를 증가시킵니다.","크립트 핀드, 가고일, 디스트로이어, 프로스트 웜의 공격 데미지를 추가로 증가시킵니다.","크립트 핀드, 가고일, 디스트로이어, 프로스트 웜의 공격 데미지를 추가로 증가시킵니다."
+Hotkey=A,A,A
+[Recb]
+Art=ReplaceableTextures\CommandButtons\BTNCorrosiveBreath.blp
+Buttonpos=0,0
+Name=코로시브 브레스
+Tip=코로시브 브레스 연구|cffffcc00(B)|r
+Ubertip="키메라가 적군 건물을 부식시키는 즙을 던질 수 있습니다."
+Hotkey=B
+[Reeb]
+Art=ReplaceableTextures\CommandButtons\BTNEnchantedBears.blp
+Buttonpos=0,0
+Requires=Redc
+Requiresamount=2
+Name=마크 오브 클러
+Tip=마크 오브 클러 연구|cffffcc00(M)|r
+Ubertip="드루이드 오브 클러가 곰 형태로 로어 마법을 사용할 수 있게 됩니다."
+Hotkey=M
+[Rufb]
+Art=ReplaceableTextures\CommandButtons\BTNFreezingBreath.blp
+Buttonpos=0,0
+Name=프리징 브레스
+Tip=프리징 브레스 연구|cffffcc00(B)|r
+Ubertip="프로스트 웜들이 프리징 브레스 능력을 사용할 수 있게 해주는 연구입니다. 프리징 브레스를 건물에 사용하면, 해당 건물의 활동이 일시 정지합니다."
+Hotkey=B
+[Rhgb]
+Art=ReplaceableTextures\CommandButtons\BTNHumanArtilleryUpOne.blp
+Buttonpos=0,0
+Requires=hcas
+Name=플라잉 머신 봄
+Tip=플라잉 머신 봄 연구|cffffcc00(B)|r
+Ubertip="플라잉 머신이 지상 유닛을 공격할 수 있게 합니다."
+Hotkey=B
+[Rhhb]
+Art=ReplaceableTextures\CommandButtons\BTNStormHammer.blp
+Buttonpos=0,0
+Requires=
+Name=스톰 해머
+Tip=스톰 해머 연구|cffffcc00(H)|r
+Ubertip="그리폰 라이더가 여러 유닛에 공격 데미지를 입힐 수 있도록 합니다."
+Hotkey=H
+[Reib]
+Art=ReplaceableTextures\CommandButtons\BTNImprovedBows.blp
+Buttonpos=0,0
+Requires=etoa
+Name=임프루브드 보우
+Tip=임프루브드 보우 연구|cffffcc00(I)|r
+Ubertip="아처와 히포그리프 라이더의 공격 범위를 넓혀줍니다."
+Hotkey=I
+[Renb]
+Art=ReplaceableTextures\CommandButtons\BTNNaturesBlessing.blp
+Buttonpos=0,0
+Requires=etoa
+Name=네이처스 블레싱
+Tip=네이처스 블레싱 연구|cffffcc00(N)|r
+Ubertip="모든 에인션트와 트렌트의 이동 속도 및 아머를 업그레이드합니다."
+Hotkey=N
+[Repb]
+Art=ReplaceableTextures\CommandButtons\BTNVorpalBlades.blp
+Buttonpos=0,0
+Requires=etoa,edob
+Name=보팔 블레이드
+Tip=보팔 블레이드 연구|cffffcc00(P)|r
+Ubertip="글레이브 스로우어의 공격은 1차 지상 목표와 그 뒤의 유닛들에게 데미지를 줄 수 있습니다. 나무도 공격할 수 있습니다."
+Hotkey=P
+[Rorb]
+Requires=ofrt
+Art=ReplaceableTextures\CommandButtons\BTNReinforcedBurrows.blp
+Buttonpos=0,0
+Name=리인포스트 디펜스
+Tip=리인포스드 디펜스|cffffcc00(D)|r
+Ubertip="버로우와 워치 타워를 업그레이드하여 건물형 아머를 얻습니다."
+Hotkey=D
+[Rnsb]
+Art=ReplaceableTextures\CommandButtons\BTNNagaBurrow.blp
+Buttonpos=0,0
+Name=잠수
+Tip=잠수 연구|cffffcc00(U)|r
+Ubertip="나가 미르미돈과 스냅 드래곤이 발각되지 않도록 물 속으로 잠수할 수 있게 합니다."
+Hotkey=U
+[Ruwb]
+Art=ReplaceableTextures\CommandButtons\BTNWeb.blp
+Buttonpos=0,0
+Requires=ugrv,unp1
+Name=웹
+Tip=웹 연구|cffffcc00(W)|r
+Ubertip="크립트 핀드가 적군 공중 유닛에게 거미줄을 쏘아 땅으로 떨어뜨리는 웹 능력을 사용할 수 있습니다. 땅으로 끌어 내린 공중 유닛은 지상 유닛처럼 공격할 수 있습니다."
+Hotkey=W
+[Rhac]
+Art=ReplaceableTextures\CommandButtons\BTNStoneArchitecture.blp,ReplaceableTextures\CommandButtons\BTNArcaniteArchitecture.blp,ReplaceableTextures\CommandButtons\BTNImbuedMasonry.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=hkee
+Requires2=hcas
+Name=중급 석공술,고급 석공술,최고급 석공술
+Tip=중급 석공술로 업그레이드|cffffcc00(M)|r,고급 석공술로 업그레이드|cffffcc00(M)|r,최고급 석공술로 업그레이드|cffffcc00(M)|r
+Ubertip="휴먼 건물들의 아머와 체력을 증가시킵니다.","휴먼 건물들의 아머와 체력을 추가로 증가시킵니다.","휴먼 건물들의 아머와 체력을 추가로 증가시킵니다."
+Hotkey=M,M,M
+[Ruac]
+Art=ReplaceableTextures\CommandButtons\BTNCannibalize.blp
+Buttonpos=0,0
+Name=카니발라이즈
+Tip=카니발라이즈 연구|cffffcc00(C)|r
+Ubertip="구울 및 어보미네이션에게 카니발라이즈 능력을 사용할 수 있게 합니다. 카니발라이즈는 주위의 시체를 뜯어 먹어 자신의 체력을 회복할 수 있는 능력입니다."
+Hotkey=C
+[Redc]
+Art=ReplaceableTextures\CommandButtons\BTNDOCAdeptTraining.blp,ReplaceableTextures\CommandButtons\BTNDOCMasterTraining.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=etoe
+Name=드루이드 오브 클러 중급 훈련,드루이드 오브 클러 고급 훈련
+Tip=드루이드 오브 클러 중급 훈련|cffffcc00(L)|r,드루이드 오브 클러 고급 훈련|cffffcc00(L)|r
+Ubertip="마나 최대치, 마나 회복 속도, 체력 및 공격 데미지를 증가시켜주고 리쥬버네이션을 사용할 수 있게 합니다.","마나 최대치, 마나 회복 속도, 체력 및 공격 데미지를 증가시켜주고 베어 폼을 사용할 수 있게 합니다."
+Hotkey=L,L
+[Reec]
+Art=ReplaceableTextures\CommandButtons\BTNEnchantedCrows.blp
+Buttonpos=0,0
+Requires=Redt
+Requiresamount=2
+Name=마크 오브 탤런
+Tip=마크 오브 탤런 연구|cffffcc00(M)|r
+Ubertip="드루이드 오브 탤런이 까마귀 형태로 페어리 파이어 마법을 사용할 수 있게 됩니다."
+Hotkey=M
+[Rhfc]
+Art=ReplaceableTextures\CommandButtons\BTNFlakCannons.blp
+Buttonpos=0,0
+Requires=hcas
+Name=플랙 캐논
+Tip=플랙 캐논 연구|cffffcc00(C)|r
+Ubertip="공중 유닛에게 스플래쉬 데미지를 입힐 수 있도록 플라잉 머신의 무기를 업그레이드합니다."
+Hotkey=C
+[Rupc]
+Art=ReplaceableTextures\CommandButtons\BTNPlagueCloud.blp
+Buttonpos=0,0
+Requires=unp2
+Name=디지즈 클라우드
+Tip=디지즈 클라우드 연구|cffffcc00(D)|r
+Ubertip="어보미네이션 주변에 있는 적군 생명체 유닛들에게 병을 옮겨서 <Aap1,DataA1>초 동안 초당 <Aap1,DataB1>의 데미지를 입힙니다. 미트 웨건의 디지즈 클라우드 공격을 받은 적군 유닛은 <Aap2,DataA1>초 동안 초당 <Aap2,DataB1>의 데미지를 입게 됩니다. |n언데드족은 디지즈 클라우드에 데미지를 입지 않습니다."
+Hotkey=D
+[Resc]
+Art=ReplaceableTextures\CommandButtons\BTNSentinel.blp
+Buttonpos=0,0
+Requires=edob,etoa
+Name=센티널
+Tip=센티널 연구|cffffcc00(S)|r
+Ubertip="헌트리스가 올빼미를 주변 나무에 보내 지속적인 시야를 얻을 수 있습니다.|n투명 유닛을 탐지할 수 있습니다."
+Hotkey=S
+[Rhcd]
+Art=ReplaceableTextures\CommandButtons\BTNCloudOfFog.blp
+Buttonpos=0,0
+Requires=hvlt
+Name=클라우드
+Tip=클라우드 연구|cffffcc00(C)|r
+Ubertip="드래곤 호크 라이더가 적 건물의 원거리 공격을 마비시키는 클라우드 능력을 사용할 수 있게 합니다."
+Hotkey=C
+[Rowd]
+Art=ReplaceableTextures\CommandButtons\BTNWitchDoctorAdept.blp,ReplaceableTextures\CommandButtons\BTNWitchDoctorMaster.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=ofrt
+Name=위치 닥터 중급 훈련,위치 닥터 고급 훈련
+Tip=위치 닥터 중급 훈련|cffffcc00(D)|r,위치 닥터 고급 훈련|cffffcc00(D)|r
+Ubertip="위치 닥터의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 스테이시스 트랩을 사용할 수 있게 합니다.","위치 닥터의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 힐링 워드를 사용할 수 있게 합니다."
+Hotkey=D,D
+[Rhde]
+Art=ReplaceableTextures\CommandButtons\BTNDefend.blp
+Buttonpos=0,0
+Name=디펜드
+Tip=디펜드 연구|cffffcc00(D)|r
+UberTip="관통 공격에 의한 데미지를 줄이는 디펜드 기능을 사용할 수 있게 합니다."
+Hotkey=D
+[Rhme]
+Art=ReplaceableTextures\CommandButtons\BTNSteelMelee.blp,ReplaceableTextures\CommandButtons\BTNThoriumMelee.blp,ReplaceableTextures\CommandButtons\BTNArcaniteMelee.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=hkee
+Requires2=hcas
+Name=철 검,강철 검,미스릴 검
+Tip=철 검으로 업그레이드|cffffcc00(S)|r,강철 검으로 업그레이드|cffffcc00(S)|r,미스릴 검으로 업그레이드|cffffcc00(S)|r
+Ubertip="밀리샤, 풋맨, 스펠 브레이커, 드래곤 호크 라이더, 그리폰 라이더 및 나이트의 공격 데미지를 증가시킵니다.","밀리샤, 풋맨, 스펠 브레이커, 드래곤 호크 라이더, 그리폰 라이더 및 나이트의 공격 데미지를 추가로 증가시킵니다.","밀리샤, 풋맨, 스펠 브레이커, 드래곤 호크 라이더, 그리폰 라이더 및 나이트의 공격 데미지를 추가로 증가시킵니다."
+Hotkey=S,S,S
+[Rome]
+Art=ReplaceableTextures\CommandButtons\BTNOrcMeleeUpOne.blp,ReplaceableTextures\CommandButtons\BTNOrcMeleeUpTwo.blp,ReplaceableTextures\CommandButtons\BTNOrcMeleeUpThree.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=ostr
+Requires2=ofrt
+Name=강철 근접 공격 무기,토륨 근접 공격 무기,알캐나이트 근접 공격 무기
+Tip=강철 근접 공격 무기로 업그레이드|cffffcc00(M)|r,토륨 근접 공격 무기로 업그레이드|cffffcc00(M)|r,알캐나이트 근접 공격 무기로 업그레이드|cffffcc00(M)|r
+Ubertip="그런트, 레이더, 타우렌의 근접 공격 데미지를 증가시킵니다.","그런트, 레이더, 타우렌의 근접 공격 데미지를 추가로 증가시킵니다.","그런트, 레이더, 타우렌의 근접 공격 데미지를 추가로 증가시킵니다."
+Hotkey=M,M,M
+[Rume]
+Art=ReplaceableTextures\CommandButtons\BTNUnholyStrength.blp,ReplaceableTextures\CommandButtons\BTNImprovedUnholyStrength.blp,ReplaceableTextures\CommandButtons\BTNAdvancedUnholyStrength.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=unp1
+Requires2=unp2
+Name=언홀리 스트랭스,중급 언홀리 스트랭스,고급 언홀리 스트랭스
+Tip=언홀리 스트랭스로 업그레이드|cffffcc00(S)|r,중급 언홀리 스트랭스로 업그레이드|cffffcc00(S)|r,고급 언홀리 스트랭스로 업그레이드|cffffcc00(S)|r
+Ubertip="구울, 미트 웨건, 어보미네이션, 스켈레톤 워리어, 스켈레탈 메이지의 공격 데미지를 증가시킵니다.","구울, 미트 웨건, 어보미네이션, 스켈레톤 워리어, 스켈레탈 메이지의 공격 데미지를 증가시킵니다.","구울, 미트 웨건, 어보미네이션, 스켈레톤 워리어, 스켈레탈 메이지의 공격 데미지를 증가시킵니다."
+Hotkey=S,S,S
+[Rune]
+Art=ReplaceableTextures\CommandButtons\BTNNecromancerAdept.blp,ReplaceableTextures\CommandButtons\BTNNecromancerMaster.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=unp2
+Name=네크로맨서 중급 훈련,네크로맨서 고급 훈련
+Tip=네크로맨서 중급 훈련|cffffcc00(E)|r,네크로맨서 고급 훈련|cffffcc00(E)|r
+Ubertip="네크로맨서의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 언홀리 프렌지를 사용할 수 있게 합니다.","네크로맨서의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 크리플을 사용할 수 있게 합니다."
+Hotkey=E,E
+[Rhse]
+Art=ReplaceableTextures\CommandButtons\BTNMagicalSentry.blp
+Buttonpos=0,0
+Name=매직 센트리
+Tip=매직 센트리 연구|cffffcc00(M)|r
+Ubertip="휴먼 타워에 투명 유닛을 볼 수 있는 능력을 부여합니다."
+Hotkey=M
+[Robf]
+Requires=ofrt
+Art=ReplaceableTextures\CommandButtons\BTNFireRocks.blp
+Buttonpos=0,0
+Name=버닝 오일
+Tip=버닝 오일|cffffcc00(N)|r
+Ubertip="포탄에 불타는 기름을 발라 적 지상 유닛을 태울 수 있도록 디몰리셔를 업그레이드합니다."
+Hotkey=N
+[Rugf]
+Art=ReplaceableTextures\CommandButtons\BTNGhoulFrenzy.blp
+Buttonpos=0,0
+Requires=ugrv,unp2
+Name=구울 프렌지
+Tip=구울 프렌지 연구|cffffcc00(Z)|r
+Ubertip="구울의 공격 속도를 <Rugf,base1,%>% 증가시키고 이동 속도를 향상시킵니다."
+Hotkey=Z
+[Rolf]
+Art=ReplaceableTextures\CommandButtons\BTNLiquidFire.blp
+Buttonpos=0,0
+Requires=ofrt,ovln
+Name=리퀴드 파이어
+Tip=리퀴드 파이어 연구|cffffcc00(L)|r
+Ubertip="트롤 배트라이더에게 리퀴드 파이어 공격 능력을 제공합니다. 이 공격은 시간이 지날수록 적군 건물에 데미지를 입히고 건물을 수리할 수 없게 하며 적군 건물의 공격 속도를 늦춥니다."
+Hotkey=L
+[Rusf]
+Art=ReplaceableTextures\CommandButtons\BTNStoneForm.blp
+Buttonpos=0,0
+Requires=ugrv,unp2
+Name=스톤 폼
+Tip=스톤 폼 연구|cffffcc00(S)|r
+Ubertip="가고일을 땅에 내려와 석상 형태로 변할 수 있게 합니다. 석상 형태의 가고일은 공격을 할 수 없지만 아머가 크게 증가하고 체력이 빠른 속도로 회복되며 마법 면역 상태가 됩니다."
+Hotkey=S
+[Remg]
+Art=ReplaceableTextures\CommandButtons\BTNUpgradeMoonGlaive.blp
+Buttonpos=0,0
+Requires=edob,etoe
+Name=문 글레이브 업그레이드
+Tip=문 글레이브 업그레이드|cffffcc00(G)|r
+Ubertip="헌트리스의 글레이브 공격이 여러 유닛을 동시에 공격할 수 있습니다."
+Hotkey=G
+[Ropg]
+Art=ReplaceableTextures\CommandButtons\BTNPillage.blp
+Buttonpos=0,0
+Name=필리지
+Tip=필리지|cffffcc00(G)|r
+Ubertip="피언, 그런트와 레이더가 적군 건물을 공격할 때마다 일정량의 자원을 얻습니다."
+Hotkey=G
+[Rhlh]
+Art=ReplaceableTextures\CommandButtons\BTNHumanLumberUpgrade1.blp,ReplaceableTextures\CommandButtons\BTNHumanLumberUpgrade2.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=hkee
+Requires1=hcas
+Name=중급 목재 채취력,고급 목재 채취력
+Tip=중급 목재 채취력|cffffcc00(L)|r,고급 목재 채취력|cffffcc00(L)|r
+Ubertip="피전트가 들고 다닐 수 있는 목재의 양을 <Rhlh,mod1> 늘립니다.","피전트가 들고 다닐 수 있는 목재의 양을 <Rhlh,mod1> 더 늘립니다."
+Hotkey=L,L
+[Rerh]
+Art=ReplaceableTextures\CommandButtons\BTNReinforcedHides.blp,ReplaceableTextures\CommandButtons\BTNImprovedReinforcedHides.blp,ReplaceableTextures\CommandButtons\BTNAdvancedReinforcedHides.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=etoa
+Requires2=etoe
+Name=강화 가죽,중급 강화 가죽,고급 강화 가죽
+Tip=강화 가죽으로 업그레이드|cffffcc00(R)|r,중급 강화 가죽으로 업그레이드|cffffcc00(R)|r,고급 강화 가죽으로 업그레이드|cffffcc00(R)|r
+Ubertip="베어 폼의 드루이드 오브 클러, 스톰 크로우 폼의 드루이드 오브 탤런, 드라이어드, 마운틴 자이언트, 페어리 드래곤, 히포그리피스 및 키메라의 아머를 증가시킵니다.","베어 폼의 드루이드 오브 클러, 스톰 크로우 폼의 드루이드 오브 탤런, 드라이어드, 마운틴 자이언트, 페어리 드래곤, 히포그리피스 및 키메라의 아머를 증가시킵니다.","베어 폼의 드루이드 오브 클러, 스톰 크로우 폼의 드루이드 오브 탤런, 드라이어드, 마운틴 자이언트, 페어리 드래곤, 히포그리피스 및 키메라의 아머를 증가시킵니다."
+Hotkey=R,R,R
+[Rhri]
+Art=ReplaceableTextures\CommandButtons\BTNDwarvenLongRifle.blp
+Buttonpos=0,0
+Requires=harm
+Name=롱 라이플
+Tip=롱 라이플로 업그레이드|cffffcc00(L)|r
+Ubertip="라이플맨의 공격 사정 거리를 늘립니다."
+Hotkey=L
+[Resi]
+Art=ReplaceableTextures\CommandButtons\BTNDryadDispelMagic.blp
+Buttonpos=0,0
+Name=어벌리쉬 매직
+Tip=어벌리쉬 매직 연구|cffffcc00(S)|r
+Ubertip="드라이어드가 적 유닛에게 유리한 마법과 아군 유닛에게 불리한 마법을 해제할 수 있게 합니다.|n소환 유닛에게는 일정한 데미지를 입힙니다."
+Hotkey=S
+[Rnsi]
+Art=ReplaceableTextures\CommandButtons\BTNDryadDispelMagic.blp
+Buttonpos=0,0
+Name=어벌리쉬 매직
+Tip=어벌리쉬 매직 연구|cffffcc00(B)|r
+Ubertip="코아틀이 적 유닛에게 유리한 마법과 아군 유닛에게 불리한 마법을 해제할 수 있게 합니다. |n소환 유닛에게는 일정한 데미지를 입힙니다."
+Hotkey=B
+[Robk]
+Art=ReplaceableTextures\CommandButtons\BTNHeadHunterBerserker.blp
+Buttonpos=0,0
+Requires=ofrt,ofor
+Name=버서커 업그레이드
+Tip=버서커 업그레이드|cffffcc00(E)|r
+Ubertip="헤드헌터를 트롤 버서커로 변하게 하여, 체력을 향상시키고 버서크 능력을 사용할 수 있게 합니다."
+Hotkey=E
+[Remk]
+Art=ReplaceableTextures\CommandButtons\BTNMarksmanship.blp
+Buttonpos=0,0
+Requires=edob,etoe
+Name=마크맨십
+Tip=마크맨십 연구|cffffcc00(M)|r
+Ubertip="아처와 히포그리프 라이더의 공격 데미지를 <Remk,base1>씩 증가시켜줍니다."
+Hotkey=M
+[Rhfl]
+Art=ReplaceableTextures\CommandButtons\BTNFlare.blp
+Buttonpos=0,0
+Requires=hkee
+Name=플레어
+Tip=플레어 연구|cffffcc00(R)|r
+Ubertip="지도의 어떤 부분이라도 잠시 동안 볼 수 있게 해주는 모탈 팀의 플레어 능력을 사용 가능하게 합니다. 모탈 팀 1기당 1번만 사용 가능합니다.|n투명 유닛을 탐지할 수 있습니다."
+Hotkey=R
+[Rusl]
+Art=ReplaceableTextures\CommandButtons\BTNSkeletalLongevity.blp
+Buttonpos=0,0
+Name=스켈레탈 렁제비티
+Tip=스켈레탈 렁제비티 연구|cffffcc00(S)|r
+Ubertip="스켈레톤 워리어와 스켈레탈 메이지의 지속 시간을 <Rusl,base1>초 늘려줍니다."
+Hotkey=S
+[Rnam]
+Art=ReplaceableTextures\CommandButtons\BTNNagaArmorUp1.blp,ReplaceableTextures\CommandButtons\BTNNagaArmorUp2.blp,ReplaceableTextures\CommandButtons\BTNNagaArmorUp3.blp
+Buttonpos=0,0
+Name=산호 스케일,키틴 스케일,레이저스파인 스케일
+Tip=코럴 스케일로 업그레이드|cffffcc00(C)|r,키틴 스케일로 업그레이드|cffffcc00(C)|r,레이저스파인 스케일로 업그레이드|cffffcc00(C)|r
+Ubertip="나가 공격 유닛의 아머를 증가시킵니다.","나가 공격 유닛의 아머를 추가로 증가시킵니다.","나가 공격 유닛의 아머를 추가로 증가시킵니다."
+Hotkey=C,C,C
+[Rwdm]
+Art=ReplaceableTextures\CommandButtons\BTNDrum.blp
+Buttonpos=0,0
+Requires=ofrt,ofor
+Name=워 드럼 데미지 증가
+Tip=워 드럼 데미지 증가 업그레이드|cffffcc00(D)|r
+Ubertip="코도 비스트의 워 드럼 능력을 더욱 강하게 합니다. 코도 비스트 주변에 있는 아군 유닛들의 데미지를 향상시킵니다."
+Hotkey=D
+[Repm]
+Art=ReplaceableTextures\CommandButtons\BTNPackBeast.blp
+Buttonpos=0,0
+Requires=eden
+Name=배낭
+EditorSuffix= (나이트 엘프)
+Tip=배낭 연구|cffffcc00(B)|r
+Ubertip="특정 나이트 엘프 지상 유닛에게 아이템을 운반할 수 있게 합니다."
+Hotkey=B
+[Rhpm]
+Art=ReplaceableTextures\CommandButtons\BTNPackBeast.blp
+Buttonpos=0,0
+Requires=hvlt
+Name=배낭
+EditorSuffix= (휴먼)
+Tip=배낭 연구|cffffcc00(B)|r
+Ubertip="특정 휴먼 지상 유닛에게 아이템을 운반할 수 있게 합니다."
+Hotkey=B
+[Ropm]
+Art=ReplaceableTextures\CommandButtons\BTNPackBeast.blp
+Buttonpos=0,0
+Requires=ovln
+Name=배낭
+EditorSuffix= (오크)
+Tip=배낭 연구|cffffcc00(B)|r
+Ubertip="특정 오크족 지상 유닛에게 아이템을 나를 수 있게 합니다."
+Hotkey=B
+[Rupm]
+Art=ReplaceableTextures\CommandButtons\BTNPackBeast.blp
+Buttonpos=0,0
+Requires=utom
+Name=배낭
+EditorSuffix= (언데드)
+Tip=배낭 연구|cffffcc00(B)|r
+Ubertip="특정 언데드 지상 유닛에게 아이템을 운반할 수 있게 합니다."
+Hotkey=B
+[Resm]
+Art=ReplaceableTextures\CommandButtons\BTNStrengthOfTheMoon.blp,ReplaceableTextures\CommandButtons\BTNImprovedStrengthOfTheMoon.blp,ReplaceableTextures\CommandButtons\BTNAdvancedStrengthOfTheMoon.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=etoa
+Requires2=etoe
+Name=문 스트랭스,중급 문 스트랭스,고급 문 스트랭스
+Tip=문 스트랭스로 업그레이드|cffffcc00(M)|r,중급 문 스트랭스로 업그레이드|cffffcc00(M)|r,고급 문 스트랭스로 업그레이드|cffffcc00(M)|r
+Ubertip="아처, 헌트리스, 글레이브 스로우어 및 히포그리프 라이더의 공격 데미지를 증가시킵니다.","아처, 헌트리스, 글레이브 스로우어 및 히포그리프 라이더의 공격 데미지를 추가로 증가시킵니다.","아처, 헌트리스, 글레이브 스로우어 및 히포그리프 라이더의 공격 데미지를 추가로 증가시킵니다."
+Hotkey=M,M,M
+[Rusm]
+Requires=unp2
+Art=ReplaceableTextures\CommandButtons\BTNSkeletonMage.blp
+Buttonpos=0,0
+Name=스켈레탈 마스터리
+Tip=스켈레탈 마스터리 연구|cffffcc00(M)|r
+Ubertip="레이즈 데드 마법으로 만든 두 개의 해골 중 하나를 스켈레탈 메이지로 만듭니다."
+Hotkey=M
+[Rhan]
+Art=ReplaceableTextures\CommandButtons\BTNAnimalWarTraining.blp
+Buttonpos=0,0
+Requires=hlum,hcas,hbla
+Name=애니멀 워 트레이닝
+Tip=애니멀 워 트레이닝 연구|cffffcc00(A)|r
+Ubertip="나이트, 드래곤 호크 라이더, 그리폰 라이더의 체력 최고치를 <Rhan,base1>씩 증가시킵니다."
+Hotkey=A
+[Rnen]
+Art=ReplaceableTextures\CommandButtons\BTNEnsnare.blp
+Buttonpos=0,0
+Name=인스네어
+Tip=인스네어 연구|cffffcc00(N)|r
+Ubertip="나가 미르미돈이 인스네어 능력을 사용할 수 있게 합니다. 목표 적군 유닛을 땅으로 끌어내려 움직이지 못하게 합니다. 인스네어에 걸린 공중 유닛은 지상 유닛처럼 공격 할 수 있습니다."
+Hotkey=N
+[Roen]
+Art=ReplaceableTextures\CommandButtons\BTNEnsnare.blp
+Buttonpos=0,0
+Name=인스네어
+Tip=인스네어 연구|cffffcc00(N)|r
+Ubertip="레이더가 인스네어 능력을 사용할 수 있게 합니다. 인스네어 능력을 사용하면 해당 적군 유닛을 땅으로 끌어내려 이동하지 못하게 합니다. 인스네어에 걸린 공중 유닛은 지상 유닛처럼 공격 할 수 있습니다."
+Hotkey=N
+[Rgfo]
+Art=ReplaceableTextures\CommandButtons\BTNGlyph.blp,ReplaceableTextures\CommandButtons\BTNGlyph.blp,ReplaceableTextures\CommandButtons\BTNGlyph.blp
+Name=요새의 상형 문자,요새의 상형 문자,요새의 상형 문자
+EditorSuffix= (업그레이드 1), (업그레이드 2), (업그레이드 3)
+[Rosp]
+Art=ReplaceableTextures\CommandButtons\BTNSpikedBarricades.blp,ReplaceableTextures\CommandButtons\BTNImprovedSpikedBarricades.blp,ReplaceableTextures\CommandButtons\BTNAdvancedSpikedBarricades.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=ostr
+Requires2=ofrt
+Name=스파이크 바리케이드,중급 스파이크 바리케이드,고급 스파이크 바리케이드
+Tip=스파이크 바리케이드로 업그레이드|cffffcc00(S)|r,중급 스파이크 바리케이드로 업그레이드|cffffcc00(S)|r,고급 스파이크 바리케이드로 업그레이드|cffffcc00(S)|r
+Ubertip="오크 건물의 외부에 대못을 박아 근접 공격을 하는 적 유닛에게 데미지를 입힙니다. 공격 1회당 <Rosp,base1>의 데미지를 입힙니다.","적 유닛에게 가하는 데미지를 <Rosp,mod1> 추가합니다.","적 유닛에게 가하는 데미지를 <Rosp,mod1> 추가합니다."
+Hotkey=S,S,S
+[Rusp]
+Art=ReplaceableTextures\CommandButtons\BTNDestroyer.blp
+ButtonPos=0,0
+Requires=unp2,utom
+Name=디스트로이어 폼
+Tip=디스트로이어 폼 연구|cffffcc00(T)|r
+Ubertip="옵시디언 스태추를 디스트로이어로 변하게 합니다. 디스트로이어는 마법을 삼켜 마나를 유지하는 대형 공중 유닛이며 마법 면역, 디바우어 매직, 업소브 마나 및 멸망의 오브 능력을 기본적으로 가지고 있습니다. |n|n|cffffcc00지상 유닛과 공중 유닛을 모두 공격할 수 있습니다.|r"
+Hotkey=T
+[Rhar]
+Art=ReplaceableTextures\CommandButtons\BTNHumanArmorUpOne.blp,ReplaceableTextures\CommandButtons\BTNHumanArmorUpTwo.blp,ReplaceableTextures\CommandButtons\BTNHumanArmorUpThree.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=hkee
+Requires2=hcas
+Name=철 갑옷,강철 갑옷,미스릴 갑옷
+Tip=철 갑옷으로 업그레이드|cffffcc00(P)|r,강철 갑옷으로 업그레이드|cffffcc00(P)|r,미스릴 갑옷으로 업그레이드|cffffcc00(P)|r
+Ubertip="밀리샤, 풋맨, 스펠 브레이커, 나이트, 플라잉 머신 및 시즈 엔진의 아머를 증가시킵니다.","밀리샤, 풋맨, 스펠 브레이커, 나이트, 플라잉 머신 및 시즈 엔진의 아머를 추가로 증가시킵니다.","밀리샤, 풋맨, 스펠 브레이커, 나이트, 플라잉 머신 및 시즈 엔진의 아머를 추가로 증가시킵니다."
+Hotkey=P,P,P
+[Roar]
+Art=ReplaceableTextures\CommandButtons\BTNSteelArmor.blp,ReplaceableTextures\CommandButtons\BTNThoriumArmor.blp,ReplaceableTextures\CommandButtons\BTNArcaniteArmor.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=ostr
+Requires2=ofrt
+Name=강철 아머,토륨 아머,알캐나이트 아머
+Tip=강철 아머로 업그레이드|cffffcc00(A)|r,토륨 아머로 업그레이드|cffffcc00(A)|r,알캐나이트 아머로 업그레이드|cffffcc00(A)|r
+Ubertip="그런트, 레이더, 트롤 배트라이더, 타우렌, 헤드헌터, 윈드 라이더 및 디몰리셔의 아머를 증가시킵니다.","그런트, 레이더, 트롤 배트라이더, 타우렌, 헤드헌터, 윈드 라이더 및 디몰리셔의 아머를 증가시킵니다.","그런트, 레이더, 트롤 배트라이더, 타우렌, 헤드헌터, 윈드 라이더 및 디몰리셔의 아머를 증가시킵니다."
+Hotkey=A,A,A
+[Ruar]
+Art=ReplaceableTextures\CommandButtons\BTNUnholyArmor.blp,ReplaceableTextures\CommandButtons\BTNImprovedUnholyArmor.blp,ReplaceableTextures\CommandButtons\BTNAdvancedUnholyArmor.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=unp1
+Requires2=unp2
+Name=언홀리 아머,중급 언홀리 아머,고급 언홀리 아머
+Tip=언홀리 아머로 업그레이드|cffffcc00(U)|r,중급 언홀리 아머로 업그레이드|cffffcc00(U)|r,고급 언홀리 아머로 업그레이드|cffffcc00(U)|r
+Ubertip="구울, 어보미네이션, 스켈레톤 워리어, 스켈레탈 메이지의 아머를 증가시킵니다.","구울, 어보미네이션, 스켈레톤 워리어, 스켈레탈 메이지의 아머를 증가시킵니다.","구울, 어보미네이션, 스켈레톤 워리어, 스켈레탈 메이지의 아머를 증가시킵니다."
+Hotkey=U,U,U
+[Rucr]
+Art=ReplaceableTextures\CommandButtons\BTNCreatureCarapace.blp,ReplaceableTextures\CommandButtons\BTNImprovedCreatureCarapace.blp,ReplaceableTextures\CommandButtons\BTNAdvancedCreatureCarapace.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=unp1
+Requires2=unp2
+Name=크리처 껍질,중급 크리처 껍질,고급 크리처 껍질
+Tip=크리처 껍질로 업그레이드|cffffcc00(C)|r,중급 크리처 껍질로 업그레이드|cffffcc00(C)|r,고급 크리처 껍질로 업그레이드|cffffcc00(C)|r
+Ubertip="크립트 핀드, 가고일, 디스트로이어, 프로스트 웜의 아머를 증가시킵니다.","크립트 핀드, 가고일, 디스트로이어, 프로스트 웜의 아머를 추가로 증가시킵니다.","크립트 핀드, 가고일, 디스트로이어, 프로스트 웜의 아머를 추가로 증가시킵니다."
+Hotkey=C,C,C
+[Rotr]
+Art=ReplaceableTextures\CommandButtons\BTNRegenerate.blp
+Buttonpos=0,0
+Requires=ostr,ofor
+Name=트롤 리제너레이션,중급 트롤 리제너레이션,고급 트롤 리제너레이션
+Tip=트롤 리제너레이션 연구|cffffcc00(R)|r, 중급 트롤 리제너레이션 연구|cffffcc00(R)|r, 고급 트롤 리제너레이션 연구|cffffcc00(R)|r
+Ubertip="헤드헌터, 위치 닥터 및 트롤 배트라이더의 체력 회복 속도를 향상시킵니다.","헤드헌터,위치 닥터 및 트롤 배트라이더의 체력 회복 속도를 추가로 향상시킵니다.",",위치 닥터 및 트롤 배트라이더의 체력 회복 속도를 추가로 향상시킵니다."
+Hotkey=R
+[Robs]
+Art=ReplaceableTextures\CommandButtons\BTNBerserk.blp
+Buttonpos=0,0
+Requires=ostr
+Name=버서커 스트랭스
+Tip=버서커 스트랭스 연구|cffffcc00(B)|r
+Ubertip="그런트의 체력을 <Robs,base1>, 공격 데미지를 <Robs,base2>늘립니다."
+Hotkey=B
+[Rhfs]
+Art=ReplaceableTextures\CommandButtons\BTNFragmentationBombs.blp
+Buttonpos=0,0
+Requires=hcas
+Name=조각 파편
+Tip=조각 파편 연구|cffffcc00(S)|r
+Ubertip="모탈 팀의 모탈 쉘을 업그레이드하여 비무장 및 미디움 아머 유닛에게 입히는 데미지를 증가시킵니다."
+Hotkey=S
+[Rehs]
+Art=ReplaceableTextures\CommandButtons\BTNHardenedSkin.blp
+Buttonpos=0,0
+Requires=etoe,eden
+Name=하드 스킨
+Tip=하드 스킨 연구|cffffcc00(H)|r
+Ubertip="적의 공격에 대한 마운틴 자이언트의 저항력을 증가시킵니다."
+Hotkey=H
+[Rers]
+Art=ReplaceableTextures\CommandButtons\BTNResistantSkin.blp
+Buttonpos=0,0
+Requires=etoe,eden
+Name=리지스턴트 스킨
+Tip=리지스턴트 스킨 연구|cffffcc00(T)|r
+Ubertip="적의 마법에 대한 마운틴 자이언트의 저항력을 증가시킵니다."
+Hotkey=T
+[Rhss]
+Requires=hvlt,hcas
+Art=ReplaceableTextures\CommandButtons\BTNControlMagic.blp
+Buttonpos=0,0
+Name=컨트롤 매직
+Tip=컨트롤 매직 연구|cffffcc00(G)|r
+Ubertip="스펠 브레이커가 적의 소환 유닛을 제어할 수 있게 합니다."
+Hotkey=G
+[Rovs]
+Art=ReplaceableTextures\CommandButtons\BTNEnvenomedSpear.blp
+Buttonpos=0,0
+Requires=ofrt
+Name=인베넘드 스피어
+Tip=인베넘드 스피어 연구|cffffcc00(E)|r
+Ubertip="윈드 라이더의 공격에 독성을 추가합니다. 독성 공격을 받은 유닛은 지속적으로 데미지를 입습니다."
+Hotkey=E
+[Rews]
+Art=ReplaceableTextures\CommandButtons\BTNWellSpring.blp
+Buttonpos=0,0
+Requires=etoe
+Name=웰 스프링
+Tip=웰 스프링 연구|cffffcc00(E)|r
+Ubertip="문 웰에 저장할 수 있는 마나의 양을 <Rews,base1>씩 증가시키고, 마나 생성 속도를 <Rews,base2,%>% 증가시킵니다."
+Hotkey=E
+[Rows]
+Art=ReplaceableTextures\CommandButtons\BTNSmash.blp
+Buttonpos=0,0
+Name=펄버라이즈
+Tip=펄버라이즈 연구|cffffcc00(P)|r
+Ubertip="타우렌이 공격을 할 때 공격 대상 이외의 주변 적군 유닛들에게도 데미지를 입히는 펄버라이즈 능력을 사용할 수 있습니다."
+Hotkey=P
+[Rnat]
+Art=ReplaceableTextures\CommandButtons\BTNNagaWeaponUp1.blp,ReplaceableTextures\CommandButtons\BTNNagaWeaponUp2.blp,ReplaceableTextures\CommandButtons\BTNNagaWeaponUp3.blp
+Buttonpos=0,0
+Name=산호 블레이드,키틴 블레이드,레이저스파인 블레이드
+Tip=산호 블레이드로 업그레이드|cffffcc00(B)|r,키틴 블레이드로 업그레이드|cffffcc00(B)|r,레이저스파인 블레이드로 업그레이드|cffffcc00(B)|r
+Ubertip="나가 공격 유닛의 공격 데미지를 증가시킵니다.","나가 공격 유닛의 공격 데미지를 추가로 증가시킵니다.","나가 공격 유닛의 공격 데미지를 증가시킵니다."
+Hotkey=B,B,B
+[Redt]
+Art=ReplaceableTextures\CommandButtons\BTNDOTAdeptTraining.blp,ReplaceableTextures\CommandButtons\BTNDOTMasterTraining.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=etoe
+Name=드루이드 오브 탤런 중급 훈련,드루이드 오브 탤런 고급 훈련
+Tip=드루이드 오브 탤런 중급 훈련|cffffcc00(A)|r,드루이드 오브 탤런 고급 훈련|cffffcc00(A)|r
+Ubertip="나이트 엘프 폼의 마나 최대치, 마나 회복 속도 및 체력을 늘려주고 스톰 크로우 폼을 사용할 수 있게 합니다.","나이트 엘프 폼의 마나 최대치, 마나 회복 속도 및 체력을 늘려주고 사이클론을 사용할 수 있게 합니다."
+Hotkey=A,A
+[Reht]
+Art=ReplaceableTextures\CommandButtons\BTNTameHippogriff.blp
+Buttonpos=0,0
+Name=히포그리프 테이밍
+Tip=히포그리프 테이밍 연구|cffffcc00(I)|r
+Ubertip="히포그리프를 훈련시켜 아처가 탈 수 있게 만듭니다. 아처가 타면 공중 유닛과 지상 유닛을 모두 공격할 수 있습니다."
+Hotkey=I
+[Rhpt]
+Art=ReplaceableTextures\CommandButtons\BTNPriestAdept.blp,ReplaceableTextures\CommandButtons\BTNPriestMaster.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=hcas
+Name=프리스트 중급 훈련,프리스트 고급 훈련
+Tip=프리스트 중급 훈련|cffffcc00(T)|r,프리스트 고급 훈련|cffffcc00(T)|r
+Ubertip="프리스트의 마나 최대치, 마나 회복 속도 및 체력을 향상시키고 디스펠 매직을 사용할 수 있게 합니다.","프리스트의 마나 최대치, 마나 회복 속도 및 체력을 향상시키고 이너 파이어를 사용할 수 있게 합니다."
+Hotkey=T,T
+[Rhrt]
+Art=ReplaceableTextures\CommandButtons\BTNScatterRockets.blp
+Buttonpos=0,0
+Requires=hcas
+Name=배라지
+Tip=배라지 연구|cffffcc00(G)|r
+Ubertip="배라지 능력이 있는 시즈 엔진으로 업그레이드하여 주변의 적군 공중 유닛에게 데미지를 입힐 수 있습니다."
+Hotkey=G
+[Rhst]
+Art=ReplaceableTextures\CommandButtons\BTNSorceressAdept.blp,ReplaceableTextures\CommandButtons\BTNSorceressMaster.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=hcas
+Name=소서리스 중급 훈련,소서리스 고급 훈련
+Tip=소서리스 중급 훈련|cffffcc00(O)|r,소서리스 고급 훈련|cffffcc00(O)|r
+Ubertip="소서리스의 마나 최대치, 마나 회복 속도 및 체력을 향상시키고 인비저빌리티를 사용할 수 있게 합니다.","소서리스의 마나 최대치, 마나 회복 속도 및 체력을 향상시키고 폴리모프를 사용할 수 있게 합니다."
+Hotkey=O,O
+[Rost]
+Art=ReplaceableTextures\CommandButtons\BTNShamanAdept.blp,ReplaceableTextures\CommandButtons\BTNShamanMaster.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=ofrt
+Name=샤먼 중급 훈련,샤먼 고급 훈련
+Tip=샤먼 중급 훈련|cffffcc00(M)|r,샤먼 고급 훈련|cffffcc00(M)|r
+Ubertip="샤먼의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 라이트닝 쉴드를 사용할 수 있게 합니다.","샤먼의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 블러드러스트를 사용할 수 있게 합니다."
+Hotkey=M,M
+[Rowt]
+Art=ReplaceableTextures\CommandButtons\BTNSpiritWalkerAdeptTraining.blp,ReplaceableTextures\CommandButtons\BTNSpiritWalkerMasterTraining.blp
+Buttonpos=0,0
+Requirescount=2
+Requires=
+Requires1=ofrt
+Name=스피릿 워커 중급 훈련, 스피릿 워커 고급 훈련
+Tip=스피릿 워커 중급 훈련|cffffcc00(R)|r, 스피릿 워커 고급 훈련|cffffcc00(R)|r
+Ubertip="스피릿 워커의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 디스인챈트를 사용할 수 있게 합니다.","스피릿 워커의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 앤세스트럴 스피릿을 사용할 수 있게 합니다."
+Hotkey=R,R
+[Rubu]
+Art=ReplaceableTextures\CommandButtons\BTNCryptFiendBurrow.blp
+Buttonpos=0,0
+Requires=unp1,ugrv
+Name=버로우
+Tip=버로우 연구|cffffcc00(B)|r
+Ubertip="크립트 핀드에게 버로우 능력을 제공합니다. 버로우드 크립트 핀드는 눈에 보이지 않고, 체력 회복 속도가 빨라지지만 공격은 할 수 없습니다."
+Hotkey=B
+[Reuv]
+Art=ReplaceableTextures\CommandButtons\BTNUltravision.blp
+Buttonpos=0,0
+Name=울트라비전
+Tip=울트라비전 업그레이드|cffffcc00(U)|r
+Ubertip="나이트 엘프족 유닛들이 밤에도 낮처럼 볼 수 있습니다."
+Hotkey=U
+[Rguv]
+Art=ReplaceableTextures\CommandButtons\BTNGlyph.blp
+Name=울트라비전의 상형 문자
+EditorSuffix= (업그레이드)
+[Resw]
+Art=ReplaceableTextures\CommandButtons\BTNStrengthOfTheWild.blp,ReplaceableTextures\CommandButtons\BTNImprovedStrengthOfTheWild.blp,ReplaceableTextures\CommandButtons\BTNAdvancedStrengthOfTheWild.blp
+Buttonpos=0,0
+Requirescount=3
+Requires=
+Requires1=etoa
+Requires2=etoe
+Name=와일드 스트랭스,중급 와일드 스트랭스,고급 와일드 스트랭스
+Tip=와일드 스트랭스로 업그레이드|cffffcc00(W)|r,중급 와일드 스트랭스로 업그레이드|cffffcc00(W)|r,고급 와일드 스트랭스로 업그레이드|cffffcc00(W)|r
+Ubertip="베어 폼의 드루이드 오브 클러, 스톰 크로우 폼의 드루이드 오브 탤런, 드라이어드, 마운틴 자이언트, 페어리 드래곤, 히포그리피스 및 키메라의 데미지를 증가시킵니다.","베어 폼의 드루이드 오브 클러, 스톰 크로우 폼의 드루이드 오브 탤런, 드라이어드, 마운틴 자이언트, 페어리 드래곤, 히포그리피스 및 키메라의 데미지를 증가시킵니다.","베어 폼의 드루이드 오브 클러, 스톰 크로우 폼의 드루이드 오브 탤런, 드라이어드, 마운틴 자이언트, 페어리 드래곤, 히포그리피스 및 키메라의 데미지를 증가시킵니다."
+Hotkey=W,W,W
+[Rnsw]
+Art=ReplaceableTextures\CommandButtons\BTNSirenAdept.blp,ReplaceableTextures\CommandButtons\BTNSirenMaster.blp
+Buttonpos=0,0
+Name=나가 사이렌 중급 훈련, 나가 사이렌 고급 훈련
+Tip=나가 사이렌 중급 훈련 연구|cffffcc00(N)|r,나가 사이렌 고급 훈련 연구|cffffcc00(N)|r
+Ubertip="나가 사이렌의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 프로스트 아머를 사용할 수 있게 합니다.","나가 사이렌의 마나 최대치, 마나 회복 속도 및 체력을 증가시키고 사이클론 마법을 사용할 수 있게 합니다."
+Hotkey=N,N
+[Ruex]
+Art=ReplaceableTextures\CommandButtons\BTNExhumeCorpses.blp
+Buttonpos=0,0
+Requires=unp2
+Name=시체 발굴
+Tip=시체 발굴 연구|cffffcc00(E)|r
+Ubertip="미트 웨건에서 시체를 생산할 수 있도록 합니다."
+Hotkey=E

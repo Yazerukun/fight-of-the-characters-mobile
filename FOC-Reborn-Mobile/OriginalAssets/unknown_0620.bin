@@ -1,0 +1,974 @@
+[I000]
+Name=소형 경험치책
+Hotkey=S
+Tip=소형 경험치책 구입(|cffffcc00S|r)
+Ubertip=사용하면 영웅의 경험치가 150만큼 증가합니다.
+Description=경험치를 150 줍니다.
+Art=ReplaceableTextures\CommandButtons\BTNManuals.blp
+Buttonpos=1,1
+[I010]
+Name=|cffffcc00호카게의 전투복|r
+Hotkey=
+Tip=|cffffcc00호카게의 전투복|r 구입
+Ubertip=|c00ff0000[사루토비 전용]|r|n나뭇잎 마을의 호카게가 전투할때 입는 옷으로 튼튼할 뿐만 아니라 몸을 가볍게 해주어서 방어력이 400만큼 증가하고 이동속도가 100%씩 증가합니다.
+Description=방어력이 400만큼 증가하고 공격속도와 이동속도가 100%씩 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNHoodOfCunning.blp
+Buttonpos=,1
+[I020]
+Name=소환비서
+Tip=소환비서 구입(|cffffcc00F|r)
+Ubertip=고대인들이 만들어논 이동서로서 '-위치저장' 으로 저장된 지역으로 순간이동합니다. |n|c00CBFF75◎저장된 지역으로 즉시 이동|r|nYou Must Typing '-save'|n|c00CBFF75◎Teleport To Saved Unit's Place|n◎Cooldown 30sec
+Description=고대인들이 만들어논 이동서로서 '-위치저장' 으로 저장된 지역으로 순간이동합니다. |n|c00CBFF75◎저장된 지역으로 즉시 이동|r|nYou Must Typing '-save'|n|c00CBFF75◎Teleport To Saved Unit's Place|n◎Cooldown 30sec
+Art=ReplaceableTextures\CommandButtons\BTNBansheeAdeptF.blp
+Hotkey=F
+Buttonpos=3,1
+[I001]
+Name=대형 경험치책
+Hotkey=D
+Tip=대형 경험치책 구입(|cffffcc00D|r)
+Ubertip=사용하면 영웅의 경험치가 500만큼 증가합니다.
+Description=경험치를 500 줍니다.
+Art=ReplaceableTextures\CommandButtons\BTNTomeBrownD.blp
+Buttonpos=2,1
+[I011]
+Name=|cffffcc00루치의 비둘기|r
+Tip=|cffffcc00루치의 비둘기|r 구입
+Ubertip=|c00ff0000[루치 전용]|r|n루치가 항상 곁에 두고싶어하는 비둘기입니다. 비둘기가 옆에 있으면 루치는 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Description=루치가 항상 곁에 두고싶어하는 비둘기입니다. 비둘기가 옆에 있으면 루치는 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNSnowOwl.blp
+Buttonpos=3
+[I021]
+Name=속도의 포션
+Hotkey=A
+Tip=속도의 포션 구입|cffffcc00(A)|r
+Ubertip=이동속도가 빨라집니다.|n|c00CBFF75◎이속증가.|n◎지속시간 8초.|n◎쿨타임 20초.|n◎You Can Fast Run!|n◎RunningTime 8sec|n◎Cooldown 20sec
+Description=이동속도가 빨라집니다.|n|c00CBFF75◎이속증가.|n◎지속시간 8초.|n◎쿨타임 20초.|n◎You Can Fast Run!|n◎RunningTime 8sec|n◎Cooldown 20sec
+Art=ReplaceableTextures\CommandButtons\BTNVialFullA.blp
+Buttonpos=,1
+[TWN1]
+Name=타운 홀 또는 그레이트 홀 또는 트리 오브 라이프 또는 네크로폴리스
+DependencyOr=htow,ogre,etol,unpl
+XPFactor=0
+[I002]
+Name=민첩성 + 2
+Hotkey=E
+Tip=민첩성 + 2 구입(|cffffcc00E|r)
+Ubertip=사용하면 영웅의 민첩성을 영구적으로 2만큼 증가시킵니다.
+Description=能永久地增加英雄敏捷度。
+Art=ReplaceableTextures\CommandButtons\BTNManual3E.blp
+Buttonpos=2
+[I012]
+Name=|cffffcc00화도일문자|r
+Hotkey=
+Tip=|cffffcc00화도일문자|r 구입
+Ubertip=|c00ff0000[조로 전용]|r|n명검21중 하나이다. 조로의 어릴적 친구이자 라이벌이던 쿠이나의 유품이다. 보통 조로가 입에물고 싸운다. 깨끗한 칼선을 가지고있는 대명검급검으로 민첩성100과 체력+1000을 증가시킵니다.
+Description=명검21중 하나이다. 조로의 어릴적 친구이자 라이벌이던 쿠이나의 유품이다. 보통 조로가 입에물고 싸운다.깨끗한 칼선을 가지고있는 대명검급검이다.
+Art=ReplaceableTextures\CommandButtons\BTNArcaniteRanged.blp
+Buttonpos=1,1
+[I022]
+Name=토둔수리검
+Tip=토둔수리검 구입(|cffffcc00Z|r)
+Ubertip=사용 지점에 바위덩어리들을 생성합니다.|n|c00CBFF75◎목표지역에 바위생성|n◎지속시간 5초|n◎쿨다운 20초|n◎Create Rocks|n◎Cooldown 20sec
+Description=사용 지점에 바위덩어리들을 생성합니다.|n|c00CBFF75◎목표지역에 바위생성|n◎지속시간 5초|n◎쿨다운 20초|n◎Create Rocks|n◎Cooldown 20sec
+Art=ReplaceableTextures\CommandButtons\BTNWandOfManaStealZ.blp
+Hotkey=Z
+Buttonpos=,2
+[oli2]
+Name=闪电之球
+Hotkey=L
+Tip=购买闪电之球(|cffffcc00L|r)
+Ubertip="能增加英雄<AIlb,DataA1>点的攻击力。也使得英雄的攻击在攻击空中单位的时候会变为远程攻击，还能驱逐魔法和在<AIlp,Dur1>秒内减慢敌人的移动速度。|n|cffffcc00对召唤出来的单位能造成 <AIpg,DataC1>点的伤害。"
+Description=使得英雄的攻击能带有闪电伤害。
+Buttonpos=0,2
+Requires=ofrt
+Art=ReplaceableTextures\CommandButtons\BTNOrbOfLightning.blp
+[TWN2]
+Name=킵 또는 스트롱홀드 또는 트리 오브 에이지 또는 홀 오브 더 데드
+DependencyOr=hkee,ostr,etoa,unp1
+XPFactor=0
+[I003]
+Name=소환비서
+Tip=소환비서 구입(|cffffcc00F|r)
+Ubertip=고대인들이 만들어논 이동서로서 '-위치저장' 으로 저장된 지역으로 순간이동합니다. |n|c00CBFF75◎저장된 지역으로 즉시 이동|r|nYou Must Typing '-save'|n|c00CBFF75◎Teleport To Saved Unit's Place|n◎Cooldown 30sec
+Description=고대인들이 만들어논 이동서로서 '-위치저장' 으로 저장된 지역으로 순간이동합니다. |n|c00CBFF75◎저장된 지역으로 즉시 이동|r|nYou Must Typing '-save'|n|c00CBFF75◎Teleport To Saved Unit's Place|n◎Cooldown 30sec
+Art=ReplaceableTextures\CommandButtons\BTNBansheeAdept.blp
+Hotkey=F
+Buttonpos=3,1
+[I013]
+Name=|cffffcc00참월|r
+Hotkey=
+Tip=|cffffcc00참월|r 구입
+Ubertip=|c00ff0000[이치고 전용]|r|n이치고의 참백도인 '참월'은 이치고의 스승이자 친구이며 강력한 파워를 내세우는 검으로 힘은 50만큼 증가하고 민첩이 100만큼 증가합니다.
+Description=이치고의 참백도인 '참월'은 이치고의 스승이자 친구이며 강력한 파워를 내세우는 검으로 힘은 50만큼 증가하고 민첩이 100만큼 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNDaggerOfEscape.blp
+[I023]
+Name=해루석
+Tip=해루석 구입(|cffffcc00D|r)
+Ubertip=타겟이된 유닛을 5초간 마법 사용을 억제합니다.|n|c00CBFF75◎타겟 마법사용 억제|n◎지속시간 5초.|n◎쿨다운 12초.|n◎Target Can't Use Skill For 5sec|n◎Cooldown 12sec
+Description=타겟이된 유닛을 5초간 마법 사용을 억제합니다.|n|c00CBFF75◎타겟 마법사용 억제|n◎지속시간 5초.|n◎쿨다운 12초.|n◎Target Can't Use Skill For 5sec|n◎Cooldown 12sec
+Art=ReplaceableTextures\CommandButtons\BTNPebbleD.blp
+Hotkey=D
+Buttonpos=2,1
+[TWN3]
+Name=캐슬 또는 포트리스 또는 트리 오브 이터니티 또는 블랙 시타델
+DependencyOr=hcas,ofrt,etoe,unp2
+XPFactor=0
+[I004]
+Name=힘 + 2
+Hotkey=Q
+Tip=힘 + 2 구입(|cffffcc00Q|r)
+Ubertip=사용하면 영웅의 힘이 영구적으로 2만큼 증가합니다.
+Description=能永久性地提高英雄的力量。
+Art=ReplaceableTextures\CommandButtons\BTNTomeq.blp
+[I014]
+Name=|cffffcc00손오공의 도복|r
+Hotkey=
+Tip=|cffffcc00손오공의 도복|r 구입
+Ubertip=|c00ff0000[손오공 전용]|r|n손오공의 도복을 가지고 있는 유닛은 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하고 공격속도가 상승합니다.
+Description=손오공의 도복을 가지고 있는 유닛은 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하고 공격속도가 상승합니다.
+Art=ReplaceableTextures\CommandButtons\BTNLeatherUpgradeOne.blp
+Buttonpos=2
+[I024]
+Name=개조혼백 알약
+Hotkey=S
+Tip=개조혼백 알약 구입(|cffffcc00S|r)
+Ubertip=자신과 똑같은 분신을 만듭니다. 분신은 적에게 데미지를 줄 수 없습니다.|nCreate My Other Self
+Description=자신과 똑같은 분신을 만듭니다. 분신은 적에게 데미지를 줄 수 없습니다.|nCreate My Other Self
+Art=ReplaceableTextures\CommandButtons\BTNOrbofSlownessS.blp
+Buttonpos=1,1
+[I005]
+Name=민첩성 + 5
+Tip=민첩성 + 5 구입(|cffffcc00R|r)
+Ubertip=사용하면 영웅의 민첩성이 영구적으로 5만큼 증가합니다.
+Description=能永久地增加英雄敏捷度。
+Art=ReplaceableTextures\CommandButtons\BTNManual3R.blp
+Hotkey=R
+Buttonpos=3
+[I015]
+Name=|cffffcc00철쇄아|r
+Hotkey=
+Tip=|cffffcc00철쇄아|r 구입
+Ubertip=|c00ff0000[이누야샤 전용]|r|n이누야샤의 아버지 투아왕의 검을 이누야샤가 이어받은 것으로 한번 휘두르는데 100마리의 요괴를 벨 수 있다고 한다. 힘을 100증가시켜주고 5%확률로 적의 모든 데미지를 감소시킵니다.|n|c00CBFF75◎공격시 5%확률로 적의 모든 데미지를50% 약화시킵니다.(마법포함)|n◎지속시간 5초|r
+Description=이누야샤의 아버지 투아왕의 검을 이누야샤가 이어받은 것으로 한번 휘두르는데 100마리의 요괴를 벨 수 있다고 한다.
+Art=ReplaceableTextures\CommandButtons\BTNSteelRanged.blp
+Buttonpos=2
+[I025]
+Name=공간왜곡석
+Hotkey=F
+Tip=공간왜곡석 구입(|cffffcc00F|r)
+Ubertip=타겟의 공간을 왜곡하여 아이템 '소환비서'의 사용을 억제합니다. (아카드에게 사용불가.)|n|c00CBFF75◎타겟 '소환비서' 사용억제|n◎지속시간 3초.|n◎쿨다운 20초.
+Description=타겟의 공간을 왜곡하여 아이템 '소환비서'의 사용을 억제합니다.
+Art=ReplaceableTextures\CommandButtons\BTNHeartOfSearinoxF.blp
+Buttonpos=3,1
+[I006]
+Name=|cffffcc00아발론|r
+Tip=|cffffcc00아발론|r 구입
+Ubertip=|c00ff0000[세이버 전용]|r|n엑스칼리버의 칼집으로 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Description=엑스칼리버의 칼집으로 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNSaber4.blp
+Buttonpos=,2
+[I016]
+Name=|cffffcc00천본앵|r
+Hotkey=
+Tip=|cffffcc00천본앵|r 구입
+Ubertip=|c00ff0000[바쿠야 전용]|r|n뱌쿠야의 참백도인 '천본앵'은 검날이 사라져 수천개의 조각이 되어 적을 베어버리는 능력을 가지고 있으며 빠른 공격을 중요시하는 검으로 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하며 공격속도와 이동속도가 100% 증가합니다.
+Description=뱌쿠야의 참백도인 '천본앵'은 검날이 사라져 수천개의 조각이 되어 적을 베어버리는 능력을 가지고 있으며 빠른 공격을 중요시하는 검으로 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하며 공격속도와 이동속도가 100% 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNArcaniteMelee.blp
+Buttonpos=3
+[I026]
+Name=그림자 은신서
+Hotkey=F
+Tip=그림자 은신서 구입(|cffffcc00F|r)
+Ubertip=|cff87ceeb전투시 효과 사라짐|r|n고대 마법사들이 오랜기간 연구해 개발해 낸 은신서로써 캐스터가 은신을 하면 그자리에 분신이 생성되어 기존 은신마법의 빈틈을 없앴다.|n|c00CBFF75◎은신 25초.|n◎분신지속 25초.|n◎몹충돌 무시.|n◎쿨다운 10초.
+Description=유닛과 똑같은 분신을 만들고 은신을합니다.
+Art=ReplaceableTextures\CommandButtons\BTNMassTeleport.blp
+Buttonpos=3,1
+[I007]
+Name=힘 + 5
+Tip=힘 + 5 구입(|cffffcc00W|r)
+Ubertip=사용하면 영웅의 힘이 영구적으로 5만큼 증가합니다.
+Description=能永久性地提高英雄的力量。
+Art=ReplaceableTextures\CommandButtons\BTNTomew.blp
+Hotkey=W
+Buttonpos=1
+[I017]
+Name=|cffffcc00신의 북|r
+Hotkey=
+Tip=|cffffcc00신의 북|r 구입
+Ubertip=|c00ff0000[에넬 전용]|r|n에넬이 항상 등에 매고 다니는 북으로 모든 스텟이 50만큼 증가하고 방어력이 50만큼 증가합니다.
+Description=에넬이 항상 등에 매고 다니는 북으로 모든 스텟이 50만큼 증가하고 방어력이 50만큼 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNJanggo.blp
+[I027]
+Name=안티매직쉘
+Hotkey=D
+Tip=디바인 포션 구입|cffffcc00(D)|r
+Ubertip="영웅을 <AIdv,Dur1>초 동안 무적으로 만듭니다."
+Description=영웅을 무적으로 만듭니다.
+Art=ReplaceableTextures\CommandButtons\BTNPotionOfDivinity.blp
+[I008]
+Name=|cffffcc00안대|r
+Hotkey=
+Tip=|cffffcc00안대|r 구입
+Ubertip=|c00ff0000[켄파치 전용]|r|n전보다 영압을 덜먹는 안대. 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하며 공격속도 50%와 이동속도 150%가 증가합니다.
+Description=전보다 영압을 덜먹는 안대. 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하며 공격속도 50%와 이동속도 150%가 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNDevourMagic.blp
+Buttonpos=1,2
+[I018]
+Name=|cffffcc00초지검|r
+Hotkey=
+Tip=|cffffcc00초지검|r 구입
+Ubertip="|c00ff0000[오로치마루 전용]|r|n오로치마루가 사용하는 검으로 데미지가 100만큼 증가하고 민첩성이 100만큼, 힘이 50만큼 증가합니다."
+Description="오로치마루가 사용하는 검으로 데미지가 100만큼 증가하고 민첩성이 100만큼, 힘이 50만큼 증가합니다."
+Art=ReplaceableTextures\CommandButtons\BTNSteelMelee.blp
+Buttonpos=,1
+[I028]
+Name=|cffffcc00클레이모어|r
+Hotkey=
+Tip=|cffffcc00클레이모어|r 구입
+Ubertip="|c00ff0000[클레어 전용]|r|n클레어가 들고다니는 클레이모어. 민첩100증가, 체력1000증가."
+Description="클레어가 들고다니는 클레이모어. 민첩100증가, 체력1000증가."
+Art=ReplaceableTextures\CommandButtons\BTNClare2.blp
+Buttonpos=,2
+[I009]
+Name=올스텟 + 100
+Tip=올스텟 + 100 구입(|cffffcc00A|r)
+Ubertip="사용하면 영웅의 힘, 민첩성 모두 100씩 영구적으로 증가시킵니다."
+Description=增加英雄1点的智力，敏捷度和力量。
+Art=ReplaceableTextures\CommandButtons\BTNTomeRedA.blp
+Hotkey=A
+Buttonpos=,1
+[I019]
+Name=|cffffcc00자칼|r
+Hotkey=
+Tip=|cffffcc00자칼|r 구입
+Ubertip=|c00ff0000[아카드 전용]|r|n세례받은 은십자가를 녹여 주조한 13mm 폭열 철망탄을 사용하는 이 권총은 민첩이75만큼 증가하고 공격속도와 이동속도가 100%씩 증가합니다.
+Description=세례받은 은십자가를 녹여 주조한 13mm 폭열 철망탄을 사용하는 이 권총은 민첩이75만큼 증가하고 공격속도와 이동속도가 100%씩 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNFlakCannons.blp
+Buttonpos=1,1
+[I029]
+Name=대형 힐링포션
+Hotkey=W
+Tip=대형 힐링포션 구입(|cffffcc00W|r)
+Ubertip=체력 1000 회복|nHP Healing '1000'
+Description=체력 1000 회복|nHP Healing '1000'
+Art=ReplaceableTextures\CommandButtons\BTNPotionGreen.blp
+Buttonpos=1
+[I00A]
+Name=소형 힐링포션
+Hotkey=Q
+Tip=소형 힐링포션 구입(|cffffcc00Q|r)
+Ubertip=체력 500 회복|nHP Healing '500'
+Description=체력 500 회복|nHP Healing '500'
+Requires=TWN2
+Buttonpos=0,0
+Art=ReplaceableTextures\CommandButtons\BTNPotionGreenSmallQ.blp
+[I01A]
+Name=|cffffcc00나뭇잎 서클릿|r
+Tip=|cffffcc00나뭇잎 서클릿|r 구입
+Ubertip=|c00ff0000[네지 전용]|r|n나뭇잎의 닌자라는 증표의 서클릿으로 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Description=나뭇잎의 닌자라는 증표의 서클렛으로 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNPendantOfEnergy.blp
+Buttonpos=1
+[I02A]
+Name=소형 힐링포션
+Hotkey=Q
+Tip=소형 힐링포션 구입(|cffffcc00Q|r)
+Ubertip=체력 500 회복|nHP Healing '500'
+Description=체력 500 회복|nHP Healing '500'
+Requires=TWN2
+Buttonpos=0,0
+Art=ReplaceableTextures\CommandButtons\BTNPotionGreenSmall.blp
+[phea]
+Name=生命药水
+Hotkey=P
+Tip=购买生命药水(|cffffcc00P|r)
+Ubertip="恢复<AIh1,DataA1>点的生命值。"
+Description=恢复损失的生命值。
+Requires=TWN2
+Buttonpos=0,1
+Art=ReplaceableTextures\CommandButtons\BTNPotionGreenSmall.blp
+[shea]
+Name=医疗卷轴
+Hotkey=H
+Tip=购买医疗卷轴(|cffffcc00H|r)
+Ubertip="能恢复英雄周围非机械单位<AIha,DataA1>点的生命值。"
+Description=恢复英雄周围单位的生命值。
+Requires=unp2
+Buttonpos=1,2
+Art=ReplaceableTextures\CommandButtons\BTNScrollOfTownPortal.blp
+[I00B]
+Name=|cffffcc00게이볼그|r
+Hotkey=
+Tip=|cffffcc00게이볼그|r 구입
+Ubertip=|c00ff0000[랜서 전용]|r|n저주 받은 창으로 인과역전으로 인해 어떤 형태로든 상대의 심장을 반드시 뚫어버리는 마창입니다.민첩을 100증가시키고 힘을 50증가시킵니다.|c00CBFF75|n◎공격시5% 확률로 2배의 크리데미지.
+Description=저주 받은 창으로 인과역전으로 인해 어떤 형태로든 상대의 심장을 반드시 뚫어버리는 마창입니다.
+Art=ReplaceableTextures\CommandButtons\BTNStaffOfSanctuary.blp
+Buttonpos=2
+[I01B]
+Name=|cffffcc00에아|r
+Hotkey=
+Tip=|cffffcc00에아|r 구입
+Ubertip="|c00ff0000[길가메쉬 전용]|r|n괴리검 '에아'는 길가매쉬만의 무기로써 세상에 단 하나 밖에 없는 최강의 검으로, 방어력을 100만큼 증가시키고 힘을 100만큼 증가시킵니다."
+Description="괴리검 '에아'는 길가매쉬만의 무기로써 세상에 단 하나 밖에 없는 최강의 검으로, 방어력을 100만큼 증가시키고 힘을 100만큼 증가시킵니다."
+Art=ReplaceableTextures\CommandButtons\BTNScepterOfMastery.blp
+Buttonpos=1
+[I02B]
+Name=힐링샐브
+Hotkey=R
+Tip=힐링샐브 구입(|cffffcc00R|r)
+Ubertip=|cff87ceeb전투시에도 효과 사라지지 않음|r|n초당 체력 100 회복 (30초 지속)|nHP Healing '100/s' (Running Time = 30sec)
+Description=|cff87ceeb전투시에도 효과 사라지지 않음|r|n초당 체력 100 회복 (30초 지속)|nHP Healing '100/s' (Running Time = 30sec)
+Buttonpos=3,0
+Art=ReplaceableTextures\CommandButtons\BTNHealingSalve.blp
+[I00C]
+Name=대형 힐링포션
+Hotkey=W
+Tip=대형 힐링포션 구입(|cffffcc00W|r)
+Ubertip=체력 1000 회복|nHP Healing '1000'
+Description=체력 1000 회복|nHP Healing '1000'
+Art=ReplaceableTextures\CommandButtons\BTNPotionGreenW.blp
+Buttonpos=1
+[I01C]
+Name=|cffffcc00십권검|r
+Hotkey=
+Tip=|cffffcc00십권검|r 구입
+Ubertip="|c00ff0000[이타치 전용]|r|n오로치마루가 그토록 갖고 싶어하던 십권검. 십권검에 꿰뚫린 사람을 취몽의 환술세계에 봉인해버린다. 착용자는 민첩100증가, 공격시 5%확률로 적에게 환술을 시전.|n|c00CBFF75◎공격시 5%확률로 적에게 환술.|n◎영웅 지속시간 4초|r|n|c00CBFF75◎유닛 지속시간 8초|r"
+Description=오로치마루가 그토록 갖고 싶어하던 십권검. 십권검에 꿰뚫린 사람을 취몽의 환술세계에 봉인해버린다.
+Art=ReplaceableTextures\CommandButtons\BTNTheBlackArrow.blp
+Buttonpos=2,2
+[I02C]
+Name=힐링스톤
+Tip=힐링스톤 구입(|cffffcc00E|r)
+Ubertip=체력 5000 회복|nHP Healing '5000'
+Description=체력 5000 회복|nHP Healing '5000'
+Art=ReplaceableTextures\CommandButtons\BTNHealthStone.blp
+Hotkey=E
+Buttonpos=2
+[rnec]
+Name=巫术妖棍
+Hotkey=R
+Tip=购买巫术妖棍(|cffffcc00R|r)
+Ubertip="从一具死尸中召唤出两个骷髅战士。|n可使用<rnec,uses>次。"
+Description=从一具死尸中召唤出两个骷髅战士。
+Art=ReplaceableTextures\CommandButtons\BTNRodOfNecromancy.blp
+[I00D]
+Name=|cffffcc00사혼의 구슬|r
+Tip=|cffffcc00사혼의 구슬|r 구입
+Ubertip=|c00ff0000[나라쿠 전용]|r|n지니고 있으면 요기를 한층 더 강력하게 해주는 신비로운 구슬입니다. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Description=지니고 있으면 요기를 한층 더 강력하게 해주는 신비로운 구슬입니다. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNPhilosophersStone.blp
+Buttonpos=3
+[I01D]
+Name=두루마기-가마분타
+Hotkey=D
+Tip=두루마기-가마분타 구입(|cffffcc00D|r)
+Ubertip="이 두루마기로 가마분타와 피의계약을 해서 도움이 필요할때, 가마분타를 부를 수 있고 모든스탯이 25증가합니다.|n|c00CBFF75◎가마분타 소환|n◎지속시간 50초|n◎쿨다운 80초"
+Description="이 두루마기로 가마분타와 피의계약을 해서 도움이 필요할때, 가마분타를 부를 수 있고 모든스탯이 25증가합니다.|n|c00CBFF75◎가마분타 소환|n◎지속시간 50초|n◎쿨다운 80초"
+Art=ReplaceableTextures\CommandButtons\BTNScroll.blp
+Buttonpos=2,1
+[I02D]
+Name=|cffffcc00점토|r
+Hotkey=
+Tip=|cffffcc00점토|r 구입
+Ubertip="|c00ff0000[데이다라 전용]|r|n이 점토는 폭발할 수 있도록 특별하게 만들어졌다. 민첩 100증가, 공격시 10%확률로 적에게 폭발데미지 입힘|n|c00CBFF75◎공격시 10%확률로 폭발.|n◎폭발데미지 힘x1(마뎀)|n◎중복 안됨|r"
+Description="이 점토는 폭발할 수 있도록 특별하게 만들어졌다. 민첩 100증가, 공격시 10%확률로 적에게 폭발데미지 입힘|n|c00CBFF75◎공격시 10%확률로 폭발.|n◎폭발데미지 힘x1(마뎀)|n◎중복 안됨|r"
+Art=ReplaceableTextures\CommandButtons\BTNWispSplode.blp
+Buttonpos=1,2
+[I00E]
+Name=힐링샐브
+Hotkey=R
+Tip=힐링샐브 구입(|cffffcc00R|r)
+Ubertip=|cff87ceeb전투시에도 효과 사라지지 않음|r|n초당 체력 100 회복 (30초 지속)|nHP Healing '100/s' (Running Time = 30sec)
+Description=|cff87ceeb전투시에도 효과 사라지지 않음|r|n초당 체력 100 회복 (30초 지속)|nHP Healing '100/s' (Running Time = 30sec)
+Buttonpos=3,0
+Art=ReplaceableTextures\CommandButtons\BTNHealingSalveR.blp
+[I01E]
+Name=공간왜곡석
+Hotkey=F
+Tip=공간왜곡석 구입(|cffffcc00F|r)
+Ubertip=타겟의 공간을 왜곡하여 아이템 '소환비서'의 사용을 억제합니다. (아카드에게 사용불가.)|n|c00CBFF75◎타겟 '소환비서' 사용억제|n◎지속시간 3초.|n◎쿨다운 20초.
+Description=타겟의 공간을 왜곡하여 아이템 '소환비서'의 사용을 억제합니다.
+Art=ReplaceableTextures\CommandButtons\BTNHeartOfSearinox.blp
+Buttonpos=3,1
+[I02E]
+Name=|cffffcc00지라이야의 부적|r
+Tip=|cffffcc00지라이야의 부적|r 구입
+Ubertip=|c00ff0000[나루토 전용]|r|n지라이야가 생전에 나루토에게 선물한 부적입니다. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Description=지라이야가 생전에 나루토에게 선물한 부적입니다. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNNarutoITEM.blp
+Buttonpos=2,2
+[spre]
+Name=保存权杖
+Hotkey=E
+Tip=购买保存权杖(|cffffcc00E|r)
+Ubertip=将一个目标单位传送到最高等级的主基地。
+Description=将目标单位传送回城。
+Buttonpos=3,1
+Requires=etoa
+Art=ReplaceableTextures\CommandButtons\BTNStaffOfPreservation.blp
+[I00F]
+Name=토둔수리검
+Tip=토둔수리검 구입(|cffffcc00Z|r)
+Ubertip=사용 지점에 바위덩어리들을 생성합니다.|n|c00CBFF75◎목표지역에 바위생성|n◎지속시간 5초|n◎쿨다운 20초|n◎Create Rocks|n◎Cooldown 20sec
+Description=사용 지점에 바위덩어리들을 생성합니다.|n|c00CBFF75◎목표지역에 바위생성|n◎지속시간 5초|n◎쿨다운 20초|n◎Create Rocks|n◎Cooldown 20sec
+Art=ReplaceableTextures\CommandButtons\BTNWandOfManaStealZ2.blp
+Hotkey=Z
+Buttonpos=,2
+[I01F]
+Name=|cffffcc00쫄쫄이타이즈|r
+Hotkey=
+Tip=|cffffcc00쫄쫄이타이즈|r 구입
+Ubertip=|c00ff0000[록리 전용]|r|n록리의 타이즈는 몸에 착 달라붙어서 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하며 공격속도와 이동속도가 100% 증가합니다.
+Description=록리의 타이즈는 몸에 착 달라붙어서 데미지가 100만큼 증가하고 모든 스탯이 50만큼 증가하며 공격속도와 이동속도가 100% 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNLeatherUpgradeTwo.blp
+Buttonpos=2,1
+[I02F]
+Name=레드슈틸
+Tip=해루석 구입(|cffffcc00D|r)
+Ubertip=타겟이된 유닛을 5초간 마법 사용을 억제합니다.|n|c00CBFF75◎타겟 마법사용 억제|n◎지속시간 5초.|n◎쿨다운 12초.
+Description=타겟이된 유닛을 5초간 마법 사용을 억제합니다.
+Art=ReplaceableTextures\CommandButtons\BTNPebble.blp
+Hotkey=D
+Buttonpos=2,1
+[I00G]
+Name=힐링스톤
+Tip=힐링스톤 구입(|cffffcc00E|r)
+Ubertip=체력 5000 회복|nHP Healing '5000'
+Description=체력 5000 회복|nHP Healing '5000'
+Art=ReplaceableTextures\CommandButtons\BTNHealthStoneE.blp
+Hotkey=E
+Buttonpos=2
+[I01G]
+Name=기폭찰수리검
+Hotkey=A
+Tip=기폭찰수리검 구입(|cffffcc00A|r)
+Ubertip=기폭찰 수리검을 던집니다.|n|c00CBFF75◎데미지 300|n◎스턴 2초|n◎쿨다운 5초|n|c00CBFF75◎Damage 300|n◎Stun 2sec|n◎Cooldown 5sec
+Description=기폭찰 수리검을 던집니다.|n|c00CBFF75◎데미지 300|n◎스턴 2초|n◎쿨다운 5초|n|c00CBFF75◎Damage 300|n◎Stun 2sec|n◎Cooldown 5sec
+Art=ReplaceableTextures\CommandButtons\BTNWandOfManaSteal.blp
+Buttonpos=,1
+[I02G]
+Name=풍왕결계 해루
+Tip=해루석 구입(|cffffcc00D|r)
+Ubertip=타겟이된 유닛을 5초간 마법 사용을 억제합니다.|n|c00CBFF75◎타겟 마법사용 억제|n◎지속시간 5초.|n◎쿨다운 12초.
+Description=타겟이된 유닛을 5초간 마법 사용을 억제합니다.
+Art=ReplaceableTextures\CommandButtons\BTNPebble.blp
+Hotkey=D
+Buttonpos=2,1
+[sreg]
+Name=恢复卷轴
+Hotkey=R
+Tip=购买恢复卷轴(|cffffcc00R|r)
+Ubertip="|cff87ceeb非战斗类一次性物品|r|n在<AIsl,Dur1>秒内恢复英雄周围所有非机械单位<AIsl,DataA1>点的生命值。"
+Description=恢复周围单位的生命值。
+Buttonpos=0,0
+Art=ReplaceableTextures\CommandButtons\BTNScrollOfRegenerationGreen.blp
+[I00H]
+Name=부적
+Hotkey=X
+Tip=부적 구입|cffffcc00(X)|r
+Ubertip=40초마다 한 번씩 적군이 영웅에게 건 나쁜 마법을 막습니다.
+Description=驱散敌人的魔法。
+Art=ReplaceableTextures\CommandButtons\BTNSpellShieldAmulet.blp
+Buttonpos=1,2
+[I01H]
+Name=|cffffcc00밀짚모자|r
+Tip=|cffffcc00밀짚모자|r 구입
+Ubertip="|c00ff0000[루피 전용]|r|n샹크스가 루피에게 맞긴 소중한 물건으로써, 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다."
+Description="샹크스가 루피에게 맞긴 소중한 물건으로써, 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다."
+Art=ReplaceableTextures\CommandButtons\BTNCloak.blp
+Buttonpos=3,1
+[I02H]
+Name=풍왕결계 기폭
+Hotkey=A
+Tip=기폭찰수리검 구입(|cffffcc00A|r)
+Ubertip=타겟 유닛에게 기폭찰수리검을 던져 데미지와 스턴을 줍니다.|n|c00CBFF75◎데미지 300|n◎스턴 2초.|n◎쿨다운 5초.
+Description=타겟 유닛에게 기폭찰수리검을 던져 300의 데미지와 2초간 스턴을 줍니다.
+Art=ReplaceableTextures\CommandButtons\BTNWandOfManaSteal.blp
+Buttonpos=,1
+[tgrh]
+Name=小型的大厅
+Hotkey=G
+Tip=购买小型的大厅(|cffffcc00G|r)
+Ubertip=在目标区域创建出一座大厅。对于人族， 暗夜精灵族和不死族来讲则分别会创建出城镇大厅，生命之树和大墓地。
+Description=创建出一道巨大的墙壁来。
+Buttonpos=1,2
+Requires=ofrt
+Art=ReplaceableTextures\CommandButtons\BTNGreathall.blp
+[I00I]
+Name=스피드부츠
+Hotkey=R
+Tip=스피드부츠 구입|cffffcc00(R)|r
+Ubertip=이 아이템을 장착한 영웅의 이동 속도가 향상됩니다.
+Description=이 아이템을 장착한 영웅의 이동 속도가 향상됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNBootsOfSpeed.blp
+Buttonpos=3
+[I01I]
+Name=|cffffcc00아이스사브르|r
+Hotkey=
+Tip=|cffffcc00아이스사브르|r 구입
+Ubertip=|c00ff0000[아오키지 전용]|r|n아오키지가 능력으로 만드는 얼음으로 된 검으로 힘을100만큼 증가시키고 이동속도를 증가시키고 5%확률로 상대를 얼립니다.|c00CBFF75|n◎공격시5%확률로 상대방 결빙.|n◎지속시간 1초.
+Description=아오키지가 능력으로 만드는 얼음으로 된 검
+Art=ReplaceableTextures\CommandButtons\BTNThoriumMelee.blp
+Buttonpos=3,1
+[I02I]
+Name=공간왜곡석 풍왕
+Hotkey=F
+Tip=공간왜곡석 구입(|cffffcc00F|r)
+Ubertip=타겟의 공간을 왜곡하여 아이템 '소환비서'의 사용을 억제합니다. (아카드에게 사용불가.)|n|c00CBFF75◎타겟 '소환비서' 사용억제|n◎지속시간 3초.|n◎쿨다운 20초.
+Description=타겟의 공간을 왜곡하여 아이템 '소환비서'의 사용을 억제합니다.
+Art=ReplaceableTextures\CommandButtons\BTNHeartOfSearinox.blp
+Buttonpos=3,1
+[mcri]
+Name=机械类的小玩艺
+Hotkey=E
+Tip=购买机械类的小玩艺(|cffffcc00E|r)
+Ubertip=能召唤出一个玩家所能控制的小玩艺来进行侦察。
+Description=能召唤出一个玩家所能控制的小玩艺来进行侦察。
+ButtonPos=2,0
+Art=ReplaceableTextures\CommandButtons\BTNMechanicalCritter.blp
+[I00J]
+Name=제3의 눈
+Hotkey=F
+Tip=제3의 눈 구입(|cffffcc00F|r)
+Ubertip=투명 유닛을 탐지할 수 있게됩니다.|nYou Can See Invisible Unit
+Description=투명 유닛을 탐지할 수 있게됩니다.|nYou Can See Invisible Unit
+Art=ReplaceableTextures\CommandButtons\BTNSentryWard.blp
+[I01J]
+Name=|cffffcc00나나츠요루|r
+Hotkey=
+Tip=|cffffcc00나나츠요루|r 구입
+Ubertip="|c00ff0000[나나야 전용]|r|n나나야시키가 애용하는 무기로 폴딩나이프 형식. 나나야 가문에 내려오는 나이프이다. 민첩100증가, 체력1000증가."
+Description="나나야시키가 애용하는 무기로 폴딩나이프 형식. 나나야 가문에 내려오는 나이프이다. 민첩100증가, 체력1000증가."
+Art=ReplaceableTextures\CommandButtons\BTNEnvenomedSpear.blp
+Buttonpos=,2
+[I02J]
+Name=시귀봉진 해루
+Tip=해루석 구입(|cffffcc00D|r)
+Ubertip=타겟이된 유닛을 5초간 마법 사용을 억제합니다.|n|c00CBFF75◎타겟 마법사용 억제|n◎지속시간 5초.|n◎쿨다운 12초.
+Description=타겟이된 유닛을 5초간 마법 사용을 억제합니다.
+Art=ReplaceableTextures\CommandButtons\BTNPebble.blp
+Hotkey=D
+Buttonpos=2,1
+[I00K]
+Name=미스릴 방패
+Hotkey=D
+Tip=미스릴 방패 구입(|cffffcc00D|r)
+Ubertip=방어력을 100만큼 증가시킵니다.
+Description=방어력 + 100
+Art=ReplaceableTextures\CommandButtons\BTNArcaniteArmor.blp
+[I01K]
+Name=도깨비 감투
+Hotkey=S
+Tip=도깨비 감투 구입(|cffffcc00S|r)
+Ubertip=|cff87ceeb전투시 효과 사라짐|r|n30초간 모습을 감춥니다.|nBecome Invisible (30sec)
+Description=|cff87ceeb전투시 효과 사라짐|r|n30초간 모습을 감춥니다.|nBecome Invisible (30sec)
+Art=ReplaceableTextures\CommandButtons\BTNCloakOfFlames.blp
+Buttonpos=1,1
+[I02K]
+Name=불쥐 옷 +1
+Hotkey=E
+Tip=불쥐 옷 구입(|cffffcc00E|r)
+Ubertip=주변 유닛에게 초당 75의 데미지를 줍니다. (강화가능 최대 +4)
+Description=주변 유닛에게 초당 75의 데미지를 줍니다. (강화가능 최대 +4)
+Art=ReplaceableTextures\CommandButtons\BTNShadowPact.blp
+Buttonpos=2
+[I00L]
+Name=강인함의 돌
+Hotkey=A
+Tip=강인함의 돌 구입(|cffffcc00A|r)
+Ubertip=체력 최대치 1000 증가|n|cffffcc00강인함의돌 + 3000원 = 신비의돌|r|nMax HP +1000|n|cffffcc00This Item + 3000Gold = Max HP +2000|r
+Description=增加英雄的生命值。
+Buttonpos=0,1
+Art=ReplaceableTextures\CommandButtons\BTNPeriapt.blp
+[I01L]
+Name=|cffffcc00모래 호리병|r
+Hotkey=
+Tip=|cffffcc00모래 호리병|r 구입
+Ubertip=|c00ff0000[가아라 전용]|r|n가아라가 모래를 보관할때 쓰는 호리병입니다. 모든능력치를 50만큼 증가시키고 모래방패능력이 부여됩니다.|c00CBFF75|n◎피격시5%확률로 데미지 무시.
+Description=가아라가 모래를 보관할때 쓰는 호리병입니다.
+Art=ReplaceableTextures\CommandButtons\BTNLiquidFire.blp
+Buttonpos=,2
+[I02L]
+Name=불쥐 옷 +3
+Hotkey=E
+Tip=불쥐 옷 구입(|cffffcc00E|r)
+Ubertip=주변 유닛에게 초당 125의 데미지를 줍니다. (강화가능 최대 +4)
+Description=주변 유닛에게 초당 125의 데미지를 줍니다. (강화가능 최대 +4)
+Art=ReplaceableTextures\CommandButtons\BTNShadowPact.blp
+Buttonpos=2
+[plcl]
+Name=小净化药水
+Hotkey=C
+Tip=购买小净化药水(|cffffcc00C|r)
+Ubertip="|cff87ceeb非战斗类一次性物品|r|n在<AIpl,Dur1>秒内恢复英雄<AIpl,DataB1>点的魔法值。"
+Description=在一定的时间内恢复英雄的魔法值。
+Buttonpos=1,0
+Art=ReplaceableTextures\CommandButtons\BTNLesserClarityPotion.blp
+[skul]
+Name=献祭头骨
+Hotkey=K
+Tip=购买献祭头骨(|cffffcc00K|r)
+Ubertip=在指定的区域创造出一片荒芜之地来。
+Description=在指定的区域创造出一片荒芜之地来。
+ButtonPos=2,0
+Requires=ugrv
+Art=ReplaceableTextures\CommandButtons\BTNSacrificialSkull.blp
+[I00M]
+Name=개조혼백 알약(더미)
+Hotkey=I
+Tip=购买幻象权杖(|cffffcc00I|r)
+Ubertip=""
+Description=""
+Art=ReplaceableTextures\CommandButtons\BTNOrbofSlowness.blp
+[I01M]
+Name=|cffffcc00산령수투|r
+Hotkey=
+Tip=|cffffcc00산령수투|r 구입
+Ubertip="|c00ff0000[우류 전용]|r|n퀸시들만의 특수무기. 이것을 사용하면 퀸시의 정점에 도달할 수 있다. 민첩100, 힘50증가."
+Description="퀸시들만의 특수무기. 이것을 사용하면 퀸시의 정점에 도달할 수 있다. 민첩100, 힘50증가."
+Art=ReplaceableTextures\CommandButtons\BTNSpellSteal.blp
+Buttonpos=1,2
+[I02M]
+Name=불쥐 옷 +2
+Hotkey=E
+Tip=불쥐 옷 구입(|cffffcc00E|r)
+Ubertip=주변 유닛에게 초당 100의 데미지를 줍니다. (강화가능 최대 +4)
+Description=주변 유닛에게 초당 100의 데미지를 줍니다. (강화가능 최대 +4)
+Art=ReplaceableTextures\CommandButtons\BTNShadowPact.blp
+Buttonpos=2
+[I00N]
+Name=전사의 도끼
+Hotkey=S
+Tip=전사의 도끼 구입(|cffffcc00S|r)
+Ubertip=전사의 도끼로 데미지가 100 늘어납니다.
+Description=데미지 증가
+Art=ReplaceableTextures\CommandButtons\BTNSpiritWalkerAdeptTraining.blp
+[I01N]
+Name=|cffffcc00흰수염해적단 마크|r
+Tip=|cffffcc00흰수염해적단 마크|r 구입
+Ubertip=|c00ff0000[에이스 전용]|r|n흰수염해적단의 마크입니다. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Description=흰수염해적단의 마크입니다. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNSpy.blp
+Buttonpos=1,2
+[I02N]
+Name=불쥐옷 강화
+Tip=불쥐옷 강화(|cffffcc00X|r)
+Ubertip=불쥐옷을 최대 +4까지 강화합니다.|n매 강화마다 초당 +25 데미지가 추가됩니다.|n불쥐옷이 없으면 환불됩니다.
+Description=불쥐옷을 최대 +4까지 강화합니다.|n매 강화마다 초당 +25 데미지가 추가됩니다.|n불쥐옷이 없으면 환불됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNBansheeMaster.blp
+Hotkey=X
+Buttonpos=1,2
+[pman]
+Name=魔法药水
+Hotkey=M
+Tip=购买魔法药水(|cffffcc00M|r)
+Ubertip="恢复<AIm1,DataA1>点的魔法值。"
+Description=能恢复魔法值。
+Requires=TWN2
+Buttonpos=1,1
+Art=ReplaceableTextures\CommandButtons\BTNPotionBlueSmall.blp
+[ssan]
+Name=避难权杖
+Hotkey=N
+Tip=购买避难权杖(|cffffcc00N|r)
+Ubertip="T将目标单位传送到你最高等级的主基地,让其处于昏晕状态并以每秒<ANsa,DataE1>点的速度来恢复其生命值直到该单位补满生命值为止。"
+Description=传送并医疗某个单位。
+Art=ReplaceableTextures\CommandButtons\BTNStaffOfSanctuary.blp
+Requires=hcas
+Buttonpos=1,2
+[oven]
+Name=毒液之球
+Hotkey=V
+Tip=购买毒液之球(|cffffcc00V|r)
+Ubertip="增加英雄<AIpb,DataA1>点的攻击力。英雄的攻击也会在攻击空中单位的时候具有远程能力并能在<Apo2,Dur1>秒内对目标造成中毒效果。"
+Description=能让攻击带有毒性。
+Buttonpos=0,2
+Requires=etoe
+Art=ReplaceableTextures\CommandButtons\BTNOrbOfVenom.blp
+[moon]
+Name=月亮石
+Hotkey=N
+Tip=购买月亮石(|cffffcc00N|r)
+Ubertip="制造日蚀，阻挡阳光，以创造人造夜晚。|n持续<AIct,Dur1>秒。"
+Description=使白天变成黑夜。
+Buttonpos=0,0
+Art=ReplaceableTextures\CommandButtons\BTNMoonStone.blp
+[I00O]
+Name=자객의 슬리퍼
+Hotkey=W
+Tip=자객의 슬리퍼 구입(|cffffcc00W|r)
+Ubertip=착용한 영웅의 민첩성을 25만큼 올려줍니다.
+Description=민첩성을 25 올려줍니다.
+Art=ReplaceableTextures\CommandButtons\BTNSlippersOfAgility.blp
+Buttonpos=1
+[I01O]
+Name=|cffffcc00사미환|r
+Hotkey=
+Tip=|cffffcc00사미환|r 구입
+Ubertip=|c00ff0000[렌지 전용]|r|n렌지의 참백도로 해방시 칼날에 마디가 생겨 멀리있는 적까지 공격할 수 있다. 모든 스텟이 50만큼 증가하고 방어력이 50만큼 증가합니다.
+Description=렌지의 참백도로 해방시 칼날에 마디가 생겨 멀리있는 적까지 공격할 수 있다. 모든 스텟이 50만큼 증가하고 방어력이 50만큼 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNCurse.blp
+Buttonpos=2,2
+[I02O]
+Name=안티매직쉘2
+Hotkey=D
+Tip=디바인 포션 구입|cffffcc00(D)|r
+Ubertip="영웅을 <AIdv,Dur1>초 동안 무적으로 만듭니다."
+Description=영웅을 무적으로 만듭니다.
+Art=ReplaceableTextures\CommandButtons\BTNPotionOfDivinity.blp
+[tkno]
+Name=能量之书
+Hotkey=P
+Tip=购买能量之书(|cffffcc00P|r)
+Ubertip="能提高英雄<AIlm,DataA1>个等级。"
+Description=能提高英雄的经验等级。
+Art=ReplaceableTextures\CommandButtons\BTNTomeRed.blp
+[I00P]
+Name=불쥐 옷
+Hotkey=E
+Tip=불쥐 옷 구입(|cffffcc00E|r)
+Ubertip=주변 유닛에게 초당 50의 데미지를 줍니다. (강화가능 최대 +3)
+Description=주변 유닛에게 초당 50의 데미지를 줍니다. (강화가능 최대 +3)
+Art=ReplaceableTextures\CommandButtons\BTNShadowPact.blp
+Buttonpos=2
+[I01P]
+Name=|cffffcc00사메하다|r
+Hotkey=
+Tip=|cffffcc00사메하다|r 구입
+Ubertip=|c00ff0000[키사메 전용]|r|n키사메의 검으로 차크라를 갉아먹는다. 힘100증가.|c00CBFF75|n◎공격시5%확률로 상대방 마법사용불가.|n◎영웅 지속시간 4초|n◎유닛 지속시간 8초|r
+Description=키사메의 검으로 차크라를 갉아먹는다.
+Art=ReplaceableTextures\CommandButtons\BTNStrengthOfTheMoon.blp
+[I02P]
+Name=불쥐 옷 +4
+Hotkey=E
+Tip=불쥐 옷 구입(|cffffcc00E|r)
+Ubertip=주변 유닛에게 초당 150의 데미지를 줍니다. (강화가능 최대 +4)
+Description=주변 유닛에게 초당 150의 데미지를 줍니다. (강화가능 최대 +4)
+Art=ReplaceableTextures\CommandButtons\BTNShadowPact.blp
+Buttonpos=2
+[stwp]
+Name=回城卷轴
+Hotkey=T
+Tip=购买回城卷轴(|cffffcc00T|r)
+Ubertip=将英雄和英雄周围的单位传送到指定的一个己方或者友军城镇。
+Description=将单位传送到己方或者友军的城镇。
+Requires=TWN2
+Buttonpos=2,1
+Art=ReplaceableTextures\CommandButtons\BTNScrollUber.blp
+[I00Q]
+Name=챔피언 밸트
+Hotkey=Q
+Tip=챔피언 벨트 구입(|cffffcc00Q|r)
+Ubertip=착용한 영웅의 힘을 25만큼 증가시킵니다.
+Description=增加力量属性。
+Art=ReplaceableTextures\CommandButtons\BTNBelt.blp
+[I01Q]
+Name=|cffffcc00시골맥|r
+Hotkey=
+Tip=|cffffcc00시골맥|r 구입
+Ubertip="|c00ff0000[키미마로 전용]|r|n능력자의 의지에 의해 형태와 경도를 바꿔서 생겨나는 뼈는 지상 최강의 흉기로 변한다. 베고, 깍고, 찌르고, 꿰뚫는다. 뼈의 칼날은 탐욕스럽게 피를 탐하며 그 숫자에 제한은 없다. 살의가 사라지지 않는 한, 육체는 영원히 힘을 공급할 것이다.|n민첩성100과 체력+1000을 증가시킵니다."
+Description="능력자의 의지에 의해 형태와 경도를 바꿔서 생겨나는 뼈는 지상 최강의 흉기로 변한다. 베고, 깍고, 찌르고, 꿰뚫는다. 뼈의 칼날은 탐욕스럽게 피를 탐하며 그 숫자에 제한은 없다. 살의가 사라지지 않는 한, 육체는 영원히 힘을 공급할 것이다."
+Art=ReplaceableTextures\CommandButtons\BTNSkeletalLongevity.blp
+Buttonpos=1
+[I00R]
+Name=황금 방패
+Hotkey=W
+Tip=황금 방패 구입(|cffffcc00W|r)
+Ubertip=황금으로 만든 이 방패는 방어력이 200증가하며 힘이 25증가합니다.
+Description=황금으로 만든 이 방패는 방어력이 200증가하며 힘이 25증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNHumanArmorUpThree.blp
+Buttonpos=1
+[I01R]
+Name=해루석
+Tip=해루석 구입(|cffffcc00D|r)
+Ubertip=타겟이된 유닛을 5초간 마법 사용을 억제합니다.|n|c00CBFF75◎타겟 마법사용 억제|n◎지속시간 5초.|n◎쿨다운 12초.|n◎Target Can't Use Skill For 5sec|n◎Cooldown 12sec
+Description=타겟이된 유닛을 5초간 마법 사용을 억제합니다.|n|c00CBFF75◎타겟 마법사용 억제|n◎지속시간 5초.|n◎쿨다운 12초.|n◎Target Can't Use Skill For 5sec|n◎Cooldown 12sec
+Art=ReplaceableTextures\CommandButtons\BTNPebble.blp
+Hotkey=D
+Buttonpos=2,1
+[ofir]
+Name=火焰之球
+Hotkey=F
+Tip=购买火焰之球(|cffffcc00F|r)
+Ubertip="能让英雄的攻击带有<AIfb,DataA1>点的火焰伤害，而且英雄的攻击在攻击空中单位的时候会变成远程攻击，还有一定的溅射效果。"
+Description=能使得英雄的让攻击带有火焰伤害。
+Buttonpos=0,2
+Requires=hcas
+Art=ReplaceableTextures\CommandButtons\BTNOrbOfFire.blp
+[ocor]
+Name=腐蚀之球
+Hotkey=B
+Tip=购买腐蚀之球(|cffffcc00B|r)
+Ubertip="增加英雄<AIcb,DataA1>点的攻击力。英雄的攻击在攻击空中单位的时候也变为远程，而且能在<AIcb,Dur1>秒内削弱敌人的护甲。"
+Description=攻击能削弱敌人的护甲。
+Buttonpos=0,2
+Requires=unp2
+Art=ReplaceableTextures\CommandButtons\BTNOrbOfCorruption.blp
+[I00S]
+Name=미노타우르스의 도끼
+Hotkey=R
+Tip=미노타우르스의 도끼 구입(|cffffcc00R|r)
+Ubertip="미궁속의 괴물 미노타우르스가 사용하던 도끼입니다. 데미지+200 힘+25가 증가하며, 공격시 3% 확률로 1.5배의 크리티컬 데미지를 줍니다.(중복가능)"
+Description="미궁속의 괴물 미노타우르스가 사용하던 도끼입니다. 데미지+200 힘+25가 증가하며, 공격시 3% 확률로 1.5배의 크리티컬 데미지를 줍니다.(중복가능)"
+Art=ReplaceableTextures\CommandButtons\BTNOrcMeleeUpThree.blp
+Buttonpos=3
+[I01S]
+Name=개조혼백 알약
+Hotkey=S
+Tip=개조혼백 알약 구입(|cffffcc00S|r)
+Ubertip=자신과 똑같은 분신을 만듭니다. 분신은 적에게 데미지를 줄 수 없습니다.|nCreate My Other Self
+Description=자신과 똑같은 분신을 만듭니다. 분신은 적에게 데미지를 줄 수 없습니다.|nCreate My Other Self
+Art=ReplaceableTextures\CommandButtons\BTNOrbofSlowness.blp
+Buttonpos=1,1
+[shas]
+Name=速度卷轴
+Hotkey=S
+Tip=购买速度卷轴(|cffffcc00S|r)
+Ubertip="让英雄和周围的单位拥有最快的移动速度。|n持续<AIsa,Dur1>秒。"
+Description=增加单位的移动速度。
+Buttonpos=1,0
+Art=ReplaceableTextures\CommandButtons\BTNScrollOfHaste.blp
+[pams]
+Name=抗体药水
+Hotkey=A
+Tip=购买抗体药水(|cffffcc00A|r)
+Ubertip="使英雄在<AIxs,Dur1>秒内对所有的魔法免疫。"
+Description=使英雄对魔法免疫。
+Requires=etoe
+Buttonpos=1,2
+Art=ReplaceableTextures\CommandButtons\BTNSnazzyPotion.blp
+[I00T]
+Name=사자의 눈
+Hotkey=Z
+Tip=사자의 눈 구입(|cffffcc00Z|r)
+Ubertip="데미지가 100만큼 늘어나고, 투명유닛을 감지합니다."
+Description=데미지 증가
+Art=ReplaceableTextures\CommandButtons\BTNUltravision.blp
+[I01T]
+Name=그림자 은신서
+Hotkey=M
+Tip=개조혼백 알약 구입(|cffffcc00M|r)
+Ubertip=|cff87ceeb전투시 효과 사라짐|r|n고대 마법사들이 오랜기간 연구해 개발해 낸 은신서로써 캐스터가 은신을 하면 그자리에 분신이 생성되어 기존 은신마법의 빈틈을 없앴다.|n|c00CBFF75◎은신 25초.|n◎분신지속 25초.|n◎몹충돌 무시.|n◎쿨다운 10초.
+Description=유닛과 똑같은 분신을 만들고 은신을합니다.
+Art=ReplaceableTextures\CommandButtons\BTNMassTeleport.blp
+[tsct]
+Name=象牙塔
+Hotkey=V
+Tip=购买象牙塔(|cffffcc00V|r)
+Ubertip=能在指定的区域内创建出一座哨塔来。
+Description=能在指定的区域内创建出一座哨塔来。
+Buttonpos=3,1
+Requires=hkee
+Art=ReplaceableTextures\CommandButtons\BTNHumanWatchTower.blp
+[TALT]
+Name=알터
+DependencyOr=halt,oalt,eate,uaod
+[dust]
+Name=尘土之影
+Hotkey=D
+Tip=购买尘土之影(|cffffcc00D|r)
+Ubertip="显示英雄周围的隐形单位。|n一共可以使用<dust,uses>次。|n持续<AItb,Dur1>秒。"
+Description=显示敌方的隐形单位。
+Art=ReplaceableTextures\CommandButtons\BTNDustOfAppearance.blp
+Buttonpos=3,0
+[I00U]
+Name=코우가의 부츠
+Hotkey=Q
+Tip=코우가의 부츠 구입(|cffffcc00Q|r)
+Ubertip=민첩이 25증가하고 이동속도가 증가합니다.|n|c00CBFF75◎블링크|n◎최대범위 400|n◎최소범위 50|n◎쿨다운 4초.|n|c00CBFF75◎Blink|n◎Range 50~400|n◎Cooldown 4sec
+Description=민첩이 25증가하고 이동속도가 증가합니다.|n|c00CBFF75◎블링크|n◎최대범위 400|n◎최소범위 50|n◎쿨다운 4초.|n|c00CBFF75◎Blink|n◎Range 50~400|n◎Cooldown 4sec
+Art=ReplaceableTextures\CommandButtons\BTNBoots.blp
+[I01U]
+Name=그림자 은신서(더미)
+Hotkey=I
+Tip=购买幻象权杖(|cffffcc00I|r)
+Ubertip=""
+Description=""
+Art=ReplaceableTextures\CommandButtons\BTNOrbofSlowness.blp
+[I00V]
+Name=바꿔치기 술법서
+Hotkey=D
+Tip=바꿔치기 술법서 구입(|cffffcc00D|r)
+Ubertip=이 술법서는 바꿔치기술의 비전이 적혀있습니다.|n|c00CBFF75◎통나무로 변신|n◎250범위 내 영웅 통나무 강제공격.|n◎통나무 공격한 유닛에게 대쉬.|n◎대쉬후 주변유닛 스턴 2초.|n◎통나무 최대 지속시간 3초|n◎3초후 통나무 주변 스턴2초|n◎쿨다운 30초
+Description=이 술법서는 바꿔치기술의 비전이 적혀있습니다.|n|c00CBFF75◎통나무로 변신|n◎250범위 내 영웅 통나무 강제공격.|n◎통나무 공격한 유닛에게 대쉬.|n◎대쉬후 주변유닛 스턴 2초.|n◎통나무 최대 지속시간 3초|n◎3초후 통나무 주변 스턴2초|n◎쿨다운 30초
+Art=ReplaceableTextures\CommandButtons\BTNScrollOfProtection.blp
+Buttonpos=2,1
+[I01V]
+Name=|cffffcc00빙륜환|r
+Hotkey=
+Tip=|cffffcc00빙륜환|r 구입
+Ubertip="|c00ff0000[토시로 전용]|r|n빙설계 최강인 토시로의 참백도.민첩성을 100만큼 증가시키고 5%확률로 상대를 얼립니다.|c00CBFF75|n◎공격시5%확률로 상대방 슬로우.|n◎이속, 공속 감소 50%|n◎지속시간 5초."
+Description=빙설계 최강인 토시로의 참백도.
+Art=ReplaceableTextures\CommandButtons\BTNThoriumRanged.blp
+Buttonpos=2,1
+[hslv]
+Name=医疗剂
+Hotkey=H
+Tip=购买医疗剂(|cffffcc00H|r)
+Ubertip="|cff87ceeb非战斗类消耗型物品|r|n使用后在<AIrl,Dur1>秒内恢复目标单位的生命值<AIrl,DataA1>点。|n可使用<hslv,uses>次。"
+Description=在一定的时间内恢复目标单位的生命值。
+Buttonpos=0,0
+Art=ReplaceableTextures\CommandButtons\BTNHealingSalve.blp
+[I00W]
+Name=속도의 포션
+Hotkey=A
+Tip=속도의 포션 구입|cffffcc00(A)|r
+Ubertip=이동속도가 빨라집니다.|n|c00CBFF75◎이속증가.|n◎지속시간 8초.|n◎쿨타임 20초.|n◎You Can Fast Run!|n◎RunningTime 8sec|n◎Cooldown 20sec
+Description=이동속도가 빨라집니다.|n|c00CBFF75◎이속증가.|n◎지속시간 8초.|n◎쿨타임 20초.|n◎You Can Fast Run!|n◎RunningTime 8sec|n◎Cooldown 20sec
+Art=ReplaceableTextures\CommandButtons\BTNVialFull.blp
+Buttonpos=,1
+[I01W]
+Name=|cffffcc00무르씨엘라고|r
+Tip=|cffffcc00무르씨엘라고|r 구입
+Ubertip=|c00ff0000[우르키오라 전용]|r|n우르키오라의 참백도. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Description=우르키오라의 참백도. 모든 스텟이 50씩 증가하고 체력이 초당 50씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNUlquiorraITEM.blp
+Buttonpos=2,2
+[I00X]
+Name=금메달
+Tip=금메달 구입(|cffffcc00S|r)
+Ubertip=황제가 하사한 이 금메달을 메고 있으면 모든 스텟이 25씩 증가하고 체력이 초당 25씩 회복됩니다.
+Description=황제가 하사한 이 금메달을 메고 있으면 모든 스텟이 25씩 증가하고 체력이 초당 25씩 회복됩니다.
+Art=ReplaceableTextures\CommandButtons\BTNMedalionOfCourage.blp
+Buttonpos=1,1
+Hotkey=S
+[I01X]
+Name=기폭찰수리검
+Hotkey=A
+Tip=기폭찰수리검 구입(|cffffcc00A|r)
+Ubertip=기폭찰 수리검을 던집니다.|n|c00CBFF75◎데미지 300|n◎스턴 2초|n◎쿨다운 5초|n|c00CBFF75◎Damage 300|n◎Stun 2sec|n◎Cooldown 5sec
+Description=기폭찰 수리검을 던집니다.|n|c00CBFF75◎데미지 300|n◎스턴 2초|n◎쿨다운 5초|n|c00CBFF75◎Damage 300|n◎Stun 2sec|n◎Cooldown 5sec
+Art=ReplaceableTextures\CommandButtons\BTNWandOfManaStealA.blp
+Buttonpos=,1
+[I00Y]
+Name=신비의 돌
+Hotkey=A
+Tip=신비의 돌 구입(|cffffcc00A|r)
+Ubertip=체력 최대치 2000 증가|nMax HP +2000
+Description=체력 최대치 2000 증가|nMax HP +2000
+Art=ReplaceableTextures\CommandButtons\BTNEnchantedGemstone.blp
+Buttonpos=,1
+[I01Y]
+Name=도깨비 감투
+Hotkey=S
+Tip=도깨비 감투 구입(|cffffcc00S|r)
+Ubertip=|cff87ceeb전투시 효과 사라짐|r|n30초간 모습을 감춥니다.|nBecome Invisible (30sec)
+Description=|cff87ceeb전투시 효과 사라짐|r|n30초간 모습을 감춥니다.|nBecome Invisible (30sec)
+Art=ReplaceableTextures\CommandButtons\BTNCloakOfFlamesS.blp
+Buttonpos=1,1
+[I00Z]
+Name=황제의 보검
+Hotkey=E
+Tip=황제의 보검 구입(|cffffcc00E|r)
+Ubertip=황제가 사용하던 이 보검을 사용하면 데미지와 방어력이 200씩 증가합니다.
+Description=황제가 사용하던 이 보검을 사용하면 데미지와 방어력이 200씩 증가합니다.
+Art=ReplaceableTextures\CommandButtons\BTNAttack.blp
+Buttonpos=2
+[I01Z]
+Name=바꿔치기 술법서
+Hotkey=D
+Tip=바꿔치기 술법서 구입(|cffffcc00D|r)
+Ubertip=이 술법서는 바꿔치기술의 비전이 적혀있습니다.|n|c00CBFF75◎통나무로 변신|n◎250범위 내 영웅 통나무 강제공격.|n◎통나무 공격한 유닛에게 대쉬.|n◎대쉬후 주변유닛 스턴 2초.|n◎통나무 최대 지속시간 3초|n◎3초후 통나무 주변 스턴2초|n◎쿨다운 30초
+Description=이 술법서는 바꿔치기술의 비전이 적혀있습니다.|n|c00CBFF75◎통나무로 변신|n◎250범위 내 영웅 통나무 강제공격.|n◎통나무 공격한 유닛에게 대쉬.|n◎대쉬후 주변유닛 스턴 2초.|n◎통나무 최대 지속시간 3초|n◎3초후 통나무 주변 스턴2초|n◎쿨다운 30초
+Art=ReplaceableTextures\CommandButtons\BTNScrollOfProtectionD.blp
+Buttonpos=2,1

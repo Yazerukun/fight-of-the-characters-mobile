@@ -1,0 +1,28 @@
+# Material for Saber.obj (Authentic HeroSaber.blp)
+newmtl Material_0
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/saber.png
+
+newmtl Material_1
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/saber.png
+
+newmtl Material_2
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/saber.png
+
+newmtl Material_3
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 10.0
+map_Kd ../Textures/saber.png

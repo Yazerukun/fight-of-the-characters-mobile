@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fight of Characters 9.1a Asia — Bleach Brave Souls 3D Engine</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="OriginalHeroMeshAssets.js"></script>
+<style>
+  :root {
+    --bg-dark: #02050c;
+    --panel-blue: #08152b;
+    --panel-border: #1a3c6b;
+    --accent-gold: #f5a623;
+    --gold-glow: rgba(245, 166, 35, 0.75);
+    --neon-cyan: #00d2ff;
+    --neon-cyan-glow: rgba(0, 210, 255, 0.55);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+  }
+
+  #webgl-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    display: block;
+  }
+
+  /* Anime Speed Lines Overlay */
+  #speedlines-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  #speedlines-canvas.active {
+    opacity: 0.85;
+  }
+
+  /* Dev Switcher Toolbar */
+  #dev-toolbar {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 8px;
+    background: rgba(3, 10, 24, 0.9);
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.8);
+  }
+
+  .dev-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #a0c4e8;
+    padding: 4px 14px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+  }
+
+  .dev-btn.active, .dev-btn:hover {
+    background: var(--accent-gold);
+    color: #000;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 12px var(--gold-glow);
+  }
+
+  /* ========================================================= */
+  /* SCREEN 1: 3D LOADING SCREEN OVERLAY                       */
+  /* ========================================================= */
+  #screen-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    background: radial-gradient(circle at center, transparent 30%, rgba(2, 5, 12, 0.78) 85%);
+  }
+
+  #screen-loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.05);
+  }
+
+  .screen-badge {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    background: linear-gradient(135deg, #0066cc, #003366);
+    color: #fff;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 4px;
+    border-left: 3px solid var(--neon-cyan);
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.5);
+    letter-spacing: 0.5px;
+  }
+
+  .tagline-badge {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    color: #d1e5ff;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.8);
+    letter-spacing: 1px;
+  }
+
+  .loading-logo-box {
+    margin-top: 40px;
+    text-align: center;
+    animation: floatLogo 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatLogo {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+  }
+
+  .logo-main-text {
+    font-size: 46px;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 0.95;
+    background: linear-gradient(180deg, #fff275 0%, #ff9900 45%, #cc0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 100, 0, 0.8));
+  }
+
+  .logo-sub-text {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.9);
+    margin-top: 4px;
+  }
+
+  .loading-bottom-bar {
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: auto;
+  }
+
+  .loading-status-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e0f0ff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px var(--neon-cyan);
+  }
+
+  .progress-frame {
+    width: 100%;
+    height: 14px;
+    background: #061122;
+    border: 2px solid #1a3c6b;
+    border-radius: 8px;
+    padding: 2px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.8), 0 0 12px rgba(0, 180, 255, 0.4);
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff9900, #ffcc00, #ffffff);
+    border-radius: 6px;
+    box-shadow: 0 0 12px var(--gold-glow);
+    transition: width 0.15s ease-out;
+  }
+
+  .tips-box {
+    font-size: 12px;
+    color: #d8e6f7;
+    text-align: center;
+    padding: 4px 16px;
+    background: rgba(9, 23, 46, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(26, 60, 107, 0.7);
+  }
+
+  /* ========================================================= */
+  /* SCREEN 2: 3D HERO PICKING PHASE OVERLAY                   */
+  /* ========================================================= */
+  #screen-pick {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 16px;
+  }
+
+  .pick-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    pointer-events: auto;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(26, 60, 107, 0.6);
+  }
+
+  .center-timer-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #70e3ff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .countdown-number {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--accent-gold);
+    text-shadow: 0 0 12px var(--gold-glow);
+    line-height: 1;
+  }
+
+  .pick-grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 210px 1fr 340px;
+    gap: 12px;
+    padding-top: 8px;
+    pointer-events: none;
+  }
+
+  /* LEFT PANEL: Roster */
+  .left-roster-column {
+    pointer-events: auto;
+    background: rgba(8, 21, 43, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .player-slots-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .player-slot-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    background: rgba(4, 12, 26, 0.9);
+    border: 1px solid rgba(26, 60, 107, 0.8);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .player-slot-card.active-user {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 50, 100, 0.5);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.35);
+  }
+
+  .player-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background: #11223a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #e0f0ff;
+  }
+
+  .player-status-badge {
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .status-picking { color: #f39c12; }
+  .status-ready { color: #2ecc71; }
+
+  /* CENTER PANEL: Hero Grid */
+  .center-grid-column {
+    pointer-events: auto;
+    background: rgba(8, 21, 43, 0.7);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-cards-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .hero-card {
+    aspect-ratio: 1 / 1.05;
+    background: #061122;
+    border: 1.5px solid rgba(26, 60, 107, 0.8);
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+  }
+
+  .hero-card:hover {
+    border-color: #70e3ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 210, 255, 0.4);
+  }
+
+  .hero-card.selected {
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 0 12px var(--gold-glow);
+    transform: scale(1.03);
+  }
+
+  .hero-card-img {
+    width: 100%;
+    height: 72%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background: #091a32;
+  }
+
+  .hero-card-name {
+    width: 100%;
+    font-size: 9px;
+    font-weight: 700;
+    color: #e0f0ff;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 2px;
+    background: rgba(0, 5, 15, 0.9);
+  }
+
+  .filter-tabs-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(26, 60, 107, 0.5);
+  }
+
+  .filter-tab {
+    flex: 1;
+    height: 32px;
+    background: rgba(6, 17, 34, 0.85);
+    border: 1px solid rgba(26, 60, 107, 0.8);
+    color: #a0c4e8;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-tab.active, .filter-tab:hover {
+    background: linear-gradient(180deg, #0077cc, #004488);
+    color: #fff;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+  }
+
+  /* RIGHT PANEL: 3D Preview Info & Skills */
+  .right-showcase-column {
+    pointer-events: auto;
+    background: rgba(8, 21, 43, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-showcase-name {
+    font-size: 24px;
+    font-weight: 900;
+    font-style: italic;
+    color: #ff3344;
+    text-shadow: 0 0 10px rgba(255, 51, 68, 0.7);
+    line-height: 1.1;
+  }
+
+  .hero-showcase-title {
+    font-size: 11px;
+    color: #a0c4e8;
+    font-weight: 600;
+  }
+
+  .turntable-hint {
+    font-size: 10px;
+    color: #70e3ff;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  .skills-showcase-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 6px;
+    margin: 8px 0;
+  }
+
+  .skill-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .skill-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #061122;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 0 8px var(--gold-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+  }
+
+  .skill-circle.selected, .skill-circle:hover {
+    border-color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.8);
+  }
+
+  .skill-slot-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: #e0f0ff;
+    text-align: center;
+    max-width: 55px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .skill-tooltip-box {
+    background: rgba(4, 12, 26, 0.95);
+    border: 1px solid rgba(26, 60, 107, 0.8);
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 11px;
+    color: #c8e0f8;
+    line-height: 1.35;
+    min-height: 54px;
+  }
+
+  .skill-tooltip-name {
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 2px;
+  }
+
+  .btn-confirm-lockin {
+    width: 100%;
+    height: 46px;
+    margin-top: 8px;
+    background: linear-gradient(180deg, #ffcc00 0%, #ff8800 50%, #d46b00 100%);
+    border: 2px solid #ffe680;
+    border-radius: 24px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    box-shadow: 0 4px 15px rgba(255, 136, 0, 0.6), inset 0 2px 4px rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-confirm-lockin:hover:not(:disabled) {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 170, 0, 0.9);
+  }
+
+  .btn-confirm-lockin:disabled {
+    background: #444;
+    border-color: #666;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="webgl-canvas"></canvas>
+<canvas id="speedlines-canvas"></canvas>
+
+<div id="dev-toolbar">
+  <button class="dev-btn active" id="btn-show-loading" onclick="switchToScreen('loading')">1. 3D Loading Screen</button>
+  <button class="dev-btn" id="btn-show-pick" onclick="switchToScreen('pick')">2. 3D Hero Picking Phase</button>
+</div>
+
+<!-- SCREEN 1: 3D LOADING SCREEN OVERLAY -->
+<div id="screen-loading">
+  <div class="screen-badge">Bleach Brave Souls 3D Engine</div>
+  <div class="tagline-badge">The Ultimate Battle Begins...</div>
+
+  <div class="loading-logo-box">
+    <div class="logo-main-text">FIGHT OF<br>CHARACTERS</div>
+    <div class="logo-sub-text">9.1a (Asia)</div>
+  </div>
+
+  <div class="loading-bottom-bar">
+    <div class="loading-status-text" id="loading-pct-text">Compiling Reiatsu Shaders & 3D Meshes... 0%</div>
+    <div class="progress-frame">
+      <div class="progress-fill" id="loading-bar-fill"></div>
+    </div>
+    <div class="tips-box" id="loading-tip-text">
+      💡 Tip: Use your mobility skill (Shunpo / Dash) to dodge lethal skillshots!
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 2: 3D HERO PICKING PHASE OVERLAY -->
+<div id="screen-pick">
+  <div class="pick-header">
+    <div class="screen-badge" style="position: static;">3D Hero Picking Phase</div>
+
+    <div class="center-timer-wrap">
+      <div class="center-title">Select Your Hero</div>
+      <div class="countdown-number" id="pick-timer-display">28</div>
+    </div>
+
+    <div style="width: 140px; text-align: right; font-size: 11px; color: #70e3ff; font-weight: 600;">
+      Match: 5v5 Asia Duel
+    </div>
+  </div>
+
+  <div class="pick-grid-container">
+    <!-- LEFT PANEL: Player Slots -->
+    <div class="left-roster-column">
+      <div class="player-slots-list" id="player-slots-container"></div>
+      <div style="font-size: 10px; color: #70e3ff; text-align: center; padding: 4px; border-top: 1px solid rgba(26,60,107,0.5);">
+        Arena: Asian Grand Duel Ring
+      </div>
+    </div>
+
+    <!-- CENTER PANEL: Hero Grid -->
+    <div class="center-grid-column">
+      <div class="hero-cards-grid" id="hero-grid-container"></div>
+
+      <div class="filter-tabs-row">
+        <button class="filter-tab active" onclick="setFilter('All', this)">All</button>
+        <button class="filter-tab" onclick="setFilter('STR', this)">STR</button>
+        <button class="filter-tab" onclick="setFilter('AGI', this)">AGI</button>
+        <button class="filter-tab" onclick="setFilter('INT', this)">INT</button>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: 3D Hero Details & Skills -->
+    <div class="right-showcase-column">
+      <div>
+        <div class="hero-showcase-name" id="preview-name">Ichigo Kurosaki</div>
+        <div class="hero-showcase-title" id="preview-title">Substitute Shinigami • Bleach [AGI]</div>
+        <div class="turntable-hint">🔄 Swipe on 3D view to rotate • Click skills for 3D attack effects</div>
+      </div>
+
+      <div class="skills-showcase-row" id="preview-skills-row"></div>
+
+      <div class="skill-tooltip-box" id="preview-tooltip">
+        <div class="skill-tooltip-name" id="tooltip-skill-name">Getsuga Tenshō [Q]</div>
+        <div id="tooltip-skill-desc">A crescent wave travels 10m: 85/130/175/220/265 + AGI × 2 magic to each enemy.</div>
+      </div>
+
+      <button class="btn-confirm-lockin" id="btn-confirm" onclick="confirmHeroPick()">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========================================================= */
+/* 01. AUDIO SYNTHESIZER (ZERO-DEPENDENCY BBS FX)            */
+/* ========================================================= */
+const AudioSynth = {
+  ctx: null,
+  init() {
+    if (!this.ctx) {
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  },
+  playTone(freq, type, duration, gainVal = 0.1) {
+    try {
+      this.init();
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+      gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + duration);
+    } catch(e) {}
+  },
+  click() { this.playTone(600, 'sine', 0.08, 0.12); },
+  hover() { this.playTone(400, 'sine', 0.04, 0.06); },
+  swordSlash() {
+    this.playTone(950, 'sawtooth', 0.18, 0.22);
+    setTimeout(() => this.playTone(320, 'triangle', 0.35, 0.25), 50);
+  },
+  reiatsuBurst() {
+    this.playTone(180, 'sine', 0.6, 0.35);
+    setTimeout(() => this.playTone(450, 'sawtooth', 0.4, 0.2), 80);
+    setTimeout(() => this.playTone(850, 'sine', 0.7, 0.15), 180);
+  },
+  confirm() {
+    this.reiatsuBurst();
+    setTimeout(() => this.swordSlash(), 200);
+  },
+  timerBeep() { this.playTone(850, 'square', 0.09, 0.08); }
+};
+
+/* ========================================================= */
+/* 02. CANONICAL HERO DATASET (FOC 9.1a ASIA)                */
+/* ========================================================= */
+const HERO_DATABASE = [
+  {
+    id: "saber",
+    name: "Saber (Artoria)",
+    title: "King of Knights",
+    franchise: "Fate",
+    attr: "STR",
+    color: "#ffd700",
+    secondaryColor: "#1e3799",
+    icon: "🗡️",
+    modelType: "saber",
+    skills: [
+      { name: "Invisible Air", key: "Q", icon: "💨", desc: "Releases pressurized wind blast dealing 95/145/195/245/295 damage." },
+      { name: "Mana Burst", key: "W", icon: "⚡", desc: "Infuses weapon with extreme magical energy, boosting attack damage by 45%." },
+      { name: "Strike Air", key: "E", icon: "🌪️", desc: "Unleashes hammer of wind knocking foes back 500 units with 1.2s stun." },
+      { name: "Excalibur", key: "R", icon: "✨", desc: "Unleashes the Sword of Promised Victory dealing 650/950/1250 holy damage in a colossal beam." }
+    ]
+  },
+  {
+    id: "rock_lee",
+    name: "Rock Lee",
+    title: "Green Beast of the Leaf",
+    franchise: "Naruto",
+    attr: "AGI",
+    color: "#2ed573",
+    secondaryColor: "#ff4757",
+    icon: "🍃",
+    modelType: "rock_lee",
+    skills: [
+      { name: "Leaf Whirlwind", key: "Q", icon: "🌪️", desc: "High and low spinning kicks dealing 100/150/200/250/300 damage." },
+      { name: "Primary Lotus", key: "W", icon: "🥋", desc: "Launches target airborne and pile-drives them into the earth for 180/260/340/420 damage." },
+      { name: "Eight Gates Release", key: "E", icon: "🔥", desc: "Opens gates of limiters, gaining +80% Attack Speed and +40% Move Speed." },
+      { name: "Hidden Lotus", key: "R", icon: "💥", desc: "High-speed aerial onslaught striking the opponent 6 times at supersonic velocity for 600/850/1100 damage." }
+    ]
+  },
+
+  {
+    id: "ichigo",
+    name: "Ichigo Kurosaki",
+    title: "Substitute Shinigami",
+    franchise: "Bleach",
+    attr: "AGI",
+    color: "#ff5500",
+    secondaryColor: "#111111",
+    icon: "⚔️",
+    modelType: "ichigo",
+    skills: [
+      { name: "Hollow Instinct", key: "P", icon: "🛡️", desc: "Converts 15% physical damage dealt into temporary life shield; gains +20% MS when pursuing low HP foes." },
+      { name: "Getsuga Tenshō", key: "Q", icon: "🌙", desc: "A crescent wave travels 10m: 85/130/175/220/265 + (AGI × 2.0) magic damage. Evolves to Getsuga Jūjishō at rank 3." },
+      { name: "Hollowfication", key: "W", icon: "👹", desc: "Summons the Hollow mask, boosting Attack Speed by +60% and gaining +25% bonus MS for 12 seconds." },
+      { name: "Shunpo", key: "E", icon: "💨", desc: "Instant high-speed flash step teleport (650 units). Next basic attack deals guaranteed 175% critical damage." },
+      { name: "Bankai: Tensa Zangetsu", key: "R", icon: "🗡️", desc: "Condenses spiritual pressure into a black katana, boosting movement speed and launching mini-Getsuga waves." }
+    ]
+  },
+  {
+    id: "byakuya",
+    name: "Byakuya Kuchiki",
+    title: "Captain of Squad 6",
+    franchise: "Bleach",
+    attr: "AGI",
+    color: "#ff77aa",
+    secondaryColor: "#00d2ff",
+    icon: "🌸",
+    modelType: "byakuya",
+    skills: [
+      { name: "Senka", key: "Q", icon: "⚡", desc: "Flashes behind target and strikes soul sleep, silencing foe for 2s and dealing 100/150/200/250/300 damage." },
+      { name: "Hadō #33 Sōkatsui", key: "W", icon: "🔥", desc: "Fires a surge of blue spiritual fire dealing 90/140/190/240/290 damage in a line." },
+      { name: "Bakudō #61 Rikujōkōrō", key: "E", icon: "🔶", desc: "Binds enemy with 6 rods of light, immobilizing them for 2.5s." },
+      { name: "Bankai: Senbonzakura", key: "R", icon: "🌸", desc: "Thousands of razor-sharp blade petals sweep through the battlefield for 550/800/1050 + (AGI × 3.5) damage." }
+    ]
+  },
+  {
+    id: "luffy",
+    name: "Monkey D. Luffy",
+    title: "Straw Hat Captain",
+    franchise: "One Piece",
+    attr: "STR",
+    color: "#ff2233",
+    secondaryColor: "#ffcc00",
+    icon: "👒",
+    modelType: "luffy",
+    skills: [
+      { name: "Gomu Gomu Pistol", key: "Q", icon: "👊", desc: "Stretches his arm backward and unleashes a straight punch dealing 90/140/190/240/290 + (STR × 2.2) damage." },
+      { name: "Gomu Gomu Bazooka", key: "W", icon: "💥", desc: "Slams open palms, launching enemies 600 units backward and stunning for 1.5s." },
+      { name: "Gear Second", key: "E", icon: "⚡", desc: "Pumps blood throughout body, gaining +50% Attack Speed and +35% Movement Speed for 15s." },
+      { name: "Gear Third", key: "R", icon: "🔥", desc: "Inflates bone structure into a giant fist, flattening an area for 350/500/650 + (STR × 3.0) crushing damage." }
+    ]
+  },
+  {
+    id: "goku",
+    name: "Son Goku",
+    title: "Earth's Greatest Saiyan",
+    franchise: "Dragon Ball",
+    attr: "STR",
+    color: "#ffaa00",
+    secondaryColor: "#0088ff",
+    icon: "🥋",
+    modelType: "goku",
+    skills: [
+      { name: "Kamehameha", key: "Q", icon: "🌀", desc: "Channels a continuous blue ki beam dealing 100/160/220/280/340 + (STR × 2.0) magic damage in a 900 unit corridor." },
+      { name: "Kaioken Rush", key: "W", icon: "⚡", desc: "Dashes forward at blinding speed, delivering 4 rapid strikes with +30% critical strike chance." },
+      { name: "Instant Transmission", key: "E", icon: "✨", desc: "Locks onto an allied or enemy unit's ki signature and teleports instantly behind them." },
+      { name: "Spirit Bomb", key: "R", icon: "☀️", desc: "Gathers planetary life energy into an apocalyptic sphere dealing 500/750/1000 + (STR × 3.5) pure damage." }
+    ]
+  },
+  {
+    id: "sasuke",
+    name: "Sasuke Uchiha",
+    title: "Avenger of the Uchiha",
+    franchise: "Naruto",
+    attr: "AGI",
+    color: "#3d5afe",
+    secondaryColor: "#9c27b0",
+    icon: "⚡",
+    modelType: "sasuke",
+    skills: [
+      { name: "Chidori", key: "Q", icon: "⚡", desc: "Concentrated lightning blade thrust piercing through enemies for 100/160/220/280/340 + (AGI × 2.4) damage." },
+      { name: "Chidori Nagashi", key: "W", icon: "🌐", desc: "Discharges electric current across the ground, paralyzing surrounding foes for 1.25s." },
+      { name: "Fire Style: Dragon Fire", key: "E", icon: "🔥", desc: "Breathes high-temperature fire along wires for 90/135/180/225/270 damage." },
+      { name: "Kirin", key: "R", icon: "🐉", desc: "Guides lightning from the heavens, obliterating a 500-radius target zone for 550/800/1050 + (AGI × 3.5) damage." }
+    ]
+  },
+  {
+    id: "zoro",
+    name: "Roronoa Zoro",
+    title: "Pirate Hunter",
+    franchise: "One Piece",
+    attr: "AGI",
+    color: "#20bf6b",
+    secondaryColor: "#111111",
+    icon: "🗡️",
+    modelType: "zoro",
+    skills: [
+      { name: "Oni Giri", key: "Q", icon: "⚔️", desc: "Crosses blades and dashes forward, slashing foes for 95/145/195/245/295 + (AGI × 2.1) physical damage." },
+      { name: "Tora Gari", key: "W", icon: "🐯", desc: "Vertical three-blade cleave that ruptures the earth, dealing 110/165/220/275/330 damage and 1.2s stun." },
+      { name: "360 Pound Cannon", key: "E", icon: "💨", desc: "Fires a flying sword slash projectile traveling 800 units for 100/150/200/250/300 damage." },
+      { name: "Ashura: Ichibugin", key: "R", icon: "👹", desc: "Manifests demonic illusion, delivering a 9-blade synchronized strike that shreds armor for 500/750/1000 + (AGI × 3.8) damage." }
+    ]
+  }
+];
+
+/* ========================================================= */
+/* 03. BLEACH BRAVE SOULS 3D ENGINE & SHADER PIPELINE        */
+/* ========================================================= */
+let scene, camera, renderer;
+let characterGroup, turntablePlatform;
+let currentHeroMesh = null;
+let swordMesh = null;
+let auraLight = null;
+let reiatsuParticles = null;
+let reiatsuGeom = null;
+let reiatsuPosArray = null;
+
+// Turntable interaction state
+let isDragging = false;
+let previousMouseX = 0;
+let angularVelocity = 0;
+let idleTimer = 0;
+
+function init3DScene() {
+  const canvas = document.getElementById('webgl-canvas');
+  scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x02050c, 0.04);
+
+  camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.set(0, 2.1, 5.6);
+  camera.lookAt(0, 1.25, 0);
+
+  renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  // 1. Ambient Fill Lighting
+  const ambientLight = new THREE.AmbientLight(0x223355, 1.4);
+  scene.add(ambientLight);
+
+  // 2. Key Anime Spotlight (High Contrast Toon Light)
+  const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+  keyLight.position.set(3, 9, 5);
+  keyLight.castShadow = true;
+  keyLight.shadow.mapSize.width = 1024;
+  keyLight.shadow.mapSize.height = 1024;
+  scene.add(keyLight);
+
+  // 3. Bleach Brave Souls Signature Rim / Reiatsu Light
+  const rimLight = new THREE.DirectionalLight(0x00d2ff, 4.0);
+  rimLight.position.set(-5, 4.5, -4.5);
+  scene.add(rimLight);
+
+  auraLight = new THREE.PointLight(0xff5500, 3.5, 7);
+  auraLight.position.set(0, 1.4, 0);
+  scene.add(auraLight);
+
+  // 4. Pedestal Platform
+  turntablePlatform = new THREE.Group();
+  scene.add(turntablePlatform);
+
+  // Dark Obsidian Pedestal Base
+  const cylGeo = new THREE.CylinderGeometry(1.65, 1.9, 0.28, 36);
+  const cylMat = new THREE.MeshStandardMaterial({
+    color: 0x050c18,
+    metalness: 0.85,
+    roughness: 0.25
+  });
+  const pedestalMesh = new THREE.Mesh(cylGeo, cylMat);
+  pedestalMesh.position.y = -0.14;
+  pedestalMesh.receiveShadow = true;
+  turntablePlatform.add(pedestalMesh);
+
+  // Glowing Outer Floor Energy Ring
+  const ringGeo = new THREE.RingGeometry(1.35, 1.6, 36);
+  const ringMat = new THREE.MeshBasicMaterial({
+    color: 0x00d2ff,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.85
+  });
+  const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+  ringMesh.rotation.x = -Math.PI / 2;
+  ringMesh.position.y = 0.015;
+  turntablePlatform.add(ringMesh);
+
+  // Inner Rune Ring
+  const innerRingGeo = new THREE.RingGeometry(0.7, 0.85, 36);
+  const innerRingMat = new THREE.MeshBasicMaterial({
+    color: 0xff5500,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.75
+  });
+  const innerRingMesh = new THREE.Mesh(innerRingGeo, innerRingMat);
+  innerRingMesh.rotation.x = -Math.PI / 2;
+  innerRingMesh.position.y = 0.02;
+  turntablePlatform.add(innerRingMesh);
+
+  // Character Parent Group
+  characterGroup = new THREE.Group();
+  turntablePlatform.add(characterGroup);
+
+  // 5. Reiatsu Flame Particle Vortex (Bleach Signature)
+  createReiatsuVortex(HERO_DATABASE[0].color);
+
+  // Build Initial 3D Bleach Character (Ichigo Bankai)
+  build3DAnimeCharacter(HERO_DATABASE[0]);
+
+  setupTouchEvents(canvas);
+  initSpeedLinesCanvas();
+
+  window.addEventListener('resize', onWindowResize);
+  animate();
+}
+
+// Reiatsu Particle Vortex Rising from Feet
+function createReiatsuVortex(auraHex) {
+  if (reiatsuParticles) {
+    scene.remove(reiatsuParticles);
+  }
+
+  const particleCount = 280;
+  reiatsuGeom = new THREE.BufferGeometry();
+  reiatsuPosArray = new Float32Array(particleCount * 3);
+
+  for (let i = 0; i < particleCount; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const radius = Math.random() * 0.9 + 0.1;
+    reiatsuPosArray[i * 3 + 0] = Math.cos(angle) * radius;
+    reiatsuPosArray[i * 3 + 1] = Math.random() * 2.8;
+    reiatsuPosArray[i * 3 + 2] = Math.sin(angle) * radius;
+  }
+
+  reiatsuGeom.setAttribute('position', new THREE.BufferAttribute(reiatsuPosArray, 3));
+  const mat = new THREE.PointsMaterial({
+    color: new THREE.Color(auraHex),
+    size: 0.09,
+    transparent: true,
+    opacity: 0.85,
+    blending: THREE.AdditiveBlending
+  });
+
+  reiatsuParticles = new THREE.Points(reiatsuGeom, mat);
+  scene.add(reiatsuParticles);
+}
+
+// 3D Anime Bleach Character Model Builder
+function build3DAnimeCharacter(hero) {
+  if (currentHeroMesh) {
+    characterGroup.remove(currentHeroMesh);
+  }
+
+  currentHeroMesh = new THREE.Group();
+
+  // Check if original extracted MDX mesh geometry is available
+  const meshKey = hero.id === 'lee' ? 'rock_lee' : hero.id;
+  if (typeof ORIGINAL_HERO_MESH_DATA !== 'undefined' && ORIGINAL_HERO_MESH_DATA[meshKey]) {
+    const mData = ORIGINAL_HERO_MESH_DATA[meshKey];
+    const geom = new THREE.BufferGeometry();
+    geom.setAttribute('position', new THREE.Float32BufferAttribute(mData.positions, 3));
+    geom.setIndex(mData.indices);
+    geom.computeVertexNormals();
+
+    // Scale original WC3 units (~180-230) to Unity/Three.js meters (~1.8-2.2m)
+    const scaleFactor = 0.010;
+    geom.scale(scaleFactor, scaleFactor, scaleFactor);
+
+    // Toon Cel-Shaded Material with Hero's Reiatsu Tint
+    const origToonMat = new THREE.MeshToonMaterial({
+      color: new THREE.Color(hero.color),
+      roughness: 0.3,
+      wireframe: false
+    });
+
+    const origMesh = new THREE.Mesh(geom, origToonMat);
+    origMesh.position.y = 0.02;
+    origMesh.castShadow = true;
+    currentHeroMesh.add(origMesh);
+
+    // Optional Wireframe Accent for Authentic Retro Poly Inspection
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x00d2ff,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.18
+    });
+    const wireMesh = new THREE.Mesh(geom, wireMat);
+    wireMesh.position.y = 0.02;
+    currentHeroMesh.add(wireMesh);
+  } else {
+    // Stylized Anime Procedural Rig Fallback
+    const skinMat = new THREE.MeshToonMaterial({ color: 0xffdfc4 });
+    const hairMat = new THREE.MeshToonMaterial({ color: hero.color });
+    const shihakushoMat = new THREE.MeshToonMaterial({ color: 0x0a0c10 });
+    const whiteObiMat = new THREE.MeshToonMaterial({ color: 0xf5f5f5 });
+
+    const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.22, 0.75, 16), shihakushoMat);
+    torso.position.y = 1.2;
+    torso.castShadow = true;
+    currentHeroMesh.add(torso);
+
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.24, 18, 18), skinMat);
+    head.position.y = 1.74;
+    head.castShadow = true;
+    currentHeroMesh.add(head);
+
+    const hakama = new THREE.Mesh(new THREE.ConeGeometry(0.48, 0.9, 16), shihakushoMat);
+    hakama.position.y = 0.5;
+    hakama.castShadow = true;
+    currentHeroMesh.add(hakama);
+  }
+
+  // Update Aura Light Color & Particle Vortex Color
+  if (auraLight) {
+    auraLight.color.set(hero.color);
+  }
+  createReiatsuVortex(hero.color);
+
+  characterGroup.add(currentHeroMesh);
+}
+
+// Touch Turntable Controls
+function setupTouchEvents(canvas) {
+  function onDown(x) {
+    isDragging = true;
+    previousMouseX = x;
+    idleTimer = 0;
+  }
+  function onMove(x) {
+    if (!isDragging) return;
+    const deltaX = x - previousMouseX;
+    angularVelocity = deltaX * 0.008;
+    turntablePlatform.rotation.y += angularVelocity;
+    previousMouseX = x;
+    idleTimer = 0;
+  }
+  function onUp() {
+    isDragging = false;
+  }
+
+  canvas.addEventListener('mousedown', (e) => onDown(e.clientX));
+  window.addEventListener('mousemove', (e) => onMove(e.clientX));
+  window.addEventListener('mouseup', onUp);
+
+  canvas.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) onDown(e.touches[0].clientX);
+  });
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) onMove(e.touches[0].clientX);
+  });
+  window.addEventListener('touchend', onUp);
+}
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const speedCanvas = document.getElementById('speedlines-canvas');
+  if (speedCanvas) {
+    speedCanvas.width = window.innerWidth;
+    speedCanvas.height = window.innerHeight;
+  }
+}
+
+// Anime Speed Lines FX (Flash-Step / Shunpo)
+let speedCtx = null;
+function initSpeedLinesCanvas() {
+  const c = document.getElementById('speedlines-canvas');
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+  speedCtx = c.getContext('2d');
+}
+
+function triggerShunpoSpeedLines() {
+  const c = document.getElementById('speedlines-canvas');
+  c.classList.add('active');
+
+  const w = c.width;
+  const h = c.height;
+  speedCtx.clearRect(0, 0, w, h);
+  speedCtx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+  speedCtx.lineWidth = 2;
+
+  const cx = w * 0.65;
+  const cy = h * 0.55;
+
+  for (let i = 0; i < 60; i++) {
+    const angle = (i / 60) * Math.PI * 2;
+    const rStart = 140 + Math.random() * 80;
+    const rEnd = Math.max(w, h);
+    speedCtx.beginPath();
+    speedCtx.moveTo(cx + Math.cos(angle) * rStart, cy + Math.sin(angle) * rStart);
+    speedCtx.lineTo(cx + Math.cos(angle) * rEnd, cy + Math.sin(angle) * rEnd);
+    speedCtx.stroke();
+  }
+
+  setTimeout(() => {
+    c.classList.remove('active');
+  }, 220);
+}
+
+// 3D Skill Attack FX (Getsuga Tenshō Crescent Wave)
+function play3DSkillAnimation(skillIndex) {
+  AudioSynth.swordSlash();
+  triggerShunpoSpeedLines();
+
+  // Attack slash twist
+  if (currentHeroMesh) {
+    currentHeroMesh.rotation.y = 0.5;
+    setTimeout(() => { if (currentHeroMesh) currentHeroMesh.rotation.y = 0; }, 180);
+  }
+
+  // Spawn 3D Getsuga Crescent Wave (Black Core with Crimson Edge)
+  const crescentGeo = new THREE.TorusGeometry(0.85, 0.12, 12, 32, Math.PI * 0.95);
+  const crescentMat = new THREE.MeshBasicMaterial({
+    color: selectedHero ? selectedHero.color : 0xff3300,
+    side: THREE.DoubleSide
+  });
+  const crescentMesh = new THREE.Mesh(crescentGeo, crescentMat);
+  crescentMesh.position.set(0.2, 1.3, 0.5);
+  crescentMesh.rotation.set(Math.PI / 2, 0, -0.3);
+  scene.add(crescentMesh);
+
+  let forward = 0;
+  const animInterval = setInterval(() => {
+    forward += 0.32;
+    crescentMesh.position.z += 0.32;
+    crescentMesh.scale.multiplyScalar(1.06);
+    crescentMat.opacity = Math.max(0, 1 - forward / 4.8);
+
+    if (forward >= 4.8) {
+      clearInterval(animInterval);
+      scene.remove(crescentMesh);
+    }
+  }, 16);
+}
+
+// Main 3D Render Loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Turntable Rotation & Inertia
+  if (!isDragging) {
+    if (Math.abs(angularVelocity) > 0.0005) {
+      turntablePlatform.rotation.y += angularVelocity;
+      angularVelocity *= 0.92;
+    } else {
+      idleTimer += 0.016;
+      if (idleTimer > 2.0) {
+        turntablePlatform.rotation.y += 0.005;
+      }
+    }
+  }
+
+  // Character Breathing Sway
+  if (currentHeroMesh) {
+    currentHeroMesh.position.y = Math.sin(Date.now() * 0.0035) * 0.025;
+  }
+
+  // Reiatsu Vortex Particle Upward Drift
+  if (reiatsuGeom && reiatsuPosArray) {
+    const pos = reiatsuGeom.attributes.position.array;
+    for (let i = 0; i < pos.length / 3; i++) {
+      pos[i * 3 + 1] += 0.035; // rise up
+      if (pos[i * 3 + 1] > 2.8) {
+        pos[i * 3 + 1] = 0.05; // respawn at feet
+      }
+    }
+    reiatsuGeom.attributes.position.needsUpdate = true;
+  }
+
+  renderer.render(scene, camera);
+}
+
+/* ========================================================= */
+/* 04. UI & HERO SELECTION INTERACTION                       */
+/* ========================================================= */
+let activeScreen = 'loading';
+let selectedHero = HERO_DATABASE[0];
+let currentFilter = 'All';
+let isLockedIn = false;
+let countdownTimer = 28;
+let timerInterval = null;
+
+const PLAYER_SLOTS = [
+  { id: 1, name: "Player1", status: "Picking...", isUser: true, hero: "ichigo" },
+  { id: 2, name: "Player2", status: "Picking...", isUser: false, hero: "byakuya" },
+  { id: 3, name: "Player3", status: "Ready", isUser: false, hero: "luffy" },
+  { id: 4, name: "Player4", status: "Ready", isUser: false, hero: "sasuke" },
+  { id: 5, name: "Player5", status: "Ready", isUser: false, hero: "goku" }
+];
+
+function switchToScreen(screenName) {
+  AudioSynth.click();
+  activeScreen = screenName;
+  const loadScreen = document.getElementById('screen-loading');
+  const btnLoad = document.getElementById('btn-show-loading');
+  const btnPick = document.getElementById('btn-show-pick');
+
+  if (screenName === 'loading') {
+    loadScreen.classList.remove('hidden');
+    btnLoad.classList.add('active');
+    btnPick.classList.remove('active');
+    startLoadingSimulation();
+  } else {
+    loadScreen.classList.add('hidden');
+    btnPick.classList.add('active');
+    btnLoad.classList.remove('active');
+  }
+}
+
+// Loading Progress Simulation
+let loadingInterval = null;
+const TIPS = [
+  "💡 Tip: Use your mobility skill (Shunpo / Dash) to dodge lethal skillshots!",
+  "💡 Tip: Combine items in your inventory to get stronger equipment!",
+  "💡 Tip: Watch the Duel Arena timer — winning duels awards massive team gold!",
+  "💡 Tip: Pure damage ignores all enemy armor and magic resistance!"
+];
+
+function startLoadingSimulation() {
+  if (loadingInterval) clearInterval(loadingInterval);
+  let progress = 0;
+  const bar = document.getElementById('loading-bar-fill');
+  const txt = document.getElementById('loading-pct-text');
+  const tip = document.getElementById('loading-tip-text');
+
+  bar.style.width = '0%';
+  txt.innerText = 'Compiling Reiatsu Shaders & 3D Meshes... 0%';
+
+  loadingInterval = setInterval(() => {
+    progress += Math.floor(Math.random() * 8) + 4;
+    if (progress > 100) progress = 100;
+    bar.style.width = progress + '%';
+    txt.innerText = `Compiling Reiatsu Shaders & 3D Meshes... ${progress}%`;
+
+    if (progress % 25 === 0) {
+      tip.innerText = TIPS[Math.floor(Math.random() * TIPS.length)];
+    }
+
+    if (progress >= 100) {
+      clearInterval(loadingInterval);
+      setTimeout(() => switchToScreen('pick'), 700);
+    }
+  }, 120);
+}
+
+function renderPlayerSlots() {
+  const container = document.getElementById('player-slots-container');
+  container.innerHTML = '';
+  PLAYER_SLOTS.forEach(slot => {
+    const card = document.createElement('div');
+    card.className = `player-slot-card ${slot.isUser ? 'active-user' : ''}`;
+    const heroObj = HERO_DATABASE.find(h => h.id === slot.hero);
+    card.innerHTML = `
+      <div class="player-avatar" style="border-color: ${heroObj ? heroObj.color : '#444'}">
+        <span>${heroObj ? heroObj.icon : '👤'}</span>
+      </div>
+      <div class="player-info">
+        <div class="player-name">${slot.name} ${slot.isUser ? '(You)' : ''}</div>
+        <div class="player-status-badge ${slot.status === 'Ready' ? 'status-ready' : 'status-picking'}">
+          ${slot.status}
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderHeroGrid() {
+  const grid = document.getElementById('hero-grid-container');
+  grid.innerHTML = '';
+  const filtered = HERO_DATABASE.filter(h => (currentFilter === 'All' ? true : h.attr === currentFilter));
+
+  filtered.forEach(hero => {
+    const card = document.createElement('div');
+    card.className = `hero-card ${selectedHero && selectedHero.id === hero.id ? 'selected' : ''}`;
+    card.onclick = () => selectHero(hero);
+    card.onmouseenter = () => AudioSynth.hover();
+    card.innerHTML = `
+      <div class="hero-card-img">${hero.icon}</div>
+      <div class="hero-card-name">${hero.name}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function selectHero(hero) {
+  if (isLockedIn) return;
+  selectedHero = hero;
+  AudioSynth.click();
+
+  PLAYER_SLOTS[0].hero = hero.id;
+  renderPlayerSlots();
+  renderHeroGrid();
+  renderShowcase();
+
+  build3DAnimeCharacter(hero);
+}
+
+function renderShowcase() {
+  if (!selectedHero) return;
+  document.getElementById('preview-name').innerText = selectedHero.name;
+  document.getElementById('preview-name').style.color = selectedHero.color;
+  document.getElementById('preview-title').innerText = `${selectedHero.title} • ${selectedHero.franchise} [${selectedHero.attr}]`;
+
+  const skillsRow = document.getElementById('preview-skills-row');
+  skillsRow.innerHTML = '';
+
+  selectedHero.skills.forEach((skill, idx) => {
+    const slot = document.createElement('div');
+    slot.className = 'skill-slot';
+    slot.onclick = () => {
+      showSkillTooltip(skill);
+      play3DSkillAnimation(idx);
+    };
+
+    slot.innerHTML = `
+      <div class="skill-circle ${idx === 0 ? 'selected' : ''}">
+        ${skill.icon}
+      </div>
+      <div class="skill-slot-label">${skill.name}</div>
+    `;
+    skillsRow.appendChild(slot);
+  });
+
+  if (selectedHero.skills.length > 0) {
+    showSkillTooltip(selectedHero.skills[0]);
+  }
+}
+
+function showSkillTooltip(skill) {
+  AudioSynth.hover();
+  document.getElementById('tooltip-skill-name').innerText = `${skill.name} [${skill.key}]`;
+  document.getElementById('tooltip-skill-desc').innerText = skill.desc;
+}
+
+function setFilter(filterType, btnElement) {
+  AudioSynth.click();
+  currentFilter = filterType;
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btnElement.classList.add('active');
+  renderHeroGrid();
+}
+
+function confirmHeroPick() {
+  if (isLockedIn) return;
+  isLockedIn = true;
+  AudioSynth.confirm();
+
+  PLAYER_SLOTS[0].status = "Ready";
+  renderPlayerSlots();
+
+  const confirmBtn = document.getElementById('btn-confirm');
+  confirmBtn.disabled = true;
+  confirmBtn.innerText = "LOCKED IN";
+  confirmBtn.style.background = "#2ecc71";
+  confirmBtn.style.borderColor = "#a8ffb2";
+  confirmBtn.style.boxShadow = "0 0 16px rgba(46, 204, 113, 0.8)";
+
+  play3DSkillAnimation(0);
+}
+
+function startCountdown() {
+  if (timerInterval) clearInterval(timerInterval);
+  countdownTimer = 28;
+  const timerDisplay = document.getElementById('pick-timer-display');
+
+  timerInterval = setInterval(() => {
+    countdownTimer--;
+    if (countdownTimer <= 0) {
+      countdownTimer = 0;
+      clearInterval(timerInterval);
+      if (!isLockedIn) confirmHeroPick();
+    }
+    timerDisplay.innerText = countdownTimer;
+    if (countdownTimer <= 5 && countdownTimer > 0) {
+      AudioSynth.timerBeep();
+    }
+  }, 1000);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  init3DScene();
+  startLoadingSimulation();
+  renderPlayerSlots();
+  renderHeroGrid();
+  renderShowcase();
+  startCountdown();
+});
+</script>
+</body>
+</html>
