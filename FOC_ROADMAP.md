@@ -33,10 +33,13 @@
 - [x] Verify Java 17 OpenJDK preflight on host machine (`17.0.20.1`) [VERIFIED BY BUILD]
 - [x] Isolate Gradle build cache to `D:\W3AndroidEngine\gradle-cache` [VERIFIED BY SOURCE]
 - [x] Build W3AndroidEngine desktop classes via Gradle (`gradlew desktop:classes`) [VERIFIED BY BUILD]
-- [ ] Investigate W3AndroidEngine base asset dependencies (CASC / MPQ vs standalone map loading) [NOT TESTED]
-- [ ] Test loading a sample WC3 map in desktop W3AndroidEngine [NOT TESTED]
-- [ ] Test loading `Fight_of_Characters9.1a(Asia).w3x` in desktop W3AndroidEngine [NOT TESTED]
-- **Gate 1 Exit Criteria:** Desktop engine executable compiles and successfully parses an authentic Warcraft III `.w3x` archive without crashing.
+- [x] Investigate W3AndroidEngine base asset dependencies (CASC / MPQ / Folder) [VERIFIED BY BUILD/TEST]
+- [x] Build standalone fat JAR `desktop-1.0.jar` (55.26 MB) via `desktop:dist` [VERIFIED BY BUILD/TEST]
+- [x] Parse authentic FOC 9.1a binary structures (`war3map.w3e`, `wpm`, `doo`, `j`) via `FOCMapDiagnostic` [VERIFIED BY BUILD/TEST]
+- [ ] Complete JASS runtime initialization (Blocked on `common.j` type declarations: `Unknown type: gamecache`) [BLOCKED]
+- [ ] Legal Warcraft III base installation availability (Blocked: no active install on host PC; Rule 4 prohibits unauthorized downloads) [BLOCKED]
+- **Gate 1 Exit Criteria:** Desktop engine executable compiles and successfully parses an authentic Warcraft III `.w3x` archive without crashing (`PASS` [VERIFIED BY BUILD/TEST]).
+- **Gate 2 & 3 Decision Gate:** Map loaded and parsed, but full execution blocked on Blizzard base data. Reassessing Unity fallback.
 
 ---
 

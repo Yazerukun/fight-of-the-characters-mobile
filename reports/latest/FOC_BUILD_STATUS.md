@@ -11,9 +11,10 @@
 
 | Target Platform | Engine / Pipeline | Build Command | Status | Verification / Log Details |
 | :--- | :--- | :--- | :--- | :--- |
-| **Desktop JVM (Classes)** | W3AndroidEngine | `./gradlew desktop:classes` | `PASS` [VERIFIED BY BUILD] | Build successful in 6m 24s. 8/8 tasks executed without errors. |
-| **Core Unit Tests** | W3AndroidEngine | `./gradlew core:test` | `IN PROGRESS` | JASS VM, simulation & quadtree unit test execution active. |
-| **Desktop Executable (JAR)** | W3AndroidEngine | `./gradlew desktop:dist` | `NOT TESTED` | Scheduled post-Gate 2. |
+| **Desktop JVM (Classes)** | W3AndroidEngine | `./gradlew desktop:classes` | `PASS` [VERIFIED BY BUILD/TEST] | Build successful in 6m 24s. 8/8 tasks executed without errors. |
+| **Core Unit Tests** | W3AndroidEngine | `./gradlew core:test` | `PASS` [VERIFIED BY BUILD/TEST] | 191/191 tests passed (0 failures, 0 errors) in 1m 41s. |
+| **Desktop Executable (Fat JAR)** | W3AndroidEngine | `./gradlew desktop:dist` | `PASS` [VERIFIED BY BUILD/TEST] | Built `desktop-1.0.jar` (55.26 MB) in 2m 3s. Zero-dependency JVM runnable. |
+| **FOC Map Diagnostic Harness** | Java 17 Temurin | `java -cp desktop-1.0.jar FOCMapDiagnostic.java` | `PASS` [VERIFIED BY BUILD/TEST] | Executed in 1.42s. 97x97 terrain, 384x384 pathing, 1,168 doodads parsed. |
 | **Android ARM64 Debug APK** | W3AndroidEngine | `./gradlew android:assembleDebug` | `NOT TESTED` | Requires Android SDK API 34/36 configuration on Drive D:. |
 | **Android ARM64 Release APK** | W3AndroidEngine | `./gradlew android:assembleRelease`| `NOT TESTED` | Scheduled for Stage 7. |
 | **Unity 6 URP Android APK** | Unity 6000.0.0f1 | `BuildPlayer(Android)` | `BLOCKED` | Host machine lacks Unity Editor installation (`Unity.exe`). |

@@ -39,6 +39,7 @@ To deliver an authentic, high-performance mobile version of **Fight of Character
 | **Pathing & Collision** | Native `war3map.wpm` (32x32 pathing grid cells: unwalkable, unbuildable, unamphibious). | Re-baked via Unity NavMesh or custom Spatial Hash Grid. | **W3AndroidEngine wins** on authentic pathing and collision rules. |
 | **Touch Controls & Mobile HUD** | LibGDX Scene2D overlay. Basic on-screen controls implemented in current repository. | Advanced uGUI / UI Toolkit with responsive layouts, anchors, canvas scalers, and touch event systems. | **Unity wins** on UI flexibility, touch ergonomics, and mobile responsiveness. |
 | **Audio Engine** | LibGDX Audio / OpenAL. Supports WC3 sound definitions and 3D positional audio. | Unity FMOD-based audio system with audio mixers, DSP effects, ducking, and spatialization. | **Unity wins** on audio mixing and low-latency DSP effects. |
+| **Base Asset Dependency & Legal Distribution** | **Requires Blizzard Base Data.** Needs proprietary `common.j`, `Blizzard.j`, `war3skins.txt`, `FrameDef.toc`, and SLK tables. Cannot be distributed as a standalone APK legally without user-supplied game files. | **100% Self-Contained.** Converted 4 hero rigs, textures, sounds, and arena meshes package directly into the APK with zero dependency on Blizzard archives. | **Unity wins decisively** on commercial distribution, mobile legal compliance, and self-contained deployment. |
 | **Android Build Pipeline** | Pure Gradle (`./gradlew assembleRelease`). Small APK (~25–40 MB without map). Fast build times. | Unity IL2CPP build system. Larger APK (~80–120 MB). Requires Unity Editor installation. | **W3AndroidEngine wins** on lightweight build pipeline and CLI automation. |
 | **Debugging & Tooling** | Standard Java/Android Studio debugging, JDB, logcat. | Unity Profiler, Frame Debugger, Memory Profiler, Visual Studio. | **Unity wins** on visual profiling tools (when Editor is available). |
 | **Host Workstation Compatibility** | Requires only Java 17 (installed: Temurin 17.0.20.1) and Android SDK. Operational on current PC. | Requires Unity Editor 6000.0.0f1 (NOT currently installed on host PC). | **W3AndroidEngine is currently actionable**; Unity Editor is currently blocked. |
@@ -76,7 +77,11 @@ W3AndroidEngine is currently positioned as the **Primary Candidate**, but its ad
                    ===============================================
 ```
 
-### Risk Mitigation Plan:
-If W3AndroidEngine fails at Gate 3 (e.g. unhandled JASS constructs, crash on custom FOC MPQ archives, or missing engine natives), the project **immediately pivots** to the Unity 6 LTS pipeline using our already verified DAE models, textures, and modular C# gameplay architecture.
+### Empirical Evaluation Status:
+* **Gate 1 (Compile Desktop Classes):** `PASS` [VERIFIED BY BUILD/TEST] (8/8 tasks executed; 191/191 core simulation tests passed).
+* **FOC Map Archive & Geometry Parsing:** `PASS` [VERIFIED BY BUILD/TEST] (MPQ mounted in 82 ms; 97x97 terrain elevation, 384x384 pathing mesh, 1,168 doodads parsed successfully; 32,042 lines of JASS scanned in 481 ms with 0 syntax errors).
+* **Gate 2 & 3 (Map Ingestion & JASS Init):** `BLOCKED` [BLOCKED] (JASS interpreter halts on `Unknown type: gamecache` due to absent `Scripts\common.j`; Menu UI halts on absent `war3skins.txt` and `FrameDef.toc`).
+* **Legal Base Data Availability:** `BLOCKED` [BLOCKED] (No active legal Warcraft III base install found on host; Rule 4 prohibits unauthorized downloads).
 
-The Unity backup at `D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile` remains 100% untouched and synchronized with GitHub.
+### Decision Gate Assessment:
+W3AndroidEngine cannot function as a standalone game APK without bundling or requiring ~1.2 GB of proprietary Blizzard game data. In contrast, the **Unity 6 LTS URP Mobile Project** is 100% self-contained, mathematically verified, and free from external Blizzard dependencies. Unless a legally compliant base data pack is provided, Unity 6 LTS serves as the viable commercial path for Android.

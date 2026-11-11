@@ -18,8 +18,13 @@
 | **TEST-005** | IBM Orthogonality | Inverse Bind Matrices | `PASS` [VERIFIED BY STATIC TEST] | Matrix determinant error $= 0.000000$. |
 | **TEST-006** | Prefab Serialization | Unity 6 YAML Prefabs | `PASS` [STATIC FILE PRESENT] | 4 hero prefabs validly serialized in `Assets/Resources/Heroes/`. |
 | **TEST-007** | Editor Runtime Rig Test | `HeroRigVerificationTest.cs` | `BLOCKED` [BLOCKED] | Unity Editor not installed on current workstation. |
-| **TEST-008** | Desktop Compilation | W3AndroidEngine `desktop:classes` | `PASS` [VERIFIED BY BUILD] | Build successful in 6m 24s. 8/8 tasks executed. |
-| **TEST-009** | Core Engine Unit Tests | W3AndroidEngine `core:test` | `PASS` [VERIFIED BY BUILD] | 191/191 tests passed (0 failures, 0 errors) in 1m 41s. |
+| **TEST-008** | Desktop Compilation | W3AndroidEngine `desktop:classes` | `PASS` [VERIFIED BY BUILD/TEST] | Build successful in 6m 24s. 8/8 tasks executed. |
+| **TEST-009** | Core Engine Unit Tests | W3AndroidEngine `core:test` | `PASS` [VERIFIED BY BUILD/TEST] | 191/191 tests passed (0 failures, 0 errors) in 1m 41s. |
+| **TEST-010** | Fat JAR Assembly | W3AndroidEngine `desktop:dist` | `PASS` [VERIFIED BY BUILD/TEST] | `desktop-1.0.jar` (55.26 MB) built in 2m 3s. |
+| **TEST-011** | FOC Map Binary Ingestion | `Fight_of_Characters9.1a(Asia).w3x` | `PASS` [VERIFIED BY BUILD/TEST] | 97x97 terrain, 384x384 pathing (147K cells), 1,168 doodads parsed. |
+| **TEST-012** | FOC JASS Syntax Parsing | `war3map.j` (32,042 lines) | `PASS` [VERIFIED BY BUILD/TEST] | Parsed in 481 ms by ANTLR4 `SmashJassParser` with 0 syntax errors. |
+| **TEST-013** | FOC JASS Semantic Init | `program.initialize()` | `BLOCKED` [BLOCKED] | Halted on `RuntimeException: Unknown type: gamecache` (needs `common.j`). |
+| **TEST-014** | Legal Base Data Audit | Host Workstation Disks | `BLOCKED` [BLOCKED] | Registry key present but disk folder absent. Unauthorized downloads barred. |
 
 ---
 
