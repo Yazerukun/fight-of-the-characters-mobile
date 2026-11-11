@@ -60,15 +60,15 @@
 
 ---
 
-### ISSUE-004: W3AndroidEngine Base Game Data (CASC/MPQ) Dependency
-* **Severity:** `MEDIUM`
-* **Status:** `UNDER INVESTIGATION (GATE 1 & 2)`
-* **Description:** Warsmash Reforged and its derivatives traditionally require Warcraft III game archives (`war3.mpq` or modern CASC archives) for base UI skins, standard sounds, and `Scripts\common.j` / `Scripts\blizzard.j`.
-* **Root Cause:** Engine architecture is designed as a client that loads custom maps on top of base game data.
+### ISSUE-004: W3AndroidEngine Base Game Data (CASC/MPQ/Folder) Dependency
+* **Severity:** `HIGH`
+* **Status:** `DIAGNOSED & EMPIRICALLY CONFIRMED` [VERIFIED BY BUILD]
+* **Description:** HeadlessLauncher runtime execution proved that W3AndroidEngine initializes its core and passes startup steps 0, 1, and 2, but requires base Warcraft III assets (`UI\WorldEditGameStrings.txt`, `UI\war3skins.txt`, TrueType font definitions, and `UI\FrameDef\FrameDef.toc`). Custom map archives like `Fight_of_Characters9.1a(Asia).w3x` contain custom models, abilities, and triggers, but do not embed Blizzard's base engine UI definitions.
+* **Root Cause:** Engine architecture is a client runtime that mounts base game data and overlays the custom map.
 * **Architectural Mitigation:**
-  1. Inspect W3AndroidEngine source code to verify minimal required base assets.
-  2. Embed or supply extracted `common.j` and `blizzard.j` files inside the workspace if required.
-* **Action Required:** Audit engine loader classes during Stage 1.
+  1. Option A: Assemble a lightweight minimal base asset directory on Drive D: containing the essential base SLK tables, UI skins, and `FrameDef.toc` to allow W3AndroidEngine to load custom maps standalone.
+  2. Option B: Accelerate the Unity 6 LTS URP pipeline (`D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile`), which is 100% standalone, already has all 4 hero rigs mathematically verified with zero IBM error, and has zero dependency on external Blizzard game archives.
+* **Action Required:** Present the trade-off between assembling a minimal WC3 base pack vs continuing Unity standalone mobile implementation.
 
 ---
 

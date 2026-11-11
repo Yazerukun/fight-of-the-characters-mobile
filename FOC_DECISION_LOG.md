@@ -77,3 +77,19 @@
   - `[BLOCKED]`: Prerequisite tool or condition is missing.
   - `[NOT TESTED]`: Feature or gate has not yet been executed.
 * **Consequences:** Eliminates false completion claims; provides unambiguous clarity on project reality.
+
+---
+
+### ADR-006: Empirical Discovery of W3AndroidEngine Base Data Requirement & Standalone Fallback Strategy
+* **Date:** 2026-11-11
+* **Status:** `ACCEPTED`
+* **Context:** Headless runtime execution of W3AndroidEngine with `Fight_of_Characters9.1a(Asia).w3x` proved that the engine initializes its core lifecycle and completes startup steps 0, 1, and 2, but halts on missing Blizzard base game definitions (`UI\WorldEditGameStrings.txt`, `UI\war3skins.txt`, font bindings, and `UI\FrameDef\FrameDef.toc`). Custom Warcraft III maps do not embed these base UI definitions.
+* **Decision:**
+  1. Acknowledge that W3AndroidEngine requires a base Warcraft III data source (`Folder`, `MPQ`, or `CASC`) to function as a full game client.
+  2. For mobile deployment, evaluate whether distributing a lightweight base data pack (~15–30 MB) alongside the map is viable on Android, or if the Unity 6 LTS URP project (which is 100% self-contained with no Blizzard base file dependencies) represents the superior standalone commercial path.
+  3. Maintain both pathways under active development without abandoning either engine candidate.
+* **Consequences:** Ensures full technical transparency; prevents time loss attempting to force W3AndroidEngine to load custom maps without required base UI tables.
+  - `[REPORTED BUT UNVERIFIED]`: Claimed in documentation or previous sessions but unproven.
+  - `[BLOCKED]`: Prerequisite tool or condition is missing.
+  - `[NOT TESTED]`: Feature or gate has not yet been executed.
+* **Consequences:** Eliminates false completion claims; provides unambiguous clarity on project reality.
