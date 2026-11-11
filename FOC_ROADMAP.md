@@ -32,7 +32,7 @@
 - [x] Clone W3AndroidEngine repository (`commit a865a389`, v0.3.6) [VERIFIED BY SOURCE]
 - [x] Verify Java 17 OpenJDK preflight on host machine (`17.0.20.1`) [VERIFIED BY BUILD]
 - [x] Isolate Gradle build cache to `D:\W3AndroidEngine\gradle-cache` [VERIFIED BY SOURCE]
-- [ ] Build W3AndroidEngine desktop classes via Gradle (`gradlew desktop:classes`) [NOT TESTED]
+- [x] Build W3AndroidEngine desktop classes via Gradle (`gradlew desktop:classes`) [VERIFIED BY BUILD]
 - [ ] Investigate W3AndroidEngine base asset dependencies (CASC / MPQ vs standalone map loading) [NOT TESTED]
 - [ ] Test loading a sample WC3 map in desktop W3AndroidEngine [NOT TESTED]
 - [ ] Test loading `Fight_of_Characters9.1a(Asia).w3x` in desktop W3AndroidEngine [NOT TESTED]

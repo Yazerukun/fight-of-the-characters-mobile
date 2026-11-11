@@ -18,7 +18,8 @@
 | **TEST-005** | IBM Orthogonality | Inverse Bind Matrices | `PASS` [VERIFIED BY STATIC TEST] | Matrix determinant error $= 0.000000$. |
 | **TEST-006** | Prefab Serialization | Unity 6 YAML Prefabs | `PASS` [STATIC FILE PRESENT] | 4 hero prefabs validly serialized in `Assets/Resources/Heroes/`. |
 | **TEST-007** | Editor Runtime Rig Test | `HeroRigVerificationTest.cs` | `BLOCKED` [BLOCKED] | Unity Editor not installed on current workstation. |
-| **TEST-008** | Desktop Gradle Bootstrap | W3AndroidEngine Gradle 9.9.0 | `IN PROGRESS` [VERIFIED BY BUILD] | Wrapper download completed, unzipping to Drive D:. |
+| **TEST-008** | Desktop Compilation | W3AndroidEngine `desktop:classes` | `PASS` [VERIFIED BY BUILD] | Build successful in 6m 24s. 8/8 tasks executed. |
+| **TEST-009** | Core Engine Unit Tests | W3AndroidEngine `core:test` | `PASS` [VERIFIED BY BUILD] | 191/191 tests passed (0 failures, 0 errors) in 1m 41s. |
 
 ---
 
@@ -76,3 +77,30 @@
   - `Hero_RockLee.dae`: 17 joints, 100% normalized, 0 IBM singularity errors.
   - `Hero_Luffy.dae`: 54 joints, 100% normalized, 0 IBM singularity errors.
 * **Result:** `PASS` [VERIFIED BY STATIC TEST]
+
+---
+
+### TEST-008: W3AndroidEngine Desktop Compilation (Gate 1)
+* **Command:** `gradlew.bat --gradle-user-home D:\W3AndroidEngine\gradle-cache desktop:classes --console=plain`
+* **Execution Duration:** 6 minutes 24 seconds
+* **Actionable Tasks:** 8 executed, 0 failed
+* **Outputs:** Compiled bytecode for `:shared`, `:fdfparser`, `:jassparser`, `:core`, and `:desktop`.
+* **Result:** `PASS` [VERIFIED BY BUILD]
+
+---
+
+### TEST-009: W3AndroidEngine Core Simulation & JASS Unit Tests
+* **Command:** `gradlew.bat --gradle-user-home D:\W3AndroidEngine\gradle-cache core:test --console=plain`
+* **Execution Duration:** 1 minute 41 seconds
+* **Actionable Tasks:** 13 tasks (7 executed, 6 up-to-date)
+* **Scope Tested:**
+  - JASS VM thread limits & recursion boundaries (`JassThreadLimitsTest`)
+  - JASS array boundaries & 32768 index limits (`JassEdgesTest`)
+  - JASS integer overflow & WC3 1.29 math emulation (`JassNumbersTest`)
+  - Quadtree spatial partitioning (`QuadtreeTest`)
+  - Simulation strict math & handle allocator (`StrictMathTest`, `HandleIdAllocatorTest`)
+  - Pathfinding processor & collision grid (`CPathfindingProcessorTest`)
+  - Timer queue & game step scheduling (`TimerQueueTest`)
+* **Test Metrics:** `Total Core Tests: 191 | Passed: 191 | Failures: 0 | Errors: 0`
+* **Result:** `PASS` [VERIFIED BY BUILD]
+
