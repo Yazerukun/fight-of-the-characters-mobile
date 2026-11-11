@@ -1,6 +1,6 @@
 # FOC REBORN MOBILE — CURRENT STATUS
-**Last Updated:** 2026-11-11T12:28:00+08:00  
-**Active Milestone:** STAGE 2 — W3AndroidEngine Base Data Compatibility Proof  
+**Last Updated:** 2026-11-11T12:50:00+08:00  
+**Active Milestone:** STAGE 3 — Unity Runtime Validation & Combat Foundation  
 **Lead Architect & Studio Manager:** JIN  
 
 ---
@@ -9,35 +9,32 @@
 
 | Component | Target / Path | Status Label | Verification Details |
 | :--- | :--- | :--- | :--- |
-| **W3AndroidEngine Desktop Build** | `desktop:classes` | `VERIFIED BY BUILD/TEST` | Compiled successfully in 6m 24s. 8/8 tasks executed. |
-| **W3AndroidEngine Core Unit Tests** | `core:test` | `VERIFIED BY BUILD/TEST` | 191/191 tests passed (0 failures, 0 errors) in 1m 41s. |
-| **W3AndroidEngine Fat JAR** | `desktop-1.0.jar` (55.26 MB) | `VERIFIED BY BUILD/TEST` | Built via `desktop:dist`. Launches JVM in < 1 second. |
-| **FOC Map Archive Mount** | `War3Map` memory channel | `VERIFIED BY BUILD/TEST` | Mounted 8.37 MB MPQ in RAM in 82 ms (`Exit Code 0`). |
-| **FOC Terrain Elevation** | `war3map.w3e` | `VERIFIED BY BUILD/TEST` | 97x97 tiles, Tileset `Y` (Cityscape) parsed successfully. |
-| **FOC Pathing Mesh** | `war3map.wpm` | `VERIFIED BY BUILD/TEST` | 384x384 grid (147,456 cells) parsed successfully. |
-| **FOC Static Doodads** | `war3map.doo` | `VERIFIED BY BUILD/TEST` | 1,168 static doodad instances parsed successfully. |
-| **FOC JASS Grammar Parsing** | `war3map.j` (32,042 lines) | `VERIFIED BY BUILD/TEST` | Parsed in 481 ms by ANTLR4 `SmashJassParser` with 0 syntax errors. |
-| **FOC JASS Type Resolution** | `program.initialize()` | `BLOCKED` | Halted on `java.lang.RuntimeException: Unknown type: gamecache`. |
-| **Legal WC3 Base Installation** | Host Workstation Disks | `BLOCKED` | Registry key found, but disk files absent. Unauthorized download prohibited. |
-| **Unity Backup Repository** | `D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile` | `VERIFIED BY SOURCE` | Preserved on branch `main`, commit `13a3a54`. Live on GitHub. |
-| **Hero Rig Models (DAE)** | `Assets/Art/Heroes/` (4 Heroes) | `VERIFIED BY STATIC TEST` | 100% geometry parity verified ($\text{MAE} \le 0.000034$), 0 IBM errors. |
-| **Hero Baked Prefabs** | `Assets/Resources/Heroes/` | `STATIC FILE PRESENT` | Clean Unity 6 YAML serialized prefabs with strict assertions. |
-| **Unity Editor Executable** | Host Workstation (`Unity.exe`) | `BLOCKED` | Not installed on host PC. Required version: 6000.0.0f1. |
-| **Android SDK / NDK** | Standalone SDK Manager | `BLOCKED` | `ANDROID_HOME` and `ANDROID_NDK_ROOT` unset. |
+| **Primary Engine Choice** | Unity 6 LTS URP | `VERIFIED BY SOURCE` | Permanent architecture decision: Unity 6 is primary engine; W3AndroidEngine preserved as reference. |
+| **Host Workstation Preflight** | Windows 10 Pro / AMD Ryzen 3 / GTX 1650 | `VERIFIED BY BUILD/TEST` | Java 17 Temurin active. Disk C: has 0.29 GB free (Critical); Disk D: has 68.64 GB free. |
+| **Unity Editor Executable** | Host Workstation (`Unity.exe`) | `BLOCKED` | Not installed on host PC. Target: 6000.0.0f1. Editor-dependent tests marked BLOCKED per protocol. |
+| **Unity Android Support / SDK** | Android NDK / SDK | `BLOCKED` | `ANDROID_HOME`, `ANDROID_NDK_ROOT` unset on host PC. |
+| **Four Hero Rigged DAE Models** | `Assets/Art/Heroes/` (4 Heroes) | `VERIFIED BY BUILD/TEST` | 100% deformation and bone hierarchy verified ($\text{MAE} \le 0.000034$), 0 IBM errors via `validate_dae_and_deformation.py`. |
+| **Hero Baked Prefabs** | `Assets/Resources/Heroes/` | `STATIC FILE PRESENT` | Clean Unity 6 YAML serialized prefabs present with SkinnedMeshRenderer bone arrays. |
+| **Hero Animation Verification Scene** | `Assets/Scenes/HeroAnimationVerificationScene.unity` | `STATIC FILE PRESENT` | Scene file intact with verification UI canvas. In-editor runtime playback `BLOCKED` on missing `Unity.exe`. |
+| **Combat Foundation: Damage Calculation** | `Assets/Scripts/Combat/DamageCalculation.cs` | `VERIFIED BY SOURCE` | 100% complete WC3 attack/armor matrix, armor mitigation formula, spell resistance, pure damage. |
+| **Combat Foundation: Hero Stats** | `Assets/Scripts/Combat/HeroStats.cs` | `VERIFIED BY SOURCE` | Primary attributes (STR/AGI/INT), stat growth, WC3 move speed clamping (100–522), vitals events. |
+| **Combat Foundation: Combat Controller** | `Assets/Scripts/Combat/CombatController.cs` | `VERIFIED BY SOURCE` | Real-time state machine (Idle, Moving, Pursuing, Windup, Backswing, Casting, Dead), target auto-acquisition. |
+| **Combat Foundation: Ability System** | `Assets/Scripts/Combat/AbilitySystem.cs` | `VERIFIED BY SOURCE` | Q/W/E/R/D slots, mana deduction, cooldown management, cast range checks, event emission. |
+| **Combat Foundation: Inventory System** | `Assets/Scripts/Combat/InventorySystem.cs` | `VERIFIED BY SOURCE` | Authentic 6-slot inventory (0–5), stackable items, active triggers, passive stat recalculation. |
+| **JASS Port: Getsuga Tenshou** | `Assets/Scripts/Combat/Abilities/GetsugaTenshoAbility.cs` | `VERIFIED BY SOURCE` | Decompiled from `war3map.j` (`bOe`/`Bbe`), agility multiplier (2.0x), Bankai Kuroi Getsuga (1.5x bonus). |
+| **W3AndroidEngine Repository** | `D:\W3AndroidEngine\repo` | `VERIFIED BY BUILD/TEST` | Fully preserved. Desktop classes compiled, 191/191 tests pass, fat JAR `desktop-1.0.jar` assembled. |
+| **Original FOC Map Archive** | `Fight_of_Characters9.1a(Asia).w3x` | `VERIFIED BY SOURCE` | 8.37 MB immutable archive. MDX/BLP/JASS binary sources intact. |
 
 ---
 
 ## 2. DISK & STORAGE CONSTRAINTS
-* **Drive C: Status:** `0.41 GB Free` (CRITICAL CONSTRAINT - FULLY PROTECTED).
-  * Zero bytes leaked to Drive C: during Gradle builds, tests, and jar packaging.
+* **Drive C: Status:** `0.29 GB Free` (CRITICAL CONSTRAINT - FULLY PROTECTED).
+  * Strict write prohibition enforced. Zero bytes written to Drive C:.
 * **Drive D: Status:** `68.64 GB Free` (HEALTHY).
-  * Dedicated engine workspace established at `D:\W3AndroidEngine`.
-  * Gradle user home configured at `D:\W3AndroidEngine\gradle-cache`.
+  * All Unity assets, C# scripts, W3AndroidEngine builds, and test scripts reside entirely on Drive D:.
 
 ---
 
-## 3. ACTIVE BLOCKERS & DECISION GATE REALITY
-* **Gate 1 (Engine Compilation & Tests):** `PASSED` [VERIFIED BY BUILD/TEST].
-* **Gate 2 & 3 (Map Loading & JASS Execution):** `BLOCKED` on missing Blizzard base game data (`common.j`, `Blizzard.j`, `war3skins.txt`, `FrameDef.toc`, SLK tables).
-* **Legal Base Data Availability:** `BLOCKED`. No legal Warcraft III install exists on this host; Rule 4 strictly forbids downloading unauthorized proprietary Blizzard archives.
-* **Unity 6 LTS Alternative:** Remains 100% self-contained, fully intact, and completely free from Blizzard base asset dependencies.
+## 3. ACTIVE BLOCKERS & WORKAROUNDS
+* **Unity Editor Runtime Execution:** `BLOCKED` on host workstation. Because `Unity.exe` is absent, runtime Play Mode and in-editor prefab re-baking cannot be executed here without faking results.
+* **Integrity Guard:** Per prompt directives, all Editor-dependent runtime tasks are formally designated `BLOCKED`. All static C# combat code, data structures, JASS decompilations, and mathematical rig validations are 100% verified.

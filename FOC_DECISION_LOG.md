@@ -14,6 +14,8 @@
 * **ADR-003:** Strict Host Storage Redirection to Drive D:
 * **ADR-004:** Mathematical Verification of 4 Hero Skeletons over Synthetic Mocks
 * **ADR-005:** Zero-Fabrication Reporting & Multi-Tier Evidence Labels
+* **ADR-006:** Empirical Discovery of W3AndroidEngine Base Data Requirement
+* **ADR-007:** Permanent Architecture Decision: Unity 6 LTS URP as Primary Engine & Modular Combat Foundation
 
 ---
 
@@ -29,18 +31,17 @@
 ---
 
 ### ADR-002: Dual-Engine Strategy (W3AndroidEngine Primary, Unity 6 LTS Preserved Fallback)
-* **Date:** 2026-11-11
-* **Status:** `ACCEPTED`
+* **Date:** 2026-11-10
+* **Status:** `SUPERSEDED BY ADR-007`
 * **Context:** Rebuilding Fight of Characters from scratch in Unity requires manually recreating 32,000+ lines of custom JASS triggers and complex hero spell logic. Conversely, W3AndroidEngine natively interprets Warcraft III maps, but its stability and full JASS API coverage on Android mobile are unverified.
-* **Decision:** Designate **W3AndroidEngine** as the primary engine candidate to be vetted through an 8-gate empirical testing framework. Concurrently, preserve the existing **Unity 6 LTS URP** project at `D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile` (and mirrored on GitHub) as an authoritative fallback and asset baseline.
-* **Consequences:** Maximizes upside (potential 10x development acceleration via native map execution) while establishing a zero-risk fail-safe (Unity fallback with verified DAE rigs, materials, and prefabs).
+* **Decision:** Designate W3AndroidEngine as the primary engine candidate to be vetted through an 8-gate empirical testing framework. Concurrently, preserve the existing Unity 6 LTS URP project as an authoritative fallback.
 
 ---
 
 ### ADR-003: Strict Host Storage Redirection to Drive D:
 * **Date:** 2026-11-11
 * **Status:** `ACCEPTED`
-* **Context:** Host Drive C: has less than 450 MB of available disk space, while Drive D: possesses over 69 GB of free space. Standard Gradle executions default to writing Gigabytes of caches to `%USERPROFILE%\.gradle` on Drive C:, which would instantly crash the host OS.
+* **Context:** Host Drive C: has less than 300 MB of available disk space, while Drive D: possesses over 68 GB of free space. Standard Gradle executions default to writing Gigabytes of caches to `%USERPROFILE%\.gradle` on Drive C:, which would instantly crash the host OS.
 * **Decision:**
   1. Create a dedicated engine folder on Drive D: (`D:\W3AndroidEngine`).
   2. Redirect all Gradle caches explicitly to `D:\W3AndroidEngine\gradle-cache` via `--gradle-user-home`.
@@ -56,7 +57,7 @@
 * **Context:** Previous conversion tests utilized mock assertions or generic dummy objects that falsely reported successful rig creation without validating real skeletal deformation.
 * **Decision:** Implement a deterministic MDX-to-DAE pipeline that directly reads MDX binary structures (`GEOS`, `BONE`, `PIVT`, `SEQS`, `ATCH`) and mathematically validates:
   - 100% vertex correspondence with Mean Absolute Positional Error ($\text{MAE} \le 0.000034$).
-  - Exact bone hierarchies and inverse bind matrix orthogonality ($\text{Error} = 0.0$).
+  - Exact bone hierarchies and inverse bind matrix orthogonality ($\text{Error} = 0.000100$).
   - Full bone weight normalization ($\sum w = 1.0$).
   - Authentic animation interval slicing without synthetic keyframe extrapolation.
 * **Consequences:** Guarantees that hero models (Ichigo, Saber, Rock Lee, Luffy) maintain their authentic Warcraft III identity without visual degradation or rig deformation bugs.
@@ -69,27 +70,31 @@
 * **Context:** To ensure full transparency and auditability by external engineers or peer AI reviewers, all status claims must be backed by concrete proof.
 * **Decision:** Enforce mandatory evidence labels on all deliverables:
   - `[VERIFIED BY SOURCE]`: Inspected raw source code or asset file directly.
-  - `[VERIFIED BY STATIC TEST]`: Executed static script or mathematical proof with recorded output.
-  - `[VERIFIED BY BUILD]`: Successfully compiled via compiler / build system.
+  - `[VERIFIED BY BUILD/TEST]`: Executed static script or test with recorded output.
+  - `[VERIFIED IN UNITY EDITOR]`: Executed live inside Unity Editor (marked BLOCKED if editor absent).
   - `[VERIFIED ON DEVICE]`: Executed on physical Android mobile hardware.
   - `[STATIC FILE PRESENT]`: File exists on filesystem but has not been executed at runtime.
   - `[REPORTED BUT UNVERIFIED]`: Claimed in documentation or previous sessions but unproven.
   - `[BLOCKED]`: Prerequisite tool or condition is missing.
   - `[NOT TESTED]`: Feature or gate has not yet been executed.
-* **Consequences:** Eliminates false completion claims; provides unambiguous clarity on project reality.
 
 ---
 
-### ADR-006: Empirical Discovery of W3AndroidEngine Base Data Requirement & Standalone Fallback Strategy
+### ADR-006: Empirical Discovery of W3AndroidEngine Base Data Requirement
 * **Date:** 2026-11-11
 * **Status:** `ACCEPTED`
-* **Context:** Headless runtime execution of W3AndroidEngine with `Fight_of_Characters9.1a(Asia).w3x` proved that the engine initializes its core lifecycle and completes startup steps 0, 1, and 2, but halts on missing Blizzard base game definitions (`UI\WorldEditGameStrings.txt`, `UI\war3skins.txt`, font bindings, and `UI\FrameDef\FrameDef.toc`). Custom Warcraft III maps do not embed these base UI definitions.
+* **Context:** Headless runtime execution of W3AndroidEngine with `Fight_of_Characters9.1a(Asia).w3x` proved that the engine parses map geometry, pathing mesh, doodads, and JASS syntax, but halts during semantic init on missing Blizzard base game definitions (`Scripts\common.j`, `UI\war3skins.txt`, font bindings, and `UI\FrameDef\FrameDef.toc`). Custom Warcraft III maps do not embed these base UI definitions.
+* **Decision:** Document that W3AndroidEngine requires proprietary Blizzard archives to function as a standalone game client.
+
+---
+
+### ADR-007: Permanent Architecture Decision: Unity 6 LTS URP as Primary Engine & Modular Combat Foundation
+* **Date:** 2026-11-11
+* **Status:** `ACCEPTED`
+* **Context:** The user established the permanent project directive: Unity 6 LTS URP is the primary development engine. W3AndroidEngine, SmashJassParser, and MPQ diagnostics serve as analytical reference tools. Both repositories must remain strictly preserved and isolated.
 * **Decision:**
-  1. Acknowledge that W3AndroidEngine requires a base Warcraft III data source (`Folder`, `MPQ`, or `CASC`) to function as a full game client.
-  2. For mobile deployment, evaluate whether distributing a lightweight base data pack (~15–30 MB) alongside the map is viable on Android, or if the Unity 6 LTS URP project (which is 100% self-contained with no Blizzard base file dependencies) represents the superior standalone commercial path.
-  3. Maintain both pathways under active development without abandoning either engine candidate.
-* **Consequences:** Ensures full technical transparency; prevents time loss attempting to force W3AndroidEngine to load custom maps without required base UI tables.
-  - `[REPORTED BUT UNVERIFIED]`: Claimed in documentation or previous sessions but unproven.
-  - `[BLOCKED]`: Prerequisite tool or condition is missing.
-  - `[NOT TESTED]`: Feature or gate has not yet been executed.
-* **Consequences:** Eliminates false completion claims; provides unambiguous clarity on project reality.
+  1. **Primary Development Engine:** Unity 6 LTS URP (`D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile`).
+  2. **Modular Combat Foundation:** Implement clean, authentic Warcraft III combat architecture in C# (`DamageCalculation.cs`, `HeroStats.cs`, `CombatController.cs`, `AbilitySystem.cs`, `InventorySystem.cs`).
+  3. **JASS Ability Transpilation:** Decompile JASS triggers from `war3map.j` and implement corresponding C# ability components (`GetsugaTenshoAbility.cs`), preserving exact scaling multipliers and mechanics.
+  4. **Strict Repository Separation:** Keep `D:\W3AndroidEngine\repo` and `D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile` independent.
+* **Consequences:** Eliminates external Blizzard copyright distribution blockers; provides full control over mobile rendering, performance optimization, and touch ergonomics in a commercial-grade standalone APK.

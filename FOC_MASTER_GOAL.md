@@ -3,12 +3,12 @@
 
 **PROJECT CODENAME:** FOC REBORN MOBILE  
 **PRIMARY OBJECTIVE:** Create a faithful, high-performance Android mobile adaptation of the legendary Warcraft III custom map **Fight of Characters 9.1a (Asia)** (`Fight_of_Characters9.1a(Asia).w3x`).  
-**PRIMARY ENGINE CANDIDATE:** W3AndroidEngine (Warsmash Reforged: Java 17 / LibGDX / Android Native)  
-- Repository: `https://github.com/nikoltu/W3AndroidEngine`  
-- Local Clone: `D:\W3AndroidEngine\repo` (Commit: `a865a389`, Version: `0.3.6`)  
-**EXISTING UNITY BACKUP & REFERENCE:** Unity 6 LTS URP Mobile Project  
-- Repository: `https://github.com/Yazerukun/fight-of-the-characters-mobile`  
-- Local Location: `D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile` (Commit: `4ad4d7e`)  
+**PRIMARY DEVELOPMENT ENGINE:** Unity 6 LTS URP Mobile Project (`D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile`)  
+**REFERENCE TOOLS & ANCILLARY HARNESSES:** W3AndroidEngine (`D:\W3AndroidEngine\repo`), SmashJassParser, MPQ Diagnostics  
+**SOURCE REPOSITORY PRESERVATION:**
+- Both repositories are strictly preserved as separate entities.
+- Never delete, merge, or overwrite the `W3AndroidEngine` repository.
+- The original source map `Fight_of_Characters9.1a(Asia).w3x` (8,378,373 bytes) remains immutable.
 
 ---
 
@@ -26,25 +26,20 @@ The primary directive is uncompromising fidelity to the original Warcraft III ga
 
 ---
 
-## 2. DUAL-ENGINE STRATEGY & ENGINE ADOPTION GATE
-The project utilizes a disciplined dual-engine evaluation framework:
-1. **Primary Candidate (W3AndroidEngine):** Evaluated for native Warcraft III engine compatibility. Because it natively parses `.w3x` files, MDX/BLP assets, and JASS bytecode, it offers the highest potential fidelity if compatibility is proven.
-2. **Preserved Backup (Unity 6 URP):** The complete Unity 6 mobile project is permanently preserved at `D:\FIGHT OF THE CHARACTERS\FOC-Reborn-Mobile` and synced on GitHub. It serves as an active fallback and reference implementation.
-3. **Engine Adoption Criteria:** W3AndroidEngine will only be adopted as the sole production engine once all 8 adoption gates pass:
-   - Gate 1: Engine builds successfully on desktop and Android (`NOT TESTED`).
-   - Gate 2: Known working WC3 custom map loads (`NOT TESTED`).
-   - Gate 3: Original FOC map (`Fight_of_Characters9.1a(Asia).w3x`) loads (`NOT TESTED`).
-   - Gate 4: Original MDX and BLP assets render with authentic shading (`NOT TESTED`).
-   - Gate 5: Original skeletal rigs and animation sequences play (`NOT TESTED`).
-   - Gate 6: Original JASS trigger bytecode executes correctly (`NOT TESTED`).
-   - Gate 7: Abilities, items, and creep waves function properly (`NOT TESTED`).
-   - Gate 8: Release Android APK builds and runs smoothly on an actual mobile device (`NOT TESTED`).
+## 2. PERMANENT ENGINE ARCHITECTURE DECISION
+1. **Primary Development Engine (Unity 6 LTS URP):**
+   - Designated as the permanent primary production engine for commercial Android delivery.
+   - 100% self-contained: packages original models, converted textures, audio, and gameplay C# code without depending on proprietary Blizzard base data.
+   - Standalone modular combat foundation (`HeroStats.cs`, `CombatController.cs`, `AbilitySystem.cs`, `InventorySystem.cs`, `DamageCalculation.cs`).
+2. **Reference & Extraction Tools (W3AndroidEngine & MPQ Diagnostics):**
+   - Preserved at `D:\W3AndroidEngine\repo` as an immutable analytical tool for JASS decompilation, SLK parsing, binary extraction, and headless simulation validation.
+3. **Rigid Dual-Repo Isolation:** Neither repository may be merged into or contaminated by the other.
 
 ---
 
 ## 3. ABSOLUTE ENGINEERING LAWS
 1. Never fabricate test results, execution logs, or build artifacts.
 2. Never substitute static Python validation for runtime execution.
-3. Never claim Unity Editor or Android runtime passes without authentic command logs.
-4. Never delete or overwrite the Unity backup repository.
-5. All downloaded dependencies, build caches, and repositories must reside on Drive D: (`D:\W3AndroidEngine`) due to Drive C: storage constraints.
+3. If Unity Editor is unavailable on host PC, runtime-dependent tasks must be reported as `BLOCKED`.
+4. Never delete or overwrite the Unity backup repository or W3AndroidEngine repository.
+5. All downloaded dependencies, build caches, and repositories must reside on Drive D: due to Drive C: critical storage constraints (< 0.50 GB free).
