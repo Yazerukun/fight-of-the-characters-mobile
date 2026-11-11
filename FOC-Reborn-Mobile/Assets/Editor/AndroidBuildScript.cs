@@ -23,6 +23,15 @@ namespace FOC.Editor
             Debug.Log("[FOC Build] === STARTING ANDROID BUILD PIPELINE ===");
             var startTime = DateTime.Now;
 
+            // 0. Ensure Android SDK, NDK, and JDK toolchains are explicitly configured
+            EditorPrefs.SetString("AndroidSdkRoot", "D:/Android/Sdk");
+            EditorPrefs.SetString("AndroidNdkRoot", "D:/Android/Ndk/android-ndk-r23b");
+            EditorPrefs.SetString("JdkPath", "C:/Users/Technical/AppData/Local/Programs/Eclipse Adoptium/jdk-17.0.20.101-hotspot");
+            EditorPrefs.SetBool("SdkUseEmbedded", false);
+            EditorPrefs.SetBool("NdkUseEmbedded", false);
+            EditorPrefs.SetBool("JdkUseEmbedded", false);
+            Debug.Log("[FOC Build] Toolchains configured: SDK=D:/Android/Sdk, NDK=D:/Android/Ndk/android-ndk-r23b, JDK=Eclipse Adoptium 17");
+
             // 1. Configure Project Settings
             PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, PackageName);
             PlayerSettings.productName = ProductName;
